@@ -1,0 +1,62 @@
+html, body{
+    overflow-x: hidden;
+}
+@media screen and (min-width: 1024px) {
+    
+    .navbarPadding{
+        padding: 0 80px;
+    }
+    #headerNav{
+        display: inline;
+    }
+}
+
+@media screen and (max-width:1023px) and (min-width:640px) {
+    .navbarPadding{
+        padding: 0;
+    }
+}
+
+@media screen and (max-width:639px) {
+    #headerNav{
+        display: none;
+    }
+}
+
+.bg-navbar{
+    background-color: #8cecff;
+}
+
+.nav-url-pad{
+    padding: 9px 20px;
+}
+
+.nav-url-undecorat{
+    text-decoration: none;
+}
+
+.nav-url{
+    color: #000;
+    background-color: none;
+}
+
+.nav-url:hover{
+    color: #6e6e6e;
+    background-color: #53dffb;
+}
+
+.nav-url:active{
+    color: #d2d2d2;
+    background-color: #0ad5fd;
+}
+
+.nav-url-active{
+    color: #000000;
+    background-color: #0ad5fd;
+}
+
+.img-nav{
+    width: 60px;
+    height: auto;
+}
+
