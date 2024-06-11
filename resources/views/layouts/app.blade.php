@@ -23,13 +23,13 @@
     
 </head>
 <body class="relative overflow-x-hidden">
-    <header class="shadow-lg fixed bg-white lg:w-full w-screen z-50">
+    <header >
         @include('partials.navbar')
     </header>
     <section class="relative">
         @stack('banner')
     </section>
-    <section class=" lg:px-20 px-10 lg:pb-28 lg:pt-10 pt-5 pb-20">
+    <section >
         @yield('container')
     </section>
     <footer>

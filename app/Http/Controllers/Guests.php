@@ -6,28 +6,48 @@ use Illuminate\Http\Request;
 
 class Guests extends Controller
 {
+
+    // Parent Function
     public function index(){
         $data['titlePage'] = 'Beranda';
+        $data['titleNav'] = 'Beranda';
         return view('guests.home', $data);
     }
 
     public function tentangKami(){
         $data['titlePage'] = 'Tentang Kami';
-        return view('guests.home', $data);
+        $data['titleNav'] = 'Tentang Kami';
+        return view('guests.tentangKami', $data);
     }
 
     public function layanan(){
         $data['titlePage'] = 'Layanan';
-        return view('guests.home', $data);
+        $data['titleNav'] = 'Layanan';
+        return view('guests.layanan', $data);
     }
 
     public function modul(){
         $data['titlePage'] = 'Modul';
-        return view('guests.home', $data);
+        $data['titleNav'] = 'Modul';
+        return view('guests.modul', $data);
+    }
+
+    public function berita(){
+        $data['titlePage'] = 'Berita';
+        $data['titleNav'] = 'Berita';
+        return view('guests.berita', $data);
     }
 
     public function kontak(){
         $data['titlePage'] = 'Kontak';
-        return view('guests.home', $data);
+        $data['titleNav'] = 'Kontak';
+        return view('guests.kontak', $data);
+    }
+
+    // Child Function
+    public function detailBerita(){
+        $data['titlePage'] = 'Detail Berita';
+        $data['titleNav'] = 'Berita';
+        return view('guests.kontak', $data);
     }
 }
