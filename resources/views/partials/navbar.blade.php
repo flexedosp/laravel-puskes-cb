@@ -1,5 +1,5 @@
 
-<section id="headerNav" class="shadow-lg position-fixed vw-100 z-3">
+<section id="headerNav" class="shadow-sm position-fixed vw-100 z-3">
     <div class="py-3 bg-white d-flex flex-row" style="padding-left:100px;padding-right:50px">
         <img src="/img/logo_curug_bitung.png" class="img-nav" alt="Logo Curug Bitung">
         <img src="/img/logo_banten.png" class="img-nav" alt="Logo Banten">

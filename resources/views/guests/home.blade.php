@@ -26,9 +26,8 @@
 
     <section id="card-section" class="vw-100 mx-auto px-3">
         <div id="cardContainer" class=" my-5 ">
-            <x-card />
-            <x-card />
-
+            <x-card judul="{{ $titleCard }}" isi="{{ $isiCard }}" />
+            <x-card judul="{{ $titleCard }}" isi="{{ $isiCard }}" />
         </div>
     </section>
 @endsection

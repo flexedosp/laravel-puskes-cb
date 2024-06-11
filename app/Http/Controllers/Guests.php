@@ -11,6 +11,8 @@ class Guests extends Controller
     public function index(){
         $data['titlePage'] = 'Beranda';
         $data['titleNav'] = 'Beranda';
+        $data['titleCard'] = 'Modul Asuh Anak';
+        $data['isiCard'] ='Modul tentang cara pengasuhan anak yang baik. Modul ini penting dipelajari oleh para orang tua.';
         return view('guests.home', $data);
     }
 

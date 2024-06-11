@@ -21,7 +21,7 @@
     </div>
 
     <hr />
-<div class="fw-normal text-center mx-3 pb-3">
+<div id="madeByWho" class="fw-normal text-center">
 2024 - Made by itsalghifari.com
 </div>
 </footer>
