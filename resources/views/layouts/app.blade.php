@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="/img/Logo_Square.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/logo_puskes_cb.png" type="image/png">
     <title>{{ $titlePage }} </title>
 
     {{-- CSS Library --}}

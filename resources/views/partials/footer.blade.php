@@ -26,28 +26,28 @@
 </div>
 </footer>
 
-<nav id="bottomNav" class="bottom-nav">
+<nav id="bottomNav" class="bottom-nav shadow">
     <div class="dropup">
-        <a href="#" class="nav-item nav-link  text-center" style="width:2cm" data-bs-toggle="dropdown" aria-expanded="false">
+        <a href="#" class="nav-item nav-link  text-center {{ ($titleNav == 'Tentang Kami' || $titleNav == 'Berita') ? 'bg-black text-white' : ' ' }}" style="width:2cm" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-info-circle"></i><br>Info
         </a>
         <ul class="dropdown-menu px-2">
             <!-- Dropdown menu links -->
-            <li><a class="text-decoration-none fw-normal text-black" href="">Tentang Kami</a></li>
-            <li><a class="text-decoration-none fw-normal text-black" href="">Berita</a></li>
+            <li class="py-2"><a class="text-decoration-none fw-normal text-black" href="<?= route('guest.tentangkami') ?>">Tentang Kami</a></li>
+            <li class="py-2"><a class="text-decoration-none fw-normal text-black" href="<?= route('guest.berita') ?>">Berita</a></li>
 
           </ul>
     </div>
-    <a href="/layanan" class="nav-item nav-link text-center" style="width:2cm">
+    <a href="<?= route('guest.layanan') ?>" class="nav-item nav-link text-center {{ ($titleNav == 'Layanan') ? 'bg-black text-white' : ' ' }}" style="width:2cm">
         <i class="fas fa-cogs"></i><br>Layanan
     </a>
-    <a href="/" class="nav-item nav-link nav-item-center text-center" style="width:2cm">
+    <a href="<?= route('guest.home') ?>" class="nav-item nav-link nav-item-center text-center {{ ($titleNav == 'Beranda') ? 'bg-black text-white' : ' ' }}" style="width:2cm">
         <i class="fas fa-home"></i><br>Beranda
     </a>
-    <a href="/modul" class="nav-item nav-link text-center" style="width:2cm">
+    <a href="<?= route('guest.modul') ?>" class="nav-item nav-link text-center {{ ($titleNav == 'Modul') ? 'bg-black text-white' : ' ' }}" style="width:2cm">
         <i class="fas fa-book"></i><br>Modul
     </a>
-    <a href="/kontak" class="nav-item nav-link text-center" style="width:2cm">
+    <a href="<?= route('guest.kontak') ?>" class="nav-item nav-link text-center {{ ($titleNav == 'Kontak') ? 'bg-black text-white' : ' ' }}" style="width:2cm">
         <i class="fas fa-address-book"></i><br>Kontak
     </a>
 </nav>

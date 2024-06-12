@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('container')
-<section class="container">
-    <p class="fs-2 font-bold">Puskesmas Membuka Rawat Inap</p>
-    <p class="font-semibold ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo dolorem nulla, nisi unde, est et nemo vel dignissimos provident aliquam quis consequuntur odit! Illum excepturi ea deleniti quod, asperiores saepe, molestias molestiae facilis, nam consequatur maxime? Totam impedit necessitatibus neque dolorem ad iusto non corporis est a repudiandae inventore optio, architecto ullam facere similique molestias ipsam! Mollitia labore nobis quia aspernatur aperiam sapiente? Adipisci impedit consectetur quia assumenda ratione dignissimos saepe! Alias totam fugit maxime dolorem, voluptate atque harum facere repudiandae asperiores recusandae earum expedita ut dolor beatae assumenda dolorum ullam culpa modi quisquam, est repellendus odio ad mollitia? Veritatis, perferendis adipisci, hic corporis sint, quaerat quo repudiandae natus quasi ab maxime quam nam esse! Iste voluptates quisquam, ex ab adipisci voluptas quidem molestias id quibusdam sapiente cupiditate, voluptatibus at accusamus nesciunt sequi accusantium quasi labore ut tenetur? Voluptate tempore vel, dicta ipsa perferendis nobis odit cumque quidem aperiam, aspernatur temporibus doloremque esse quis nihil quas molestiae corporis error reprehenderit magni assumenda impedit dignissimos sunt autem. Nulla nostrum obcaecati, non dolore consequatur quod tempore laudantium eveniet reprehenderit et necessitatibus ex dolor, reiciendis iusto maxime facilis assumenda, ullam perferendis modi quaerat quis! Eligendi porro rerum dolorem vel. Architecto maiores exercitationem possimus.</p>
+    <section  class="container" style="padding-top: 4cm; padding-bottom:3cm;">
+        <p class="fs-2 fw-bold mb-1">{{ $dataBerita->nama }}</p>
+        <p class="fw-normal">Penulis {{ $dataBerita->createdBy }} | Dibuat pada tanggal {{ $dataBerita->createdAt }}</p>
+       <div class="d-flex justify-content-center my-3">
+           <img src="/img/{{ $dataBerita->gambar }}" class="rounded" style="width: 500px; height:auto" alt="">
+       </div>
+        <p class="font-semibold px-3">{{ $dataBerita->deskripsi }}</p>
     </section>
 @endsection

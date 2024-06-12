@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('banner')
-    <section id="bannerOp" class="vw-100 vh-100 text-black">
+    <section id="bannerOp" class="vw-100 vh-auto text-black">
         <div class="container px-2 container-py-1">
             <div class="d-flex flex-wrap justify-content-center">
                 <img id="gambarOp" src="/img/group_kids.png" alt="Gambar Super Kids">

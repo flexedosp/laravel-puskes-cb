@@ -87,12 +87,11 @@ body {
 }
 
 /* BEGIN Footer */
-#madeByWho{
+#madeByWho {
     margin: 0px auto;
     padding-bottom: 2rem;
 }
 /* END Footer */
-
 
 .bg-navbar {
     background-color: #8cecff;
@@ -135,6 +134,27 @@ body {
     background: linear-gradient(90deg, rgb(86, 219, 246), rgb(0, 156, 251));
 }
 
+/* BEGIN Tentang Kami */
+#navTk{
+    margin: 0px 100px; 
+    top:25%;
+    width: 85vw;
+}
+
+#containerTargetSpy{
+    margin:0px 100px 50px 100px; 
+    padding-bottom:300px;
+}
+
+.targetSpy{
+    /* margin-top: 100px; */
+    padding-top:145px;
+    padding-bottom: 100px;
+}
+
+/* END Tentang Kami */
+
+
 @media screen and (max-width: 1023px) {
     #headerNav {
         display: none;
@@ -164,7 +184,7 @@ body {
 
     #gambarOp {
         width: auto;
-        height: 200px;
+        height: 400px;
     }
 
     #textOp {
@@ -202,17 +222,37 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 2px;
         padding-left: 2px;
         padding-right: 2px;
-        padding-bottom: 2px;
+
         height: 70px;
     }
 
+    #bottomNav a {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
     /* BEGIN Footer */
-#madeByWho{
-    padding-bottom: 8rem;
-}
-/* END Footer */
+    #madeByWho {
+        padding-bottom: 8rem;
+    }
+    /* END Footer */
+
+    /* BEGIN Tentang Kami */
+#navTk{
+    margin: 0px 30px; 
+    top:5%;
+    width: 85vw;
 }
 
+#containerTargetSpy{
+    margin:20px 30px 20px 30px;
+}
+
+.targetSpy{
+    padding-top:50px;
+    padding-bottom:50px;
+}
+/* END Tentang Kami */
+}

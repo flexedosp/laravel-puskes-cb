@@ -11,12 +11,12 @@
     </div>
     <nav class="navbar-expand-lg bg-navbar">
         <div class="navbarPadding d-flex flex-row fw-semibold ">
-            <a class="{{ ($titleNav == 'Beranda') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad" href="/">Beranda</a>
-            <a class="{{ ($titleNav == 'Tentang Kami') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="/tentangkami">Tentang Kami</a>
-            <a class="{{ ($titleNav == 'Layanan') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="/layanan">Info Layanan</a>
-            <a class="{{ ($titleNav == 'Berita') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="/berita">Berita</a>
-            <a class="{{ ($titleNav == 'Modul') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="/modul">Modul</a>
-            <a class="{{ ($titleNav == 'Kontak') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="/kontak">Kontak</a>
+            <a class="{{ ($titleNav == 'Beranda') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad" href="<?= route('guest.home') ?>">Beranda</a>
+            <a class="{{ ($titleNav == 'Tentang Kami') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.tentangkami') ?>">Tentang Kami</a>
+            <a class="{{ ($titleNav == 'Layanan') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.layanan') ?>">Info Layanan</a>
+            <a class="{{ ($titleNav == 'Berita') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.berita') ?>">Berita</a>
+            <a class="{{ ($titleNav == 'Modul') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.modul') ?>">Modul</a>
+            <a class="{{ ($titleNav == 'Kontak') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.kontak') ?>">Kontak</a>
         </div>
     </nav>
 </section>

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
 class Guests extends Controller
 {
 
-    // Parent Function
+    // BEGIN Parent Function
     public function index(){
         $data['titlePage'] = 'Beranda';
         $data['titleNav'] = 'Beranda';
@@ -37,6 +38,8 @@ class Guests extends Controller
     public function berita(){
         $data['titlePage'] = 'Berita';
         $data['titleNav'] = 'Berita';
+$data['dataBerita'] = Berita::all();
+
         return view('guests.berita', $data);
     }
 
@@ -45,11 +48,26 @@ class Guests extends Controller
         $data['titleNav'] = 'Kontak';
         return view('guests.kontak', $data);
     }
+    // END Parent Function
 
-    // Child Function
-    public function detailBerita(){
+
+    // BEGIN Child Function
+    public function detailBerita(Berita $berita){
         $data['titlePage'] = 'Detail Berita';
         $data['titleNav'] = 'Berita';
-        return view('guests.kontak', $data);
+$data['dataBerita'] = $berita;
+        // Data Berita
+
+        // $dataBerita = Berita::find()
+        // $data['judulBerita'] = 
+        return view('guests.detailberita', $data);
     }
+
+    public function detailModul($slug){
+        $data['titlePage'] = 'Detail Modul';
+        $data['titleNav'] = 'Modul';
+        return view('guests.detailmodul', $data);
+    }
+    // END Child Function
+
 }

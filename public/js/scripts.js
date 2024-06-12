@@ -5,4 +5,10 @@ $(document).ready(function(){
         once:true
     })
 
+    $('.navbar-nav a').click(function () {
+        if ($('.navbar-toggler').is(':visible')) {
+          $('.navbar-collapse').collapse('hide');
+        }
+      });
+
 })
