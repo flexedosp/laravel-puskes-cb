@@ -4,8 +4,8 @@
     <section id="bannerOp" class="vw-100 vh-auto text-black">
         <div class="container px-2 container-py-1">
             <div class="d-flex flex-wrap justify-content-center">
-                <img id="gambarOp" src="/img/group_kids.png" alt="Gambar Super Kids">
-                <div id="textOp" class="text-white">
+                <img data-aos="fade-in" id="gambarOp" src="/img/group_kids.png" alt="Gambar Super Kids">
+                <div data-aos="fade-in" id="textOp" class="text-white">
                     <p class="fs-2 fw-bold">Puskesmas Curugbitung</p>
                     <p class="fw-semibold">Selamat datang di website Puskesmas Curugbitung. Selain info dan layanan mengenai puskesmas, kami menyediakan modul tumbuh kembang anak. Modul tersebut terdapat dua bagian yaitu modul pengasuahn anak dan modul tumbuh kembang.</p>
 

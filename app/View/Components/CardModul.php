@@ -11,10 +11,13 @@ class CardModul extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(
+        public string $gambar,
+        public string $judul,
+        public string $deskripsi,
+        public string $date,
+        public string $slug
+    ){}
 
     /**
      * Get the view / contents that represent the component.

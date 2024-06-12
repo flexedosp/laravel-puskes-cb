@@ -10,8 +10,8 @@
              
                 <p class="card-text">{{ $isi }}</p>
       
-              <a href="/layanan">Baca Selengkapnya</a>
-              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+              <a href="/modul/modul-asuh-anak">Baca Selengkapnya</a>
+              <p class="card-text"><small class="text-body-secondary">Dibuat pada tanggal 2024-06-12</small></p>
             </div>
           </div>
         </div>

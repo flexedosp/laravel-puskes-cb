@@ -2,22 +2,22 @@
 
 @section('container')
 <section class="vw-100 h-auto">
-    <div style="padding: 6cm 3cm 2cm 3cm;">
-        <form>
+  <div id="formKontak">
+    <form class="rounded shadow px-4 py-3">
+          <h2 class="fw-bold text-center">Silahkan isi form di bawah ini</h2>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <label for="inputNama" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="inputNama">
             </div>
             <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <label for="inputEmail" class="form-label">Email </label>
+              <input type="email" class="form-control" id="inputEmail">
             </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="mb-3">
+              <label for="inputTanya" class="form-label">Pertanyaan / Komentar</label>
+              <textarea class="form-control" id="inputTanya" name="inputTanya" cols="30" rows="10"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary">Submit</button>
           </form>
     </div>
 </section>

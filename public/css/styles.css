@@ -135,24 +135,56 @@ body {
 }
 
 /* BEGIN Tentang Kami */
-#navTk{
-    margin: 0px 100px; 
-    top:25%;
+#navTk {
+    margin: 0px 100px;
+    top: 25%;
     width: 85vw;
 }
 
-#containerTargetSpy{
-    margin:0px 100px 50px 100px; 
-    padding-bottom:300px;
+#containerTargetSpy {
+    margin: 0px 100px 50px 100px;
+    padding-bottom: 300px;
 }
 
-.targetSpy{
+.targetSpy {
     /* margin-top: 100px; */
-    padding-top:145px;
+    padding-top: 145px;
     padding-bottom: 100px;
 }
 
 /* END Tentang Kami */
+
+/* BEGIN Detail Berita */
+#detailBerita {
+    padding-top: 4cm;
+    padding-bottom: 3cm;
+}
+/* END Detail Berita */
+
+/* BEGIN Detail Modul */
+#detailModul {
+    padding-top: 4cm;
+    padding-bottom: 3cm;
+}
+
+/* END Detail Modul */
+
+/* BEGIN Form Kontak */
+#formKontak{
+    padding: 6cm 4cm 2cm 4cm;
+}
+/* END Form Kontak */
+
+/* BEGIN Layanan */
+#sectionLayanan{
+ padding: 5cm 3cm 4cm 3cm;
+}
+
+.padCarLay{
+    padding: 20px 200px;
+}
+/* END Layanan */
+
 
 
 @media screen and (max-width: 1023px) {
@@ -240,19 +272,46 @@ body {
     /* END Footer */
 
     /* BEGIN Tentang Kami */
-#navTk{
-    margin: 0px 30px; 
-    top:5%;
-    width: 85vw;
-}
+    #navTk {
+        margin: 0px 30px;
+        top: 5%;
+        width: 85vw;
+    }
 
-#containerTargetSpy{
-    margin:20px 30px 20px 30px;
-}
+    #containerTargetSpy {
+        margin: 20px 30px 20px 30px;
+    }
 
-.targetSpy{
-    padding-top:50px;
-    padding-bottom:50px;
+    .targetSpy {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    /* END Tentang Kami */
+
+    /* BEGIN Detail Berita */
+    #detailBerita {
+        padding-top: 2cm;
+    }
+    /* END Detail Berita */
+    
+    /* BEGIN Detail Modul */
+    #detailModul {
+        padding-top: 2cm;
+    }
+    /* END Detail Modul */
+
+    /* BEGIN Form Kontak */
+#formKontak{
+    padding: 2cm 1cm 3cm 1cm;
 }
-/* END Tentang Kami */
+/* END Form Kontak */
+
+/* BEGIN Layanan */
+#sectionLayanan{
+    padding: 2cm 1cm 3cm 1cm;
+   }
+   .padCarLay{
+    padding: 10px 50px;
+}
+   /* END Layanan */
 }
