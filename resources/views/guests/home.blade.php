@@ -7,10 +7,14 @@
                 <img data-aos="fade-in" id="gambarOp" src="/img/group_kids.png" alt="Gambar Super Kids">
                 <div data-aos="fade-in" id="textOp" class="text-white">
                     <p class="fs-2 fw-bold">Puskesmas Curugbitung</p>
-                    <p class="fw-semibold">Selamat datang di website Puskesmas Curugbitung. Selain info dan layanan mengenai puskesmas, kami menyediakan modul tumbuh kembang anak. Modul tersebut terdapat dua bagian yaitu modul pengasuahn anak dan modul tumbuh kembang.</p>
+                    <p class="fw-semibold">Selamat datang di website Puskesmas Curugbitung, Lebak, Banten. <br> 
+                        Website ini merupakan website informatif terkait layanan Puskesmas. 
+                        Website ini juga menyediakan Modul Pengasuhan Positif dan Modul Stimulasi Perkembangan untuk Anak Usia Dini, yang dapat digunakan Ayah Ibu untuk menemani pertumbuhan dan perkembangan anak sesuai usia-nya. 
+                        
+                        </p>
 
                     <p class="fw-semibold">
-                        Ayo bunda dan ayah, pelajari cara epngasuhan anak dan tumbuh kembang anak sesuai dengan usia anak bunda dan ayah ya.
+                        Ayo, Ayah dan Bunda! Pelajari dan terapkan agar perjalanan pengasuhan penuh berkesadaran, bahagia dan minim stress. 
                     </p>
                 </div>
             </div>

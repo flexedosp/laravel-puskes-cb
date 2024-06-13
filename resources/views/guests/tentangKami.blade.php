@@ -16,28 +16,30 @@
                 </li>
             </ul>
         </nav> --}}
-
-        <nav id="navTk" class="navbar navbar-expand-lg bg-body-tertiary rounded px-3 shadow-sm position-fixed">
-          <div class="container-fluid">
-            <a class="navbar-brand fs-3" href="#"><i class="fa-solid fa-compass"></i></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <ul id="navTkList"  class="navbar-nav  ms-auto">
-                <li class="nav-item">
-                  <a class="nav-link fw-semibold" href="#scrollspyHeading1">Tentang Puskesmas Curugbitung</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-semibold" href="#scrollspyHeading2">Struktur Organisasi</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fw-semibold" href="#scrollspyHeading3">Visi & Misi</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+<div class="d-flex justify-content-center">
+  <nav id="navTk" class="navbar navbar-expand-lg bg-body-tertiary rounded px-3 shadow-sm position-fixed">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-3" href="#"><i class="fa-solid fa-compass"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul id="navTkList"  class="navbar-nav  ms-auto">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="#scrollspyHeading1">Tentang Puskesmas Curugbitung</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="#scrollspyHeading2">Struktur Organisasi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="#scrollspyHeading3">Visi & Misi</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+        
 
         <div id="containerTargetSpy" data-bs-spy="scroll" data-bs-target="#navTK" data-bs-root-margin="0px 0px -20%"
             data-bs-smooth-scroll="true" class="scrollspy-example p-3" tabindex="0">

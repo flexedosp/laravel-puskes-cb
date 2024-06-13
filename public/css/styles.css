@@ -136,9 +136,9 @@ body {
 
 /* BEGIN Tentang Kami */
 #navTk {
-    margin: 0px 100px;
+    margin: 0px auto;
     top: 25%;
-    width: 85vw;
+    width: 86vw;
 }
 
 #containerTargetSpy {
@@ -185,7 +185,31 @@ body {
 }
 /* END Layanan */
 
+/* BEGIN Berita */
+#inputSearchBerita{
+    padding: 0px 70px;
+}
 
+#inputSearchBerita button{
+    padding: 0px 40px;
+}
+/* END Berita */
+
+/* BEGIN Modul */
+#inputSearchModul{
+    padding: 0px 70px;
+}
+
+#inputSearchModul button{
+    padding: 0px 40px;
+}
+/* END Modul */
+
+/* BEGIN Layout Konten */
+.sectionKonten{
+    padding-top: 5cm;
+}
+/* END Layout Konten */
 
 @media screen and (max-width: 1023px) {
     #headerNav {
@@ -254,8 +278,10 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        padding-top: 30px;
         padding-left: 2px;
         padding-right: 2px;
+        padding-bottom: 65px;
 
         height: 70px;
     }
@@ -273,7 +299,7 @@ body {
 
     /* BEGIN Tentang Kami */
     #navTk {
-        margin: 0px 30px;
+        /* margin: 0px 30px; */
         top: 5%;
         width: 85vw;
     }
@@ -283,7 +309,7 @@ body {
     }
 
     .targetSpy {
-        padding-top: 50px;
+        padding-top: 20px;
         padding-bottom: 50px;
     }
     /* END Tentang Kami */
@@ -314,4 +340,30 @@ body {
     padding: 10px 50px;
 }
    /* END Layanan */
+
+   /* BEGIN Berita */
+#inputSearchBerita{
+    padding: 0px 35px;
+}
+
+#inputSearchBerita button{
+    padding: 0px 20px;
+}
+/* END Berita */
+
+ /* BEGIN Modul */
+ #inputSearchModul{
+    padding: 0px 35px;
+}
+
+#inputSearchModul button{
+    padding: 0px 20px;
+}
+/* END Modul */
+
+/* BEGIN Layout Konten */
+.sectionKonten{
+    padding-top: 2cm;
+}
+/* END Layout Konten */
 }
