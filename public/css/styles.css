@@ -212,9 +212,9 @@ body {
 /* END Layout Konten */
 
 @media screen and (max-width: 1023px) {
-    #headerNav {
+    /* #headerNav {
         display: none;
-    }
+    } */
     .navbarPadding {
         padding: 0;
     }
@@ -267,7 +267,7 @@ body {
     }
     /* END Button Feedback */
 
-    #bottomNav {
+    /* #bottomNav {
         position: fixed;
         top: 90%;
         /* left: 50%; */
@@ -284,7 +284,7 @@ body {
         padding-bottom: 65px;
 
         height: 70px;
-    }
+    } */
 
     #bottomNav a {
         padding-top: 2px;
