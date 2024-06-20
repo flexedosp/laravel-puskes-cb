@@ -82,9 +82,9 @@ body {
 }
 /* END Button Feedback */
 
-#bottomNav {
+/* #bottomNav {
     display: none;
-}
+} */
 
 /* BEGIN Footer */
 #madeByWho {
@@ -212,9 +212,6 @@ body {
 /* END Layout Konten */
 
 @media screen and (max-width: 1023px) {
-    /* #headerNav {
-        display: none;
-    } */
     .navbarPadding {
         padding: 0;
     }
@@ -270,10 +267,8 @@ body {
     /* #bottomNav {
         position: fixed;
         top: 90%;
-        /* left: 50%; */
         z-index: 10;
         width: 100vw;
-        /* height: 200px; */
         background-color: white;
         display: flex;
         justify-content: center;
@@ -286,10 +281,10 @@ body {
         height: 70px;
     } */
 
-    #bottomNav a {
+    /* #bottomNav a {
         padding-top: 2px;
         padding-bottom: 2px;
-    }
+    } */
 
     /* BEGIN Footer */
     #madeByWho {

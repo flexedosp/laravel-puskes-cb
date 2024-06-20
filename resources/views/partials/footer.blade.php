@@ -26,7 +26,7 @@
 </div>
 </footer>
 
-<nav id="bottomNav" class="bottom-nav shadow">
+{{-- <nav id="bottomNav" class="bottom-nav shadow">
     <div class="dropup">
         <a href="#" class="nav-item nav-link  text-center {{ ($titleNav == 'Tentang Kami' || $titleNav == 'Berita') ? 'bg-black text-white' : ' ' }}" style="width:2cm" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-info-circle"></i><br>Info
@@ -50,4 +50,4 @@
     <a href="<?= route('guest.kontak') ?>" class="nav-item nav-link text-center {{ ($titleNav == 'Kontak') ? 'bg-black text-white' : ' ' }}" style="width:2cm">
         <i class="fas fa-address-book"></i><br>Kontak
     </a>
-</nav>
+</nav> --}}
