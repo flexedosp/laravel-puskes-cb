@@ -2,20 +2,6 @@
 
 @section('container')
     <section id="sectionTk" class="vw-100 vh-auto" style="padding-top: 3cm">
-        {{-- <nav id="navTk" class="navbar bg-body-tertiary rounded px-3 shadow-sm position-fixed">
-            <a class="navbar-brand" href="#sectionTk">Navigasi</a>
-            <ul id="navTkList" class="nav nav-pills d-flex flex-row overflow-x-auto">
-                <li class="nav-item flex-grow-0">
-                    <a class="nav-link" href="#scrollspyHeading1">Tentang Puskesmas Curugbitung</a>
-                </li>
-                <li class="nav-item flex-grow-0">
-                    <a class="nav-link" href="#scrollspyHeading2">Struktur Organisasi</a>
-                </li>
-                <li class="nav-item flex-grow-0">
-                    <a class="nav-link" href="#scrollspyHeading3">Visi & Misi</a>
-                </li>
-            </ul>
-        </nav> --}}
 <div class="d-flex justify-content-center">
   <nav id="navTk" class="navbar navbar-expand-lg bg-body-tertiary rounded px-3 shadow-sm position-fixed">
     <div class="container-fluid">

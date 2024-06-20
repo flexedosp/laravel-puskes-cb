@@ -1,9 +1,20 @@
+
 html,
 body {
     overflow-x: hidden;
 }
+
+.bg-upper-navbar{
+    background-color: #d4e8ff;
+}
+
+#upperHeadNav{
+    padding-left:100px;
+    padding-right:50px;
+}
+
 .navbarPadding {
-    padding: 0 80px;
+    padding: 0px 80px;
 }
 #headerNav {
     display: inline;
@@ -94,7 +105,7 @@ body {
 /* END Footer */
 
 .bg-navbar {
-    background-color: #8cecff;
+    background-color: #d4e8ff;
 }
 
 .nav-url-pad {
@@ -111,23 +122,24 @@ body {
 }
 
 .nav-url:hover {
-    color: #6e6e6e;
-    background-color: #53dffb;
+    color: #000000;
+    background-color: #8fc1ff;
 }
 
 .nav-url:active {
     color: #d2d2d2;
-    background-color: #0ad5fd;
+    background-color: #a5c9f5;
 }
 
 .nav-url-active {
     color: #000000;
-    background-color: #0ad5fd;
+    background-color: #a5c9f5;
 }
 
 .img-nav {
     width: auto;
     height: 60px;
+    margin: auto 10px;
 }
 
 #bannerOp {
@@ -212,8 +224,17 @@ body {
 /* END Layout Konten */
 
 @media screen and (max-width: 1023px) {
+
+    #upperHeadNav{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    #panduanOrtu{
+        display: none;
+    }
     .navbarPadding {
-        padding: 0;
+        padding: 0px 20px;
     }
     /* BEGIN Custom Container */
 
@@ -295,7 +316,7 @@ body {
     /* BEGIN Tentang Kami */
     #navTk {
         /* margin: 0px 30px; */
-        top: 5%;
+        top: 26%;
         width: 85vw;
     }
 
