@@ -1,6 +1,6 @@
 {{-- shadow-sm position-fixed vw-100 z-3 --}}
 <section id="headerNav">
-    <div id="upperHeadNav" class="py-3 bg-white d-flex flex-row">
+    <div id="upperHeadNav" class="py-3 bg-upper-navbar d-flex flex-row">
         <img src="/img/logo_curug_bitung.png" class="img-nav" alt="Logo Curug Bitung">
         <img src="/img/logo_banten.png" class="img-nav" alt="Logo Banten">
         <img src="/img/logo_puskes_cb.png" class="img-nav" alt="Logo Puskesmas Curugbitung">
@@ -13,21 +13,32 @@
     
 </section>
 
-<nav id="lowerHeadNav" class="navbar navbar-expand-lg bg-navbar py-0 ">
-    <div class="container-fluid">
-        {{-- <a class="navbar-brand" href="#">Navbar</a> --}}
+<nav id="lowerHeadNav" class="navbar navbar-expand-lg bg-navbar py-0 navbar-transition-effect">
+    <div class="container-fluid mx-3">
+        <a id="navbarLogo" class="navbar-brand" href="/"><img src="/img/logo_puskes_cb.png" class="navbar-logo" alt="Logo Puskesmas Curugbitung">
+        </a>
       <button class="ms-auto navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         {{-- navbar-nav  --}}
         <div class="navbar-nav navbarPadding">
-            <a class="{{ ($titleNav == 'Beranda') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad" href="<?= route('guest.home') ?>">Beranda</a>
-            <a class="{{ ($titleNav == 'Tentang Kami') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.tentangkami') ?>">Tentang Kami</a>
-            <a class="{{ ($titleNav == 'Layanan') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.layanan') ?>">Info Layanan</a>
-            <a class="{{ ($titleNav == 'Berita') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.berita') ?>">Berita</a>
-            <a class="{{ ($titleNav == 'Modul') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.modul') ?>">Modul</a>
-            <a class="{{ ($titleNav == 'Kontak') ? 'nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.kontak') ?>">Kontak</a>
+            <a class="{{ ($titleNav == 'Beranda') ? 'fw-bold nav-url-active' : 'nav-url' }} nav-url-undecorat nav-effect nav-url-pad" href="<?= route('guest.home') ?>">Beranda</a>
+            {{-- <a class="{{ ($titleNav == 'Tentang Kami') ? 'fw-bold nav-url-active' : 'nav-url' }} nav-url-undecorat nav-url-pad " href="<?= route('guest.tentangkami') ?>">Tentang Kami</a> --}}
+            <div class="{{ ($titleNav == 'Tentang Kami') ? 'fw-bold nav-url-active' : 'nav-url' }}  dropdown">
+              <a class="nav-url-undecorat nav-url-pad dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tentang Kami
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item nav-effect" href="<?= route('guest.tentangkami.sejarah') ?>">Sejarah</a></li>
+                <li><a class="dropdown-item nav-effect" href="#">Another action</a></li>
+                <li><a class="dropdown-item nav-effect" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            <a class="{{ ($titleNav == 'Layanan') ? 'fw-bold nav-url-active' : 'nav-url' }} nav-url-undecorat nav-effect  nav-url-pad " href="<?= route('guest.layanan') ?>">Info Layanan</a>
+            <a class="{{ ($titleNav == 'Berita') ? 'fw-bold nav-url-active' : 'nav-url' }} nav-url-undecorat nav-effect nav-url-pad " href="<?= route('guest.berita') ?>">Berita</a>
+            <a class="{{ ($titleNav == 'Modul') ? 'fw-bold nav-url-active' : 'nav-url' }} nav-url-undecorat nav-effect nav-url-pad " href="<?= route('guest.modul') ?>">Modul</a>
+            <a class="{{ ($titleNav == 'Kontak') ? 'fw-bold nav-url-active' : 'nav-url' }} nav-url-undecorat nav-effect nav-url-pad " href="<?= route('guest.kontak') ?>">Kontak</a>
         </div>
       </div>
     </div>

@@ -26,9 +26,9 @@
     <header >
         @include('partials.navbar')
     </header>
-    <section class="relative">
+    {{-- <section class="relative">
         @stack('banner')
-    </section>
+    </section> --}}
     <section id="mainContainer">
         @yield('container')
     </section>

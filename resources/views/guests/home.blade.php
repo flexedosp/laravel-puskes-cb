@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('banner')
+{{-- @push('banner')
     <section id="bannerOp" class="vw-100 vh-auto text-black">
         <div class="container px-2 container-py-1">
             <div class="d-flex flex-wrap justify-content-center">
@@ -20,11 +20,11 @@
             </div>
         </div>
     </section>
-@endpush
+@endpush --}}
 
 @section('container')
 
-<section class="vw-100 vh-100">
+<section class="vw-100 vh-auto">
     <x-carousel />
     </section>
 
