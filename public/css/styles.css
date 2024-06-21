@@ -1,21 +1,19 @@
-
 html,
 body {
     overflow-x: hidden; /* Mencegah scroll bar horizontal */
     box-sizing: border-box;
 }
 
-
-.bg-upper-navbar{
+.bg-upper-navbar {
     background-color: #fafdff;
 }
 
-#upperHeadNav{
-    padding-left:100px;
-    padding-right:50px;
+#upperHeadNav {
+    padding-left: 100px;
+    padding-right: 50px;
 }
 
-.navbar-transition-effect{
+.navbar-transition-effect {
     transition: top 0.8s ease-in-out;
     -webkit-transition: top 0.8s ease-in-out;
     -moz-transition: top 0.8s ease-in-out;
@@ -153,11 +151,11 @@ body {
     margin: auto 10px;
 }
 
-.navbar-logo{
+.navbar-logo {
     width: 100%;
     height: 50px;
 }
-#navbarLogo{
+#navbarLogo {
     display: none;
 }
 
@@ -166,6 +164,11 @@ body {
 }
 
 /* BEGIN Tentang Kami */
+
+.divTk{
+    width: 68%;
+}
+
 #navTk {
     margin: 0px auto;
     top: 25%;
@@ -183,6 +186,14 @@ body {
     padding-bottom: 100px;
 }
 
+#KepalaPuskesmas div {
+    width: 50%;
+}
+#KepalaPuskesmas img {
+    width: 25%;
+    height: auto;
+}
+
 /* END Tentang Kami */
 
 /* BEGIN Detail Berita */
@@ -191,19 +202,18 @@ body {
     padding-bottom: 3cm;
 }
 
-.a-text-undecorat-white{
+.a-text-undecorat-white {
     text-decoration: underline;
-    color:white;
+    color: white;
     font-weight: 500;
-    
 }
 
-.a-text-undecorat-white:hover{
-    color:#e6e6e6;
+.a-text-undecorat-white:hover {
+    color: #e6e6e6;
 }
 
-.a-text-undecorat-white:active{
-    color:#bababa;
+.a-text-undecorat-white:active {
+    color: #bababa;
 }
 /* END Detail Berita */
 
@@ -217,65 +227,66 @@ body {
 
 /* BEGIN Form Kontak */
 
-#gMapsKontak{
+#gMapsKontak {
     width: 600px;
     height: 500px;
 }
-.container-padding{
+.container-padding {
     padding: 3cm 4cm 2cm 4cm;
 }
 /* END Form Kontak */
 
 /* BEGIN Layanan */
-#sectionLayanan{
- padding: 5cm 3cm 4cm 3cm;
+#sectionLayanan {
+    padding: 5cm 3cm 4cm 3cm;
 }
 
-.padCarLay{
+.padCarLay {
     padding: 20px 200px;
 }
 /* END Layanan */
 
 /* BEGIN Berita */
-#inputSearchBerita{
+#inputSearchBerita {
     padding: 0px 70px;
 }
 
-#inputSearchBerita button{
+#inputSearchBerita button {
     padding: 0px 40px;
 }
 /* END Berita */
 
 /* BEGIN Modul */
-#inputSearchModul{
+#inputSearchModul {
     padding: 0px 70px;
 }
 
-#inputSearchModul button{
+#inputSearchModul button {
     padding: 0px 40px;
 }
 /* END Modul */
 
 /* BEGIN Layout Konten */
-.sectionKonten{
+.sectionKonten {
     padding-top: 5cm;
 }
 /* END Layout Konten */
 
 @media screen and (max-width: 1023px) {
+   
 
-    #upperHeadNav{
-        padding-left:10px;
-        padding-right:10px;
+    #upperHeadNav {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
-    #panduanOrtu{
+    #panduanOrtu {
         display: none;
     }
     .navbarPadding {
         padding: 0px 20px;
     }
-    #navbarLogo{
+    #navbarLogo {
         display: inline;
     }
     /* BEGIN Custom Container */
@@ -356,6 +367,9 @@ body {
     /* END Footer */
 
     /* BEGIN Tentang Kami */
+    .divTk{
+        width: auto;
+    }
     #navTk {
         /* margin: 0px 30px; */
         top: 26%;
@@ -370,6 +384,13 @@ body {
         padding-top: 20px;
         padding-bottom: 50px;
     }
+
+    #KepalaPuskesmas div {
+        width: auto;
+    }
+    #KepalaPuskesmas img {
+        width: 65%;
+    }
     /* END Tentang Kami */
 
     /* BEGIN Detail Berita */
@@ -377,7 +398,7 @@ body {
         padding-top: 2cm;
     }
     /* END Detail Berita */
-    
+
     /* BEGIN Detail Modul */
     #detailModul {
         padding-top: 2cm;
@@ -385,43 +406,43 @@ body {
     /* END Detail Modul */
 
     /* BEGIN Form Kontak */
-.container-padding{
-    padding: 2cm 1cm 3cm 1cm;
-}
-/* END Form Kontak */
+    .container-padding {
+        padding: 2cm 1cm 3cm 1cm;
+    }
+    /* END Form Kontak */
 
-/* BEGIN Layanan */
-#sectionLayanan{
-    padding: 2cm 1cm 3cm 1cm;
-   }
-   .padCarLay{
-    padding: 10px 50px;
-}
-   /* END Layanan */
+    /* BEGIN Layanan */
+    #sectionLayanan {
+        padding: 2cm 1cm 3cm 1cm;
+    }
+    .padCarLay {
+        padding: 10px 50px;
+    }
+    /* END Layanan */
 
-   /* BEGIN Berita */
-#inputSearchBerita{
-    padding: 0px 35px;
-}
+    /* BEGIN Berita */
+    #inputSearchBerita {
+        padding: 0px 35px;
+    }
 
-#inputSearchBerita button{
-    padding: 0px 20px;
-}
-/* END Berita */
+    #inputSearchBerita button {
+        padding: 0px 20px;
+    }
+    /* END Berita */
 
- /* BEGIN Modul */
- #inputSearchModul{
-    padding: 0px 35px;
-}
+    /* BEGIN Modul */
+    #inputSearchModul {
+        padding: 0px 35px;
+    }
 
-#inputSearchModul button{
-    padding: 0px 20px;
-}
-/* END Modul */
+    #inputSearchModul button {
+        padding: 0px 20px;
+    }
+    /* END Modul */
 
-/* BEGIN Layout Konten */
-.sectionKonten{
-    padding-top: 2cm;
-}
-/* END Layout Konten */
+    /* BEGIN Layout Konten */
+    .sectionKonten {
+        padding-top: 2cm;
+    }
+    /* END Layout Konten */
 }

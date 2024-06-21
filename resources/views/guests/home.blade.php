@@ -25,7 +25,7 @@
 @section('container')
 
 <section class="vw-100 vh-auto">
-    <x-carousel />
+    <x-carousel :dataBerita="$dataBerita" />
     </section>
 
     <section id="card-section" class="vw-100 mx-auto px-3">

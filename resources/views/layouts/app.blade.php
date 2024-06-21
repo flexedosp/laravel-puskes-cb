@@ -22,7 +22,7 @@
 {{-- CSS Library END --}}
     
 </head>
-<body class="relative overflow-x-hidden">
+<body class="relative {{ ($titleNav == 'Tentang Kami') ? 'bg-body-secondary' : '' }}">
     <header >
         @include('partials.navbar')
     </header>

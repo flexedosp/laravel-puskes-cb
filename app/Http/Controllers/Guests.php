@@ -12,8 +12,13 @@ class Guests extends Controller
     // BEGIN Parent Function
     public function index()
     {
-        $data['titlePage'] = 'Beranda';
+
+        $data['titlePage'] = 'Puskesmas Curugbitung | Website Official';
         $data['titleNav'] = 'Beranda';
+
+        $data['dataBerita'] = Berita::orderBy('id', 'asc')->take(3)->get();
+        $data['dataModul'] = Modul::orderBy('id', 'asc')->take(2)->get();
+
         $data['titleCard'] = 'Modul Asuh Anak';
         $data['isiCard'] = 'Modul tentang cara pengasuhan anak yang baik. Modul ini penting dipelajari oleh para orang tua.';
         return view('guests.home', $data);
@@ -21,21 +26,21 @@ class Guests extends Controller
 
     public function tentangKami()
     {
-        $data['titlePage'] = 'Tentang Kami';
+        $data['titlePage'] = 'Tentang Kami | Puskesmas Curugbitung';
         $data['titleNav'] = 'Tentang Kami';
         return view('guests.tentangKami', $data);
     }
 
     public function layanan()
     {
-        $data['titlePage'] = 'Layanan';
+        $data['titlePage'] = 'Layanan | Puskesmas Curugbitung';
         $data['titleNav'] = 'Layanan';
         return view('guests.layanan', $data);
     }
 
     public function modul()
     {
-        $data['titlePage'] = 'Modul';
+        $data['titlePage'] = 'Modul | Puskesmas Curugbitung';
         $data['titleNav'] = 'Modul';
         $data['dataModul'] = Modul::all();
         return view('guests.modul', $data);
@@ -43,7 +48,7 @@ class Guests extends Controller
 
     public function berita()
     {
-        $data['titlePage'] = 'Berita';
+        $data['titlePage'] = 'Berita | Puskesmas Curugbitung';
         $data['titleNav'] = 'Berita';
         $data['dataBerita'] = Berita::all();
 
@@ -52,7 +57,7 @@ class Guests extends Controller
 
     public function kontak()
     {
-        $data['titlePage'] = 'Kontak';
+        $data['titlePage'] = 'Kontak | Puskesmas Curugbitung';
         $data['titleNav'] = 'Kontak';
         return view('guests.kontak', $data);
     }
@@ -62,7 +67,7 @@ class Guests extends Controller
     // BEGIN Child Function
     public function detailBerita(Berita $berita)
     {
-        $data['titlePage'] = 'Detail Berita';
+        $data['titlePage'] = 'Detail Berita | Puskesmas Curugbitung';
         $data['titleNav'] = 'Berita';
         $data['dataBerita'] = $berita;
         return view('guests.detailberita', $data);
@@ -70,7 +75,7 @@ class Guests extends Controller
 
     public function detailModul(Modul $modul)
     {
-        $data['titlePage'] = 'Detail Modul';
+        $data['titlePage'] = 'Detail Modul | Puskesmas Curugbitung';
         $data['titleNav'] = 'Modul';
         $data['dataModul'] = $modul;
         return view('guests.detailmodul', $data);
