@@ -2,34 +2,27 @@
 
 @section('container')
     <section class="vw-100 vh-auto sectionKonten">
+        <h2 class="fw-bold text-center">Halaman Berita</h2>
         <div class="container">
-            <div id="inputSearchBerita" class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Cari Berita" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-primary fs-6" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
-              </div>
+            <form id="searchForm" action="{{ route('guest.berita') }}" method="GET">
+                <div id="inputSearchBerita" class="input-group mb-3">
+                    <input type="text" class="form-control" id="cariBerita" name="cariBerita" placeholder="Masukkan Judul atau Tanggal . . ."
+                        aria-label="Recipient's username" aria-describedby="button-addon2"
+                        value="{{ request('cariBerita') }}">
+                    <button class="btn btn-outline-primary fs-6" type="submit" id="button-addon2"><i
+                            class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
 
-              <div class="d-flex flex-wrap justify-content-center align-items-center">
-                  @foreach ($dataBerita as $b)
-                      <x-card-berita gambar="{{ $b->gambar }}" judul="{{ $b->nama }}" deskripsi="{{ $b->deskripsi }}" slug="{{ $b->slug }}" date="{{ $b->createdAt }}"/>
-                  @endforeach
-              </div>
+            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                @foreach ($dataBerita as $b)
+                    <x-card-berita gambar="{{ $b->gambar }}" judul="{{ $b->nama }}" deskripsi="{{ $b->deskripsi }}"
+                        slug="{{ $b->slug }}" date="{{ $b->createdAt }}" />
+                @endforeach
+            </div>
 
             <div class="d-flex justify-content-center">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link disabled" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item">
-                        <a class="page-link disabled" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
+                {{ $dataBerita->links('vendor.pagination.bootstrap-5') }}
             </div>
         </div>
     </section>

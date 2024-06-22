@@ -61,6 +61,13 @@ body {
     -webkit-filter: brightness(0.5);
     /* END Custom Carousel */
 }
+.carousel-item-custom {
+    height: 75vh;
+}
+
+.carousel-item-list {
+    font-size: larger;
+}
 
 /* BEGIN Card Section */
 #card-section {
@@ -165,7 +172,7 @@ body {
 
 /* BEGIN Tentang Kami */
 
-.divTk{
+.divTk {
     width: 68%;
 }
 
@@ -185,13 +192,8 @@ body {
     padding-top: 145px;
     padding-bottom: 100px;
 }
-
-#KepalaPuskesmas div {
-    width: 50%;
-}
-#KepalaPuskesmas img {
-    width: 25%;
-    height: auto;
+.table-th-custom-width {
+    width: 80%;
 }
 
 /* END Tentang Kami */
@@ -268,13 +270,12 @@ body {
 
 /* BEGIN Layout Konten */
 .sectionKonten {
-    padding-top: 5cm;
+    padding-top: 3cm;
+    padding-bottom: 5cm;
 }
 /* END Layout Konten */
 
 @media screen and (max-width: 1023px) {
-   
-
     #upperHeadNav {
         padding-left: 10px;
         padding-right: 10px;
@@ -306,6 +307,13 @@ body {
         width: 100vw;
         height: 100vh;
     } */
+
+    .carousel-item-custom {
+        height: 100vh;
+    }
+    .carousel-item-list {
+        font-size: small;
+    }
     /* END Custom Carousel */
     /*BEGIN Banner Opening */
 
@@ -367,7 +375,7 @@ body {
     /* END Footer */
 
     /* BEGIN Tentang Kami */
-    .divTk{
+    .divTk {
         width: auto;
     }
     #navTk {
@@ -384,13 +392,10 @@ body {
         padding-top: 20px;
         padding-bottom: 50px;
     }
+    .table-th-custom-width {
+        width: 60%;
+    }
 
-    #KepalaPuskesmas div {
-        width: auto;
-    }
-    #KepalaPuskesmas img {
-        width: 65%;
-    }
     /* END Tentang Kami */
 
     /* BEGIN Detail Berita */
@@ -443,6 +448,7 @@ body {
     /* BEGIN Layout Konten */
     .sectionKonten {
         padding-top: 2cm;
+        padding-bottom: 2cm;
     }
     /* END Layout Konten */
 }

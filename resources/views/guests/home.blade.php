@@ -30,8 +30,10 @@
 
     <section id="card-section" class="vw-100 mx-auto px-3">
         <div id="cardContainer" class=" my-5 ">
-            <x-card judul="{{ $titleCard }}" isi="{{ $isiCard }}" />
-            <x-card judul="{{ $titleCard }}" isi="{{ $isiCard }}" />
+            @foreach ($dataModul as $m )
+                
+            <x-card :judul="$m->nama" :isi="substr($m->deskripsi, 0, 40)" :gambar="$m->gambar" :slug="$m->slug" :tgl="($m->updatedAt != null)? 'Diperbarui pada tanggal '. $m->updatedAt : 'Dibuat pada tanggal '. $m->createdAt"/>
+            @endforeach
         </div>
     </section>
 @endsection

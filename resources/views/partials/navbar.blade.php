@@ -30,9 +30,9 @@
                 Tentang Kami
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item nav-effect" href="<?= route('guest.tentangkami.sejarah') ?>">Sejarah</a></li>
-                <li><a class="dropdown-item nav-effect" href="#">Another action</a></li>
-                <li><a class="dropdown-item nav-effect" href="#">Something else here</a></li>
+                <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.kepalapuskes') ?>">Tentang Kepala Puskesmas</a></li>
+                <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.sejarah') ?>">Sejarah Puskesmas</a></li>
+                <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.nilaidanslogan') ?>">Tata Nilai Organisasi & Slogan</a></li>
               </ul>
             </div>
             <a class="{{ ($titleNav == 'Layanan') ? 'fw-bold nav-url-active' : 'nav-url' }} nav-url-undecorat nav-effect  nav-url-pad " href="<?= route('guest.layanan') ?>">Info Layanan</a>

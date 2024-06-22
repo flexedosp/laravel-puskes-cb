@@ -13,7 +13,10 @@ class Card extends Component
      */
     public function __construct(
         public string $judul,
-        public string $isi
+        public string $isi,
+        public string $gambar,
+        public string $slug,
+        public $tgl
     )
     {
         
