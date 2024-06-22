@@ -274,6 +274,11 @@ body {
 .container-padding {
     padding: 3cm 4cm 2cm 4cm;
 }
+
+.vertical-divider {
+    border-left: 1px solid #ccc;
+    height: 100%;
+  }
 /* END Form Kontak */
 
 /* BEGIN Layanan */
@@ -545,6 +550,14 @@ body {
         width: 350px;
         height: 500px;
     }
+    
+
+      .vertical-divider {
+        border-top: 1px solid #ccc;
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
     /* END Form Kontak */
 
     /* BEGIN Layanan */
