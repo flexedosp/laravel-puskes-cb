@@ -32,7 +32,10 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.kepalapuskes') ?>">Tentang Kepala Puskesmas</a></li>
                 <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.sejarah') ?>">Sejarah Puskesmas</a></li>
+                <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.visidanmisi') ?>">Visi Dan Misi</a></li>
                 <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.nilaidanslogan') ?>">Tata Nilai Organisasi & Slogan</a></li>
+                <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.tenagapuskesmas') ?>">Ketenagaan Puskesmas</a></li>
+                <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.tinjaufasilitas') ?>">Tinjau Sarana & Prasarana</a></li>
               </ul>
             </div>
             <a class="{{ ($titleNav == 'Layanan') ? 'fw-bold nav-url-active' : 'nav-url' }} nav-url-undecorat nav-effect  nav-url-pad " href="<?= route('guest.layanan') ?>">Info Layanan</a>

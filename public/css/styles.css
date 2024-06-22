@@ -4,6 +4,10 @@ body {
     box-sizing: border-box;
 }
 
+.z-index-1000{
+    z-index: 1000;
+}
+
 .bg-upper-navbar {
     background-color: #fafdff;
 }
@@ -116,6 +120,40 @@ body {
 #madeByWho {
     margin: 0px auto;
     padding-bottom: 2rem;
+}
+
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    color: white;
+    font-size: 24px;
+    transition: background-color 0.3s;
+}
+.social-btn:hover {
+    /* background-color: #555; */
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.social-email {
+    background-color: #1c78fa; /* Warna untuk email */
+    transition: transform 0.3s, box-shadow 0.3s;
+
+}
+.social-instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* Warna untuk Instagram */
+    border: none;
+    outline: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.social-youtube {
+    background-color: #d00303; /* Warna untuk YouTube */
+    transition: transform 0.3s, box-shadow 0.3s;
+
 }
 /* END Footer */
 
@@ -240,11 +278,100 @@ body {
 
 /* BEGIN Layanan */
 #sectionLayanan {
-    padding: 5cm 3cm 4cm 3cm;
+    padding: 2cm 3cm 4cm 3cm;
 }
 
 .padCarLay {
     padding: 20px 200px;
+}
+
+.container-card {
+    width: auto;
+}
+
+.container-card .card-deck {
+    position: relative;
+    cursor: pointer;
+}
+
+.container-card .card-deck .face {
+    width: 300px;
+    height: 200px;
+    transition: 0.5s;
+}
+
+.container-card .card-deck .face.face1 {
+    position: relative;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container-card .card-deck.active .face.face1 {
+    background: #00e5ff;
+    transform: translateY(0);
+}
+
+.container-card .card-deck .face.face1 .content {
+    transition: 0.5s;
+}
+
+.container-card .card-deck.active .face.face1 .content h3 {
+    color: #fff;
+}
+
+.container-card .card-deck .face.face1 .content img {
+    max-width: 100px;
+}
+
+.container-card .card-deck .face.face1 .content h3 {
+    margin: 10px 0 0;
+    padding: 0;
+    color: #00e5ff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.container-card .card-deck .face.face2 {
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transform: translateY(-100px);
+    max-height: 0;
+    overflow: hidden;
+}
+
+.container-card .card-deck.active .face.face2 {
+    transform: translateY(0);
+    max-height: 200px; /* Sesuaikan dengan tinggi konten */
+}
+
+.container-card .card-deck .face.face2 .content p {
+    margin: 0;
+    padding: 0;
+}
+
+.container-card .card-deck .face.face2 .content a {
+    margin: 15px 0 0;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.container-card .card-deck .face.face2 .content a:hover {
+    background: #333;
+    color: #fff;
 }
 /* END Layanan */
 
@@ -414,11 +541,15 @@ body {
     .container-padding {
         padding: 2cm 1cm 3cm 1cm;
     }
+    #gMapsKontak {
+        width: 350px;
+        height: 500px;
+    }
     /* END Form Kontak */
 
     /* BEGIN Layanan */
     #sectionLayanan {
-        padding: 2cm 1cm 3cm 1cm;
+        padding: 1.5cm 1cm 3cm 1cm;
     }
     .padCarLay {
         padding: 10px 50px;

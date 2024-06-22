@@ -24,7 +24,7 @@
                 <textarea class="form-control" id="inputTanya" name="inputTanya" cols="30" rows="10"></textarea>
               </div>
               <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-primary w-75">Submit</button>
+                <button type="submit" class="btn btn-primary w-75">Submit</button>
               </div>
             </form>
       </div>

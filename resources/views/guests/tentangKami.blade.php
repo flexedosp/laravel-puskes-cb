@@ -35,7 +35,7 @@
                 Puskesmas di Lingkungan Dinas Kesehatan.
             </p>
         </div>
-        <div id="visidanmisi" class="carousel slide" data-bs-ride="carousel">
+        <div id="VisiDanMisi" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item carousel-item-custom active">
                 <img src="/img/Gambar_1.jpg" class="d-block w-100 h-100 img-carousel" alt="Gambar Background">
@@ -68,12 +68,12 @@
                     </div>
               </div>
             </div>
-            <button class="carousel-control-prev bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#visidanmisi" data-bs-slide="prev">
+            <button class="carousel-control-prev bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#VisiDanMisi" data-bs-slide="prev">
                 {{-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> --}}
                 <i class="fa-solid fa-chevron-left text-primary fs-1"></i>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#visidanmisi" data-bs-slide="next">
+            <button class="carousel-control-next bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#VisiDanMisi" data-bs-slide="next">
                 {{-- <span class="carousel-control-next-icon" aria-hidden="true"></span> --}}
                 <i class="fa-solid fa-chevron-right text-primary fs-1"></i>
                 <span class="visually-hidden">Next</span>
@@ -123,7 +123,7 @@
             </div>
 
         </div>
-        <div id="NilaiDanSlogan" class=" py-5 my-3 bg-primary">
+        <div id="TenagaPuskesmas" class=" py-5 my-3 bg-primary">
             <div class="mx-auto container text-white">
                 <h4 class="fw-bold text-center">Data Ketenagaan Puskemsas Tahun 2020</h4>
             <div class="row py-4 align-top">
@@ -144,7 +144,7 @@
             </div>
             </div>
         </div>
-        <div id="tinjaufasilitas" class="py-3 my-3 container divTk">
+        <div id="TinjauFasilitas" class="py-3 my-3 container divTk">
             <div class="mx-auto">
                 <h4 class="fw-bold">Tinjauan Sarana dan Prasarana</h4>
                 <p class="fs-5"> Keadaan saran kesehatan di Wilayah Kerja Puskesmas rawat Inap Curugbitung Kabupaten Lebak sebagai berikut :</p>
