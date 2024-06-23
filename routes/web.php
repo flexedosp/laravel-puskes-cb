@@ -1,6 +1,6 @@
 <?php
-
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Guests;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +29,15 @@ Route::get('/berita/{berita:slug}', [Guests::class, 'detailBerita']);
 Route::get('/modul/{modul:slug}', [Guests::class, 'detailModul']);
 // END Get Data Route | Guest 
 
+// BEGIN Authentication
+Route::get('/admin-login', [AuthController::class, 'login'])->name('admin.login');
+Route::post('/admin-check', [AuthController::class, 'authenticated'])->name('admin.check');
+Route::get('/admin-logout', [AuthController::class, 'logout'])->name('admin.logout');
+// END Authentication
+
 // BEGIN Admin Route
-Route::get('/login', [Admin::class, 'login'])->name('admin.login');
+Route::middleware('isAdmin')->group(function () {
+    Route::get('/admin-dashboard', [Admin::class, 'index'])->name('admin.home');
+});
 // END Admin Route
 

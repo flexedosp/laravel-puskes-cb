@@ -5,12 +5,47 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Modul;
 use App\Models\Berita;
+use App\Models\Visitor;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class Guests extends Controller
 {
+    protected $ipAddress;
+    protected $browser;
+    protected $os;
+    protected $accessDate;
 
+    public function __construct(Request $request)
+    {
+        // Mendapatkan Alamat IP
+        $this->ipAddress = $request->ip();
+
+        // Mendapatkan Nama OS dan Nama Browser
+        $agent = new Agent();
+        $this->browser = $agent->browser();
+        $this->os = $agent->platform();
+
+        // Mendapatkan Tanggal Akses
+        $this->accessDate = Carbon::now()->toDateString();
+        $existingVisitor = Visitor::where('ip_address', $this->ipAddress)
+                                  ->whereDate('access_date', $this->accessDate)
+                                  ->first();
+
+        // Hanya tambahkan entri baru jika tidak ada entri yang sama sebelumnya
+        if (!$existingVisitor) {
+            $dataVisitor = [
+                'ip_address' => $this->ipAddress,
+                'os' => $this->os,
+                'browser' => $this->browser,
+                'access_date' => Carbon::now() // Simpan dengan waktu untuk referensi yang lebih tepat
+            ];
+
+            Visitor::create($dataVisitor);
+        }
+        
+    }
     // BEGIN Parent Function
     public function index()
     {

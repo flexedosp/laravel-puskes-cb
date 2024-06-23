@@ -1,0 +1,12 @@
+html,
+body {
+    overflow-x: hidden; /* Mencegah scroll bar horizontal */
+    box-sizing: border-box;
+}
+
+body{
+    background: radial-gradient(circle, transparent 25%, #ffffff  26%),linear-gradient(0deg, transparent 44%, #cbe4d4 45%, #cbe4d4 55%, transparent 56%), linear-gradient(90deg, transparent 44%, #cbe4d4 45%, #cbe4d4 55%, transparent 56%);
+        background-size: 3em 3em;
+        background-color: #ffffff;
+        opacity: 1
+}

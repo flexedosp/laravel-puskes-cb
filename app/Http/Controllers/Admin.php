@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class Admin extends Controller
 {
-    public function login(){
+    public function index(){
         $data['titlePage'] = 'Login Admin';
-        return view('admin.login');
+        return view('admin.dashboard');
     }
 }
