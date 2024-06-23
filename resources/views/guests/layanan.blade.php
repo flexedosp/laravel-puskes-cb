@@ -3,9 +3,9 @@
 @section('container')
     <section id="sectionLayanan" class="vw-100 vh-auto">
         <h2 class="fw-bold text-center">Informasi Layanan Puskesmas</h2>
-        <p class="mb-4 fw-semibold text-center">Perhatian! : Pendaftaran setiap Senin s.d. Sabtu pada pukul 08.00 - 12.00 WIB</p>
+        <p class="mb-4 fw-semibold text-center">Perhatian! Pendaftaran setiap Senin s.d. Sabtu pada pukul 08.00 - 12.00 WIB</p>
 
-        <div class="accordion z-0" id="accordionLayanan">
+        <div class="accordion z-0 shadow-sm" id="accordionLayanan">
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button fw-bold" type="button"  data-bs-toggle="collapse" data-bs-target="#collapse1"
@@ -14,7 +14,7 @@
                     </button>
                 </h2>
                 <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionLayanan">
-                    <div class="accordion-body">
+                    <div class="accordion-body bg-body-tertiary">
                         <div class="container">
                             <p class="mb-0 fw-semibold text-center fs-5 ">Layanan 24 Jam</p>
                             <ol>
@@ -46,7 +46,7 @@
                     </button>
                 </h2>
                 <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionLayanan">
-                    <div class="accordion-body">
+                    <div class="accordion-body bg-body-tertiary">
                         <div class="container">
 
                             <div class="mb-5">
@@ -97,7 +97,7 @@
                     </button>
                 </h2>
                 <div id="collapseT3" class="accordion-collapse collapse" data-bs-parent="#accordionLayanan">
-                    <div class="accordion-body">
+                    <div class="accordion-body bg-body-tertiary">
                         <div class="mb-5">
                             <p class="mb-0 fw-semibold fs-5 mb-0">
                                 KLINIK TB PARU
@@ -134,7 +134,7 @@
                     </button>
                 </h2>
                 <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionLayanan">
-                    <div class="accordion-body">
+                    <div class="accordion-body bg-body-tertiary">
                         <div class="mb-3">
                             <p class="mb-0 fw-semibold fs-5">
                                 PEMERIKSAAN IVA (Visual Asam Asetat)

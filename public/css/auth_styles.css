@@ -4,9 +4,44 @@ body {
     box-sizing: border-box;
 }
 
-body{
-    background: radial-gradient(circle, transparent 25%, #ffffff  26%),linear-gradient(0deg, transparent 44%, #cbe4d4 45%, #cbe4d4 55%, transparent 56%), linear-gradient(90deg, transparent 44%, #cbe4d4 45%, #cbe4d4 55%, transparent 56%);
-        background-size: 3em 3em;
-        background-color: #ffffff;
-        opacity: 1
+body {
+    background: radial-gradient(circle, transparent 25%, #ffffff 26%),
+        linear-gradient(
+            0deg,
+            transparent 44%,
+            #cbe4d4 45%,
+            #cbe4d4 55%,
+            transparent 56%
+        ),
+        linear-gradient(
+            90deg,
+            transparent 44%,
+            #cbe4d4 45%,
+            #cbe4d4 55%,
+            transparent 56%
+        );
+    background-size: 3em 3em;
+    background-color: #ffffff;
+    opacity: 1;
+}
+
+.img-login {
+    width: auto;
+    height: 100px;
+    margin: 20px;
+}
+
+#divLoginAdmin {
+    width: 50vw;
+    height: auto;
+    padding: 40px;
+}
+
+@media screen and (max-width:1024px) {
+    .img-login {
+        height: 40px;
+    }
+    #divLoginAdmin {
+        width: 100vw;
+    }
 }

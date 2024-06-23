@@ -19,13 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('gambar');
             $table->integer('status');
-            $table->date('createdAt')->nullable();
-            $table->string('createdBy')->nullable();
-            $table->date('updatedAt')->nullable();
-            $table->string('updatedBy')->nullable();
-            $table->date('deletedAt')->nullable();
-            $table->string('deletedBy')->nullable();
-            // $table->rememberToken();
+            $table->datetime('deleted_at')->nullable();
             $table->timestamps();
         });
 

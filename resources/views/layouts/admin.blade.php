@@ -2,67 +2,113 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{ $titlePage }}</title>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+    {{-- <link rel="icon" href="/vendor/kaiadminlite1.0.0/assets/img/kaiadmin/favicon.ico" type="image/x-icon" /> --}}
     <link rel="shortcut icon" href="/img/logo_puskes_cb.png" type="image/png">
-    <title>{{ $titlePage }} </title>
 
-    {{-- CSS Library --}}
-    {{-- AOS --}}
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    {{-- Bootstrap 5 --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    {{-- Fontawesome --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    {{-- Custom CSS --}}
-    <link rel="stylesheet" href="/css/styles.css">
-    {{-- CSS Library END --}}
-
-</head>
-
-<body class="relative overflow-x-hidden">
-    <header>
-        @include('partials.navbar')
-    </header>
-    <section class="relative">
-        @stack('banner')
-    </section>
-    <section>
-        @yield('container')
-    </section>
-    <footer>
-        @include('partials.footer')
-    </footer>
-
-    {{-- Javascript Library --}}
-
-    {{-- AOS --}}
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    {{-- Bootstrap 5 --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    <!-- Fonts and icons -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: {
+                families: ["Public Sans:300,400,500,600,700"]
+            },
+            custom: {
+                families: [
+                    "Font Awesome 5 Solid",
+                    "Font Awesome 5 Regular",
+                    "Font Awesome 5 Brands",
+                    "simple-line-icons",
+                ],
+                urls: ["/vendor/kaiadminlite1.0.0/assets/css/fonts.min.css"],
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            },
+        });
     </script>
 
-    {{-- Fontawesome --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
-        integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/vendor/kaiadminlite1.0.0/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/vendor/kaiadminlite1.0.0/assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="/vendor/kaiadminlite1.0.0/assets/css/kaiadmin.min.css" />
+</head>
 
-    {{-- JQuery --}}
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        @include('partials.sidebar')
+        <!--END Sidebar -->
 
-    {{-- Custom --}}
-    <script src="/js/scripts.js"></script>
+        <!-- Main Panel -->
+        @yield('container-admin')
+        <!-- END Main Panel -->
 
-    {{-- Javascript Library END --}}
+
+    </div>
+    <!--   Core JS Files   -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/core/popper.min.js"></script>
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="/vendor/kaiadminlite1.0.0/assets/js/kaiadmin.min.js"></script>
+
+    <script>
+        $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+            type: "line",
+            height: "70",
+            width: "100%",
+            lineWidth: "2",
+            lineColor: "#177dff",
+            fillColor: "rgba(23, 125, 255, 0.14)",
+        });
+
+        $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+            type: "line",
+            height: "70",
+            width: "100%",
+            lineWidth: "2",
+            lineColor: "#f3545d",
+            fillColor: "rgba(243, 84, 93, .14)",
+        });
+
+        $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+            type: "line",
+            height: "70",
+            width: "100%",
+            lineWidth: "2",
+            lineColor: "#ffa534",
+            fillColor: "rgba(255, 165, 52, .14)",
+        });
+    </script>
 </body>
 
 </html>

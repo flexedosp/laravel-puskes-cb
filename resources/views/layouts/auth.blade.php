@@ -35,7 +35,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css
 <body class="relative">
 
 
-    @yield('container')
+    @yield('container-auth')
 
     {{-- Javascript Library --}}
 

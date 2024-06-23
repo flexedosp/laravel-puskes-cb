@@ -13,8 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
         $middleware->alias([
-            'isAdmin' => \App\Http\Middleware\isAdmin::class
+            'isAdmin' => \App\Http\Middleware\isAdmin::class,
+            'isAdminActive' => \App\Http\Middleware\isAdminActive::class
         ]);
+        // $middleware->validateCsrfTokens(except: [
+        //     'http:/127.0.0.1/login-admin' // <-- exclude this route
+        // ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
