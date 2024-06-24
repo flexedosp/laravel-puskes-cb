@@ -12,10 +12,6 @@ class AuthController extends Controller
 {
     protected $os;
 
-  
-        
-    
-
     public function login()
     {
         $data['titlePage'] = 'Admin Login';

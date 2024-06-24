@@ -59,12 +59,10 @@ body {
 
 /* BEGIN Custom Carousel */
 .img-carousel {
-    filter: brightness(0.5);
     width: 100%;
     height: auto;
-    -webkit-filter: brightness(0.5);
-    /* END Custom Carousel */
 }
+
 .carousel-item-custom {
     height: 75vh;
 }

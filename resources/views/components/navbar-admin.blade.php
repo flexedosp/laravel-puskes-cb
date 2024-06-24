@@ -3,7 +3,7 @@
 class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
 >
 <div class="container-fluid">
-    <nav
+    {{-- <nav
         class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
     >
         <div class="input-group">
@@ -23,12 +23,12 @@ class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bo
                 class="form-control"
             />
         </div>
-    </nav>
+    </nav> --}}
 
     <ul
         class="navbar-nav topbar-nav ms-md-auto align-items-center"
     >
-        <li
+        {{-- <li
             class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none"
         >
             <a
@@ -323,7 +323,7 @@ class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bo
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> 
         <li
             class="nav-item topbar-icon dropdown hidden-caret"
         >
@@ -470,7 +470,7 @@ class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bo
                 </div>
             </div>
         </li>
-
+--}}
         <li
             class="nav-item topbar-user dropdown hidden-caret"
         >

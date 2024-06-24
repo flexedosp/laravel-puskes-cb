@@ -45,6 +45,8 @@ Route::middleware('isAdmin')->group(function () {
 
 
     Route::get('/data-berita', [Admin::class, 'getAllBerita'])->name('data.berita');
+    Route::get('/detail-berita', [Admin::class, 'viewBerita'])->name('data.detailberita');
     Route::get('/data-modul', [Admin::class, 'getAllModul'])->name('data.modul');
+    Route::get('/detail-modul', [Admin::class, 'viewModul'])->name('data.detailmodul');
 });
 // END Admin Route

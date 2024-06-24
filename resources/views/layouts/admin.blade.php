@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="/vendor/kaiadminlite1.0.0/assets/css/plugins.min.css" />
     <link rel="stylesheet" href="/vendor/kaiadminlite1.0.0/assets/css/kaiadmin.min.css" />
     <link rel="stylesheet" href="/vendor/summernote0.8.18/summernote.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/admin_styles.css">
@@ -80,7 +81,10 @@
     <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/jsvectormap/world.js"></script>
 
     <!-- Sweet Alert -->
-    <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+    {{-- <script src="/vendor/kaiadminlite1.0.0/assets/js/plugin/sweetalert/sweetalert.min.js"></script> --}}
+    
+    <!-- Sweet Alert 2-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.all.min.js"></script>
 
     <!-- Kaiadmin JS -->
     <script src="/vendor/kaiadminlite1.0.0/assets/js/kaiadmin.min.js"></script>
@@ -89,7 +93,8 @@
     
 <script src="/vendor/summernote0.8.18/summernote.min.js"></script>
     <!-- Custom JS -->
-    <script src="/js/admin_scripts.js"></script>
+    {{-- <script src="/js/admin_scripts.js"></script> --}}
+    <x-script-admin />
 
     <script>
         $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {

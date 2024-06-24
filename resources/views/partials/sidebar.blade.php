@@ -49,14 +49,14 @@
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
+                                <a href="{{ route('admin.berita') }}">
                                     <span class="sub-item"
                                         >Berita</span
                                     >
                                 </a>
                             </li>
                             <li>
-                                <a href="components/avatars.html">
+                                <a href="{{ route('admin.modul') }}">
                                     <span class="sub-item"
                                         >Modul</span
                                     >
