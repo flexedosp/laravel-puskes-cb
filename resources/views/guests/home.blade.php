@@ -29,10 +29,9 @@
     </section>
 
     <section id="card-section" class="vw-100 mx-auto px-3">
-        <div id="cardContainer" class=" my-5 ">
+        <div id="cardContainer" class="my-5">
             @foreach ($dataModul as $m )
-                
-            <x-card :judul="$m->nama" :isi="substr($m->deskripsi, 0, 40)" :gambar="$m->gambar" :slug="$m->slug" :tgl="($m->updatedAt != null)? 'Diperbarui pada tanggal '. $m->updatedAt : 'Dibuat pada tanggal '. $m->createdAt"/>
+            <x-card :judul="$m->nama" :isi="substr($m->deskripsi, 0, 40)" :gambar="$m->gambar" :slug="$m->slug" :tgl="'Dibuat pada tanggal '. $m->created_at->toDateString()"/>
             @endforeach
         </div>
     </section>

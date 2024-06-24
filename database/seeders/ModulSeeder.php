@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ModulSeeder extends Seeder
 {
@@ -21,14 +22,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'modul-asuh-anak',
                 'gambar' => 'img_asuh_anak.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 2,
@@ -37,14 +36,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'modul-tumbuh-kembang-anak',
                 'gambar' => 'img_tumbuhkembang_anak.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 3,
@@ -53,14 +50,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'pentingnya-aktivitas-fisik',
                 'gambar' => 'default_content.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 4,
@@ -69,14 +64,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'pola-tidur-yang-sehat',
                 'gambar' => 'default_content.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 5,
@@ -85,14 +78,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'pentingnya-hidrasi',
                 'gambar' => 'default_content.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 6,
@@ -101,14 +92,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'kesehatan-jantung',
                 'gambar' => 'default_content.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 7,
@@ -117,14 +106,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'pentingnya-vaksinasi',
                 'gambar' => 'default_content.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 8,
@@ -133,14 +120,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'kesehatan-gigi-dan-mulut',
                 'gambar' => 'default_content.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 9,
@@ -149,14 +134,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'pentingnya-kesehatan-mental',
                 'gambar' => 'default_content.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 10,
@@ -165,14 +148,12 @@ class ModulSeeder extends Seeder
                 'slug' => 'panduan-nutrisi-sehat',
                 'gambar' => 'default_content.png',
                 'terbit' => 1,
-                'createdAt' => '2024-06-12',
-                'createdBy' => 'admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-12 14:25:35',
-                'updated_at' => '2024-06-12 14:25:35'
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
+                'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
         ]);
     }

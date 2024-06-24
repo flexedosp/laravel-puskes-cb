@@ -12,7 +12,7 @@
           </form>
               <div class="d-flex flex-wrap justify-content-center align-items-center">
                   @foreach ($dataModul as $m)
-                      <x-card-modul gambar="{{ $m->gambar }}" judul="{{ $m->nama }}" deskripsi="{{ $m->deskripsi }}" slug="{{ $m->slug }}" date="{{ $m->createdAt }}"/>
+                      <x-card-modul gambar="{{ $m->gambar }}" judul="{{ $m->nama }}" deskripsi="{{ $m->deskripsi }}" slug="{{ $m->slug }}" date="{{ $m->created_at->toDateString() }}"/>
                   @endforeach
               </div>
 

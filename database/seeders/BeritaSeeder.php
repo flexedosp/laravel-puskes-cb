@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 class BeritaSeeder extends Seeder
 {
     /**
@@ -20,14 +22,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'puskesmas-sukamaju-beri-layanan-gratis',
                 'terbit' => 1,
-                'createdAt' => '2024-06-01',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-01 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 2,
@@ -36,14 +36,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'program-vaksinasi-di-puskesmas-harapan',
                 'terbit' => 1,
-                'createdAt' => '2024-06-02',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-02 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 3,
@@ -52,14 +50,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'puskesmas-cendana-lakukan-edukasi-gizi',
                 'terbit' => 1,
-                'createdAt' => '2024-06-03',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-03 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 4,
@@ -68,14 +64,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'layanan-kesehatan-ibu-dan-anak-di-puskesmas-karya',
                 'terbit' => 1,
-                'createdAt' => '2024-06-04',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-04 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 5,
@@ -84,14 +78,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'puskesmas-pelita-buka-klinik-gigi',
                 'terbit' => 1,
-                'createdAt' => '2024-06-05',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-05 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 6,
@@ -100,14 +92,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'puskesmas-sejahtera-gelar-pemeriksaan-kesehatan-gratis',
                 'terbit' => 1,
-                'createdAt' => '2024-06-06',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-06 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 7,
@@ -116,14 +106,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'puskesmas-maju-bersama-tingkatkan-fasilitas',
                 'terbit' => 1,
-                'createdAt' => '2024-06-07',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-07 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 8,
@@ -132,14 +120,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'puskesmas-kasih-ibu-adakan-lomba-kebersihan',
                 'terbit' => 1,
-                'createdAt' => '2024-06-08',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-08 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 9,
@@ -148,14 +134,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'puskesmas-bhakti-rakyat-buka-layanan-psikologi',
                 'terbit' => 1,
-                'createdAt' => '2024-06-09',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-09 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
             [
                 'id' => 10,
@@ -164,14 +148,12 @@ class BeritaSeeder extends Seeder
                 'gambar' => 'default_content.png',
                 'slug' => 'puskesmas-sumber-sehat-adakan-donor-darah',
                 'terbit' => 1,
-                'createdAt' => '2024-06-10',
-                'createdBy' => 'Admin',
-                'updatedAt' => NULL,
-                'updatedBy' => NULL,
-                'deletedAt' => NULL,
-                'deletedBy' => NULL,
-                'created_at' => '2024-06-10 00:00:00',
+                'created_at' => Carbon::now(),
+                'created_by' => 'admin',
                 'updated_at' => NULL,
+                'updated_by' => NULL,
+                'deleted_at' => NULL,
+                'deleted_by' => NULL
             ],
         ]);
     }

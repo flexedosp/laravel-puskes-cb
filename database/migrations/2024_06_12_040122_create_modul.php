@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('modul', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->text('deskripsi');
+            $table->mediumText('deskripsi');
             $table->string('slug');
             $table->string('gambar');
             $table->integer('terbit');
-            $table->date('createdAt')->nullable();
-            $table->string('createdBy')->nullable();
-            $table->date('updatedAt')->nullable();
-            $table->string('updatedBy')->nullable();
-            $table->date('deletedAt')->nullable();
-            $table->string('deletedBy')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+            $table->date('deleted_at')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
         });
     }

@@ -34,6 +34,10 @@
     <link rel="stylesheet" href="/vendor/kaiadminlite1.0.0/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/vendor/kaiadminlite1.0.0/assets/css/plugins.min.css" />
     <link rel="stylesheet" href="/vendor/kaiadminlite1.0.0/assets/css/kaiadmin.min.css" />
+    <link rel="stylesheet" href="/vendor/summernote0.8.18/summernote.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/admin_styles.css">
 </head>
 
 <body>
@@ -80,6 +84,12 @@
 
     <!-- Kaiadmin JS -->
     <script src="/vendor/kaiadminlite1.0.0/assets/js/kaiadmin.min.js"></script>
+    
+    <!-- Summernote JS -->
+    
+<script src="/vendor/summernote0.8.18/summernote.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/js/admin_scripts.js"></script>
 
     <script>
         $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
