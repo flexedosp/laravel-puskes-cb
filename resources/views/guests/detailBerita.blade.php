@@ -7,6 +7,6 @@
        <div class="d-flex justify-content-center my-3">
            <img src="/img/{{ $dataBerita->gambar }}" class="rounded" style="width: 500px; height:auto" alt="">
        </div>
-        <p class="font-semibold px-3">{{ $dataBerita->deskripsi }}</p>
+        <p class="font-semibold px-3">{!! $dataBerita->deskripsi !!}</p>
     </section>
 @endsection

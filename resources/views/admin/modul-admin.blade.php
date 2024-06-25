@@ -41,6 +41,7 @@
                                     <td>No</td>
                                     <td>Aksi</td>
                                     <td>Nama</td>
+                                    <td>Status Terbit</td>
                                 </tr>
                             </thead>
                         </table>

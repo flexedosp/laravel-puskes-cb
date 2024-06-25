@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use DOMDocument;
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Modul;
 use App\Models\Berita;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class Admin extends Controller
 {
@@ -38,34 +44,165 @@ class Admin extends Controller
     public function viewBerita(Request $request)
     {
         $id = $request->id;
-    $dataBerita = Berita::find($id);
+        $dataBerita = Berita::find($id);
 
-    if (!$dataBerita) {
-        return response()->json(['message' => 'Berita not found'], 404);
+        if (!$dataBerita) {
+            return response()->json(['message' => 'Berita not found'], 404);
+        }
+
+        return response()->json($dataBerita);;
     }
 
-    return response()->json($dataBerita);;
-    }
 
-    public function formCreateBerita()
-    {
-    }
 
     public function createBerita(Request $request)
     {
+        $description = $request->inputDeskripsi;
 
+        $dom = new DOMDocument();
+        $dom->loadHTML($description, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/img/berita/" . time() . $key . '.png';
+
+
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+        $description = $dom->saveHTML();
+
+        // Handle file upload
+        if ($request->hasFile('inputGambar')) {
+            $imageName = time() . '.' . $request->inputGambar->extension();
+            $request->gambar->move(public_path('img/berita'), $imageName);
+        } else {
+            $imageName = "default_content.png";
+        }
+
+        $judul_lowercase = strtolower($request->inputNama);
+        $slug = str_replace(' ', '-', $judul_lowercase);
+
+        $checkProses = Berita::create([
+            'nama' => $request->inputNama,
+            'deskripsi' => $description,
+            'gambar' => $imageName,
+            'slug' => $slug,
+            'terbit' => $request->inputTerbit,
+            'created_by' => Auth::user()->name,
+            'created_at' => Carbon::now()
+        ]);
+
+        if ($checkProses) {
+            return response()->json(['result' => 'success'], 200);
+        }
+        return response()->json(['result' => 'failure'], 500);
     }
 
-    public function formUpdateBerita()
+
+    public function updateBerita(Request $request)
     {
+        $post = Berita::find($request->id);
+        $description = $request->inputDeskripsi;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($description, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+
+            // Check if the image is a new one
+            if (strpos($img->getAttribute('src'), 'data:img/berita/') === 0) {
+
+                $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+                $image_name = "/img/berita/" . time() . $key . '.png';
+                file_put_contents(public_path() . $image_name, $data);
+
+                $img->removeAttribute('src');
+                $img->setAttribute('src', $image_name);
+            }
+        }
+        $description = $dom->saveHTML();
+
+        // Handle file upload
+        if ($request->hasFile('inputGambar') && $request->file('inputGambar')->isValid()) {
+            $imagePath = public_path('img/berita/' . $post->gambar);
+            
+            if (!is_null($post->gambar)) {
+                $imagePath = public_path('img/berita/' . $post->gambar);
+                if (File::exists($imagePath)) {
+                    File::delete($imagePath);
+                }
+            }
+        
+
+            $imageName = time() . '.' . $request->inputGambar->extension();
+            $request->gambar->move(public_path('img/berita'), $imageName);
+        } else {
+            $imageName = $post->gambar;
+        }
+
+        if ($post->nama != $request->inputNama) {
+            $judul_lowercase = strtolower($request->inputNama);
+            $slug = str_replace(' ', '-', $judul_lowercase);
+        }
+
+        $checkProses = $post->update([
+            'nama' => $request->inputNama,
+            'deskripsi' => $description,
+            'gambar' => $imageName,
+            'slug' => $slug,
+            'terbit' => $request->inputTerbit,
+            'created_by' => Auth::user()->name,
+            'created_at' => Carbon::now()
+        ]);
+
+        if ($checkProses) {
+            return response()->json(['result' => 'success'], 200);
+        }
+        return response()->json(['result' => 'failure'], 500);
     }
 
-    public function updateBerita()
+    public function deleteBerita(Request $request)
     {
-    }
+        $dataBerita = Berita::find($request->id);
 
-    public function deleteBerita()
-    {
+        $dom = new DOMDocument();
+        $dom->loadHTML($dataBerita->description, 9);
+        $images = $dom->getElementsByTagName('img');
+
+        // Untuk menghapus gambar di deskripsi berita
+        foreach ($images as $key => $img) {
+
+            $src = $img->getAttribute('src');
+            $path = Str::of($src)->after('/');
+
+
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+        }
+
+        $imagePath = public_path('img/berita/' . $dataBerita->gambar);
+
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        }
+
+        $cekProses = $dataBerita->update([
+            'deleted_by' => Auth::user()->name,
+            'deleted_at' => Carbon::now()
+        ]);
+
+        if ($cekProses) {
+            return response()->json(['result' => 'success'], 200);
+        }
+        return response()->json(['result' => 'failure'], 500);
     }
 
     public function modul()
@@ -88,31 +225,69 @@ class Admin extends Controller
     {
         $id = $request->id;
         $dataModul = Modul::find($id);
-    
+
         if (!$dataModul) {
             return response()->json(['message' => 'Modul not found'], 404);
         }
-    
-        return response()->json($dataModul);;
+
+        return response()->json($dataModul);
     }
 
-    public function formCreateModul()
+
+    public function createModul(Request $request)
+    {
+        $description = $request->inputDeskripsi;
+
+        $dom = new DOMDocument();
+        $dom->loadHTML($description, 9);
+
+        $images = $dom->getElementsByTagName('img');
+
+        foreach ($images as $key => $img) {
+            $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
+            $image_name = "/img/modul/" . time() . $key . '.png';
+
+
+            file_put_contents(public_path() . $image_name, $data);
+
+            $img->removeAttribute('src');
+            $img->setAttribute('src', $image_name);
+        }
+        $description = $dom->saveHTML();
+
+        // Handle file upload
+        if ($request->hasFile('inputGambar')) {
+            $imageName = time() . '.' . $request->inputGambar->extension();
+            $request->gambar->move(public_path('img/modul'), $imageName);
+        } else {
+            $imageName = "default_content.png";
+        }
+
+        $judul_lowercase = strtolower($request->inputNama);
+        $slug = str_replace(' ', '-', $judul_lowercase);
+
+        $checkProses = Modul::create([
+            'nama' => $request->inputNama,
+            'deskripsi' => $description,
+            'gambar' => $imageName,
+            'slug' => $slug,
+            'terbit' => $request->inputTerbit,
+            'created_by' => Auth::user()->name,
+            'created_at' => Carbon::now()
+        ]);
+
+        if ($checkProses) {
+            return response()->json(['result' => 'success'], 200);
+        }
+        return response()->json(['result' => 'failure'], 500);
+    }
+
+
+    public function updateModul(Request $request)
     {
     }
 
-    public function createModul()
-    {
-    }
-
-    public function formUpdateModul()
-    {
-    }
-
-    public function updateModul()
-    {
-    }
-
-    public function deleteModul()
+    public function deleteModul(Request $request)
     {
     }
 
@@ -123,31 +298,33 @@ class Admin extends Controller
         return view('admin.dashboard', $data);
     }
 
-    public function getAllAdminMember()
+    public function getAllAdminMember(Request $request)
+    {
+        $id = $request->id;
+        $dataModul = User::find($id);
+
+        if (!$dataModul) {
+            return response()->json(['message' => 'Modul not found'], 404);
+        }
+
+        return response()->json($dataModul);
+    }
+
+    public function viewAdminMember(Request $request)
     {
     }
 
-    public function viewAdminMember()
+
+    public function createAdminMember(Request $request)
     {
     }
 
-    public function formCreateAdminMember()
+
+    public function updateAdminMember(Request $request)
     {
     }
 
-    public function createAdminMember()
-    {
-    }
-
-    public function formUpdateAdminMember()
-    {
-    }
-
-    public function updateAdminMember()
-    {
-    }
-
-    public function deleteAdminMember()
+    public function deleteAdminMember(Request $request)
     {
     }
 }

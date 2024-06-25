@@ -192,7 +192,11 @@ class Guests extends Controller
         }
 
         // Lakukan pagination setelah menerapkan kondisi
-        $data['dataBerita'] = $query->paginate(8)->appends(['cariBerita' => $searchQuery]);
+        // $data['dataBerita'] = $query->where('deleted_at', null)->where('terbit', 1)->paginate(8)->appends(['cariBerita' => $searchQuery]);
+        $data['dataBerita'] = $query->where([
+            ['deleted_at', null],
+            ['terbit', 2]
+        ])->paginate(8)->appends(['cariBerita' => $searchQuery]);
         // Jika tidak ada pencarian, atau pencarian sudah selesai, bersihkan session search_query
         // if (!$searchQuery) {
         //     $request->session()->forget('search_query');

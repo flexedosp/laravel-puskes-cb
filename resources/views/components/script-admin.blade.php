@@ -3,6 +3,7 @@
         RunSummernote();
         TableDataBerita();
         TableDataModul();
+        checkGambar();
     });
 
     function RunSummernote() {
@@ -24,17 +25,29 @@
         });
     }
 
+    function checkGambar() {
+        $('#inputGambar').on('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#showPreviewGambar').attr('src', e.target.result).show();
+                };
+                $("#previewGambar").removeClass("d-none");
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
     //#region Bagian Berita
     function TableDataBerita() {
         $('#TableBerita').DataTable({
             processing: true,
-            serverSide: true,
+            serverSide: false,
             ajax: "{{ route('data.berita') }}",
             columns: [{
                     data: 'count',
                     name: 'no'
-                    // orderable: false,
-                    // searchable: false
                 }, // Kolom nomor urut
                 // Tambahkan kolom lainnya sesuai dengan model Anda
                 {
@@ -44,15 +57,28 @@
                     searchable: false,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn btn-primary view-btn"  data-bs-toggle="modal" data-bs-target="#ModalViewBerita" onclick="ViewBerita(${data})" >View</button>
-                        <button class="btn btn-warning edit-btn"  data-bs-toggle="modal" data-bs-target="#ModalFormBerita" onclick="ViewEditBerita(${data})">Edit</button>
-                        <button class="btn btn-danger delete-btn" onclick="deleteBerita(${data})">Delete</button>
+                        <button class="btn btn-primary view-btn ms-2"  data-bs-toggle="modal" data-bs-target="#ModalViewBerita" onclick="ViewBerita(${data})" >View</button>
+                        <button class="btn btn-warning edit-btn ms-2"  data-bs-toggle="modal" data-bs-target="#ModalFormBerita" onclick="ViewEditBerita(${data})">Edit</button>
+                        <button class="btn btn-danger delete-btn ms-2" onclick="deleteBerita(${data})">Delete</button>
                     `;
                     }
                 },
                 {
                     data: 'nama',
-                    name: 'nama'
+                    name: 'nama',
+                },
+                {
+                    data: 'terbit',
+                    name: 'nama',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row, meta) {
+                        if (data == 1) {
+                            return `<span class="badge text-bg-secondary">Draft</span>`;
+                        } else if (data == 2) {
+                            return `<span class="badge text-bg-success">Publik</span>`;
+                        }
+                    }
                 }
 
             ],
@@ -65,9 +91,6 @@
                     return meta.row + meta.settings._iDisplayStart + 1; // Kalkulasi nomor urut
                 }
             }],
-            fixedColumns: {
-                leftColumns: 1
-            }
         });
     }
 
@@ -86,7 +109,9 @@
                 $("#penulisBerita").html("Penulis : " + data.created_by);
 
                 let getDate = new Date(data.created_at);
-                let setFormatDate =  getDate.getFullYear() + "-"+ (getDate.getMonth() < 10 ? "0" + getDate.getMonth() : getDate.getMonth() ) + "-" + (getDate.getDate() < 10 ? "0" + getDate.getDate() : getDate.getDate());
+                let setFormatDate = getDate.getFullYear() + "-" + (getDate.getMonth() < 10 ? "0" + getDate
+                    .getMonth() : getDate.getMonth()) + "-" + (getDate.getDate() < 10 ? "0" + getDate
+                    .getDate() : getDate.getDate());
                 $("#tanggalBerita").html("Tanggal Pembuatan : " + setFormatDate);
                 $("#gambarBerita").attr("src", "/img/berita/" + data.gambar);
                 $("#deskripsiBerita").html(data.deskripsi);
@@ -110,34 +135,87 @@
         $("#submitFormBerita").attr('onclick', 'TambahBerita()');
     }
 
+
     function TambahBerita() {
-        Swal.fire({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success"
-        });
-        var nama = $('#inputNama').val();
-
-        // Mendapatkan file yang diunggah (gambar)
-        var gambar = $('#inputGambar')[0].files[0];
-
-        // Mendapatkan konten HTML dari Summernote
-        var deskripsi = $('#inputDeskripsi').summernote('code');
-
-        // Mendapatkan nilai dari select Status Terbit
-        var terbit = $('#inputTerbit').val();
-
-        // Menampilkan data yang didapatkan di console (untuk keperluan debug)
-        // console.log('Nama:', nama);
-        // console.log('Gambar:', gambar);
-        // console.log('Deskripsi:', deskripsi);
-        // console.log('Status Terbit:', terbit);
-
-        var getIdForm = document.getElementById("#formBerita")
-        var formData = new FormData(getIdForm);
+        var getForm = $("#formDataBerita").get(0);
+        var formData = new FormData(getForm);
         console.log("----------------");
         formData.forEach(function(value, key) {
             console.log(key, value);
+        });
+        Swal.fire({
+            title: "Data akan di tambah!",
+            text: "Apakah anda sudah yakin dengan pengisian formnya?",
+            icon: "question",
+            confirmButtonText: "Yes",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "No",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.createberita') }}",
+                    method: "POST",
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: formData,
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Data berhasil ditambah!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.berita') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                text: "Data tidak berhasil ditambah!",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.berita') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText + ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Data batal ditambah!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
+
         });
     }
 
@@ -152,20 +230,193 @@
             success: function(data) {
                 console.log(data);
                 $("#ModalFormBeritaLabel").html("Edit Berita");
+                $("#submitFormBerita").html("Edit Data");
+                $("#inputId").val(data.id);
+                $("#inputNama").val(data.nama);
+
+                $('#inputDeskripsi').summernote({
+    height: 300, // Set the height of the editor
+    // Other Summernote configurations can be added here
+  });
+
+  // Set the content of the Summernote editor
+  $('#inputDeskripsi').summernote('code', data.deskripsi);
+
+                $("#inputTerbit").val(data.terbit);
+                $('#showPreviewGambar').attr('src', '/img/berita/' + data.gambar);
+                $("#previewGambar").removeClass("d-none");
+        $("#submitFormBerita").attr('onclick', 'editBerita()');
 
 
             }
         })
     }
+    function editBerita(){
+        var getForm = $("#formDataBerita").get(0);
+        var formData = new FormData(getForm);
+        console.log("----------------");
+        formData.forEach(function(value, key) {
+            console.log(key, value);
+        });
+        Swal.fire({
+            title: "Data akan diubah!",
+            text: "Apakah anda sudah yakin untuk mengubah data ini?",
+            icon: "question",
+            confirmButtonText: "Yes",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "No",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.updateberita') }}",
+                    method: "POST",
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: formData,
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Data berhasil diedit!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.berita') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                text: "Data tidak berhasil diedit!",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.berita') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText + ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Data batal diedit!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
+
+        });
+    }
 
     function clearFormBerita() {
         $("#ModalFormBeritaLabel").html(" ");
         $("#submitFormBerita").html(" ");
+        $('#showPreviewGambar').attr('src','')
+                $("#previewGambar").addClass("d-none");
 
     }
 
     function deleteBerita(id) {
+        Swal.fire({
+            title: "Data akan dihapus!",
+            text: "Apakah anda sudah yakin untuk menghapus data ini?",
+            icon: "question",
+            confirmButtonText: "Yes",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "No",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.deleteberita') }}",
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: {
+                id
+            },
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Data berhasil dihapus!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.berita') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                text: "Data tidak berhasil dihapus!",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.berita') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText + ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Data batal dihapus!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
 
+        });
     }
 
     //#endregion Bagian Berita
@@ -174,13 +425,11 @@
     function TableDataModul() {
         $('#TableModul').DataTable({
             processing: true,
-            serverSide: true,
+            serverSide: false,
             ajax: "{{ route('data.modul') }}",
             columns: [{
                     data: 'count',
                     name: 'no'
-                    // orderable: false,
-                    // searchable: false
                 }, // Kolom nomor urut
                 // Tambahkan kolom lainnya sesuai dengan model Anda
                 {
@@ -199,6 +448,19 @@
                 {
                     data: 'nama',
                     name: 'nama'
+                },
+                {
+                    data: 'terbit',
+                    name: 'nama',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row, meta) {
+                        if (data == 2) {
+                            return `<span class="badge text-bg-secondary">Draft</span>`;
+                        } else if (data == 1) {
+                            return `<span class="badge text-bg-success">Publik</span>`;
+                        }
+                    }
                 }
 
             ],
@@ -210,10 +472,7 @@
                 render: function(data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1; // Kalkulasi nomor urut
                 }
-            }],
-            fixedColumns: {
-                leftColumns: 1
-            }
+            }]
         });
     }
 
@@ -232,7 +491,9 @@
                 $("#penulisModul").html("Penulis : " + data.created_by);
 
                 let getDate = new Date(data.created_at);
-                let setFormatDate =  getDate.getFullYear() + "-"+ (getDate.getMonth() < 10 ? "0" + getDate.getMonth() : getDate.getMonth() ) + "-" + (getDate.getDate() < 10 ? "0" + getDate.getDate() : getDate.getDate());
+                let setFormatDate = getDate.getFullYear() + "-" + (getDate.getMonth() < 10 ? "0" + getDate
+                    .getMonth() : getDate.getMonth()) + "-" + (getDate.getDate() < 10 ? "0" + getDate
+                    .getDate() : getDate.getDate());
                 $("#tanggalModul").html("Tanggal Pembuatan : " + setFormatDate);
                 $("#gambarModul").attr("src", "/img/modul/" + data.gambar);
                 $("#deskripsiModul").html(data.deskripsi);
@@ -320,7 +581,7 @@
         $('#TableMemberAdmin').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('data.member-admin') }}",
+            ajax: "",
             columns: [{
                     data: 'count',
                     name: 'no'
@@ -365,7 +626,7 @@
     function ViewMemberAdmin(id) {
 
         $.ajax({
-            url: "{{ route('data.detailadmin') }}",
+            url: "",
             method: "GET",
             data: {
                 id
@@ -377,7 +638,9 @@
                 $("#penulisMemberAdmin").html("Penulis : " + data.created_by);
 
                 let getDate = new Date(data.created_at);
-                let setFormatDate =  getDate.getFullYear() + "-"+ (getDate.getMonth() < 10 ? "0" + getDate.getMonth() : getDate.getMonth() ) + "-" + (getDate.getDate() < 10 ? "0" + getDate.getDate() : getDate.getDate());
+                let setFormatDate = getDate.getFullYear() + "-" + (getDate.getMonth() < 10 ? "0" + getDate
+                    .getMonth() : getDate.getMonth()) + "-" + (getDate.getDate() < 10 ? "0" + getDate
+                    .getDate() : getDate.getDate());
                 $("#tanggalMemberAdmin").html("Tanggal Pembuatan : " + setFormatDate);
                 $("#gambarMemberAdmin").attr("src", "/img/admin/" + data.gambar);
                 $("#deskripsiMemberAdmin").html(data.deskripsi);
@@ -434,7 +697,7 @@
 
     function ViewEditMemberAdmin(id) {
         $.ajax({
-            url: "{{ route('data.detailadmin') }}",
+            url: "",
             method: "GET",
             data: {
                 id

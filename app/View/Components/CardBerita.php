@@ -14,7 +14,7 @@ class CardBerita extends Component
     public function __construct(
         public string $gambar,
         public string $judul,
-        public string $deskripsi,
+        // public string $deskripsi,
         public string $date,
         public string $slug
     ){}

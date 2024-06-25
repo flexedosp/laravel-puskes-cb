@@ -16,7 +16,7 @@
 
             <div class="d-flex flex-wrap justify-content-center align-items-center">
                 @foreach ($dataBerita as $b)
-                    <x-card-berita gambar="{{ $b->gambar }}" judul="{{ $b->nama }}" deskripsi="{{ $b->deskripsi }}"
+                    <x-card-berita gambar="{{ $b->gambar }}" judul="{{ $b->nama }}"
                         slug="{{ $b->slug }}" date="{{ $b->created_at->toDateString() }}" />
                 @endforeach
             </div>

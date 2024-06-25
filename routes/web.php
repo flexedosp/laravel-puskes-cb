@@ -41,12 +41,26 @@ Route::middleware('isAdmin')->group(function () {
     Route::get('/admin-dashboard', [Admin::class, 'index'])->name('admin.home');
     Route::get('/admin-berita', [Admin::class, 'berita'])->name('admin.berita');
     Route::get('/admin-modul', [Admin::class, 'modul'])->name('admin.modul');
-    Route::get('/admin-member', [Admin::class, 'adminMember'])->name('admin.member');
+    Route::get('/admin-member', [Admin::class, 'adminMember'])->name('admin.memberadmin');
 
 
     Route::get('/data-berita', [Admin::class, 'getAllBerita'])->name('data.berita');
     Route::get('/detail-berita', [Admin::class, 'viewBerita'])->name('data.detailberita');
+    Route::post('/create-berita', [Admin::class, 'createBerita'])->name('data.createberita');
+    Route::post('/update-berita', [Admin::class, 'updateBerita'])->name('data.updateberita');
+    Route::post('/delete-berita', [Admin::class, 'deleteBerita'])->name('data.deleteberita');
+
     Route::get('/data-modul', [Admin::class, 'getAllModul'])->name('data.modul');
     Route::get('/detail-modul', [Admin::class, 'viewModul'])->name('data.detailmodul');
+    Route::post('/create-modul', [Admin::class, 'createModul'])->name('data.createmodul');
+    Route::post('/update-modul', [Admin::class, 'updateModul'])->name('data.updatemodul');
+    Route::post('/delete-modul', [Admin::class, 'deleteModul'])->name('data.deleteberita');
+
+    Route::get('/data-memberadmin', [Admin::class, 'getAllMemberAdmin'])->name('data.memberadmin');
+    Route::get('/detail-memberadmin', [Admin::class, 'viewMemberAdmin'])->name('data.detailmemberadmin');
+    Route::post('/create-memberadmin', [Admin::class, 'createMemberAdmin'])->name('data.creatememberadmin');
+    Route::post('/update-memberadmin', [Admin::class, 'updateMemberAdmin'])->name('data.updatememberadmin');
+    Route::post('/delete-memberadmin', [Admin::class, 'deleteMemberAdmin'])->name('data.deletememberadmin');
+
 });
 // END Admin Route
