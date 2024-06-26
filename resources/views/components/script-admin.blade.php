@@ -13,7 +13,7 @@
             height: 300,
             toolbar: [
                 // [groupName, [list of button]]
-                ['style', ['style']],
+                ['style', ['style', 'codeview']],
                 ['style', ['bold', 'italic', 'underline', 'clear']],
                 ['font', ['strikethrough', 'superscript', 'subscript']],
                 ['fontsize', ['fontname', 'fontsize']],
@@ -23,6 +23,7 @@
                 ['insert', ['link', 'picture', 'video', 'table', 'hr']]
             ],
         });
+        $(".dropdown-toggle").dropdown();
     }
 
     function checkGambar() {
@@ -139,10 +140,10 @@
     function TambahBerita() {
         var getForm = $("#formDataBerita").get(0);
         var formData = new FormData(getForm);
-        console.log("----------------");
-        formData.forEach(function(value, key) {
-            console.log(key, value);
-        });
+        // console.log("----------------");
+        // formData.forEach(function(value, key) {
+        //     console.log(key, value);
+        // });
         Swal.fire({
             title: "Data akan di tambah!",
             text: "Apakah anda sudah yakin dengan pengisian formnya?",
@@ -258,9 +259,9 @@
         var getForm = $("#formDataBerita").get(0);
         var formData = new FormData(getForm);
         console.log("----------------");
-        formData.forEach(function(value, key) {
-            console.log(key, value);
-        });
+        // formData.forEach(function(value, key) {
+        //     console.log(key, value);
+        // });
         Swal.fire({
             title: "Data akan diubah!",
             text: "Apakah anda sudah yakin untuk mengubah data ini?",
@@ -467,9 +468,9 @@
                     orderable: false,
                     searchable: false,
                     render: function(data, type, row, meta) {
-                        if (data == 2) {
+                        if (data == 1) {
                             return `<span class="badge text-bg-secondary">Draft</span>`;
-                        } else if (data == 1) {
+                        } else if (data == 2) {
                             return `<span class="badge text-bg-success">Publik</span>`;
                         }
                     }
@@ -939,9 +940,9 @@
         var getIdForm = document.getElementById("#formMemberAdmin")
         var formData = new FormData(getIdForm);
         console.log("----------------");
-        formData.forEach(function(value, key) {
-            console.log(key, value);
-        });
+        // formData.forEach(function(value, key) {
+        //     console.log(key, value);
+        // });
     }
 
     function ViewEditMemberAdmin(id) {

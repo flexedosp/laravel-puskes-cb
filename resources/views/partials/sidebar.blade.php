@@ -74,6 +74,12 @@
                 </li>
                 @endif
                 <li class="nav-item">
+                    <a href="#">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>Kuesioner</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.logout') }}">
                         <i class="fas fa-sign-out-alt"></i>
                         <p>Log Out</p>

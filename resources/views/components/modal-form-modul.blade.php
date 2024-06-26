@@ -9,7 +9,7 @@
                         onclick="clearFormModul()"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formModul">
+                    <form id="formDataModul">
                       @csrf
                       <input type="text" id="inputId" name="inputId" value="" hidden>
 

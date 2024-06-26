@@ -30,6 +30,12 @@
                         <input type="email" class="form-control" id="inputEmail" name="inputEmail"
                             placeholder="Masukkan email Anda" required>
                     </div>
+                    <!-- Nomor Telepon -->
+                    <div class="mb-3">
+                        <label for="inputNoTelp" class="form-label">Nomor Telepon</label>
+                        <input type="number" class="form-control" id="inputNoTelp" name="inputNoTelp"
+                            placeholder="Masukkan email Anda" required>
+                    </div>
 
                     <!-- Jenis Kelamin -->
                     <div class="mb-3">

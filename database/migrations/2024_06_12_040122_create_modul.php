@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('modul', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->mediumText('deskripsi');
+            $table->longText('deskripsi');
             $table->string('slug');
             $table->string('gambar');
             $table->integer('terbit');

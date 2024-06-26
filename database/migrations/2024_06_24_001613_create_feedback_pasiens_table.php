@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('nama_fasilitas');
             $table->string('nilai_pelayanan');
             $table->string('nilai_kebersihan');
-            $table->string('nilai_kebersihan');
+            $table->string('nilai_petugas');
             $table->text('isi_feedback');
             $table->string('nama');
-            $table->int('usia');
+            $table->integer('usia');
             $table->string('jenis_kelamin');
             $table->string('email');
             $table->string('no_telp');
-            $table->int('is_anonim');
+            $table->integer('is_anonim');
             $table->timestamps();
         });
     }
