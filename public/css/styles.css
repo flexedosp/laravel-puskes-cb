@@ -61,6 +61,12 @@ body {
 .img-carousel {
     width: 100%;
     height: auto;
+    filter:brightness(0.5);
+    -webkit-filter:brightness(0.5);
+}
+.img-carousel-tk{
+    width: 100%;
+    height: auto;
 }
 
 .carousel-item-custom {
@@ -121,13 +127,13 @@ body {
 }
 
 .social-btn {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 10px;
+    margin: 0 5px;
     color: white;
     font-size: 24px;
     transition: background-color 0.3s;
@@ -141,6 +147,10 @@ body {
     background-color: #1c78fa; /* Warna untuk email */
     transition: transform 0.3s, box-shadow 0.3s;
 
+}
+.social-whatsapp{
+    background-color: #00cd30; /* Warna untuk Whatsapp */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .social-instagram {
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* Warna untuk Instagram */

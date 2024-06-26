@@ -38,14 +38,14 @@
         <div id="VisiDanMisi" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item carousel-item-custom active">
-                <img src="/img/Gambar_1.jpg" class="d-block w-100 h-100 img-carousel" alt="Gambar Background">
+                <img src="/img/Gambar_1.jpg" class="d-block w-100 h-100 img-carousel-tk" alt="Gambar Background">
                  <div class="position-absolute top-50 start-50 translate-middle text-black">
                     <h4 class="fw-bold text-center">Visi</h4>
                     <p class="text-center carousel-item-list fw-bold text-wrap">“Puskesmas Lintas batas unggulan untuk mewujudkan Lebak sebagai Destinasi Wisata Unggulan Nasional Berbasis Potensi Lokal”</p>
                     </div>
               </div>
               <div class="carousel-item carousel-item-custom">
-                <img src="/img/Gambar_1.jpg" class="d-block w-100 h-100 img-carousel" alt="Gambar Background">
+                <img src="/img/Gambar_1.jpg" class="d-block w-100 h-100 img-carousel-tk" alt="Gambar Background">
                  <div class="position-absolute top-50 start-50 translate-middle text-black">
                     <h4 class="fw-bold text-center">Misi</h4>
                     <ol class="carousel-item-list fw-bold text-wrap" >
@@ -56,7 +56,7 @@
                     </div>
               </div>
               <div class="carousel-item carousel-item-custom">
-                <img src="/img/Gambar_1.jpg" class="d-block w-100 h-100 img-carousel" alt="Gambar Background">
+                <img src="/img/Gambar_1.jpg" class="d-block w-100 h-100 img-carousel-tk" alt="Gambar Background">
                  <div class="position-absolute top-50 start-50 translate-middle text-black">
                     <h4 class="fw-bold text-center">Misi</h4>
                     <ol class="carousel-item-list fw-bold text-wrap" start="4">

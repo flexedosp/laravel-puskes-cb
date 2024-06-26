@@ -26,11 +26,11 @@
     }
 
     function checkGambar() {
-        $('#inputGambar').on('change', function (event) {
+        $('#inputGambar').on('change', function(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     $('#showPreviewGambar').attr('src', e.target.result).show();
                 };
                 $("#previewGambar").removeClass("d-none");
@@ -173,14 +173,15 @@
                                 confirmButtonText: "OK",
                                 showCancelButton: false,
                                 allowOutsideClick: false,
-                                confirmButtonColor: "#fa0000",
+                                confirmButtonColor: "#42f20d",
                             }).then((result) => {
                                 window.location.replace('{{ route('admin.berita') }}');
                             });
                         } else {
                             Swal.fire({
                                 title: "Gagal",
-                                text: "Data tidak berhasil ditambah!",
+                                html: "<span>Data tidak berhasil ditambah! <br>" + result
+                                    .message + " </span>",
                                 icon: "error",
                                 confirmButtonText: "OK",
                                 showCancelButton: false,
@@ -195,7 +196,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText + ". " + errorThrown,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
                             showCancelButton: false,
@@ -235,23 +237,24 @@
                 $("#inputNama").val(data.nama);
 
                 $('#inputDeskripsi').summernote({
-    height: 300, // Set the height of the editor
-    // Other Summernote configurations can be added here
-  });
+                    height: 300, // Set the height of the editor
+                    // Other Summernote configurations can be added here
+                });
 
-  // Set the content of the Summernote editor
-  $('#inputDeskripsi').summernote('code', data.deskripsi);
+                // Set the content of the Summernote editor
+                $('#inputDeskripsi').summernote('code', data.deskripsi);
 
                 $("#inputTerbit").val(data.terbit);
                 $('#showPreviewGambar').attr('src', '/img/berita/' + data.gambar);
                 $("#previewGambar").removeClass("d-none");
-        $("#submitFormBerita").attr('onclick', 'editBerita()');
+                $("#submitFormBerita").attr('onclick', 'editBerita()');
 
 
             }
         })
     }
-    function editBerita(){
+
+    function editBerita() {
         var getForm = $("#formDataBerita").get(0);
         var formData = new FormData(getForm);
         console.log("----------------");
@@ -288,14 +291,15 @@
                                 confirmButtonText: "OK",
                                 showCancelButton: false,
                                 allowOutsideClick: false,
-                                confirmButtonColor: "#fa0000",
+                                confirmButtonColor: "#42f20d",
                             }).then((result) => {
                                 window.location.replace('{{ route('admin.berita') }}');
                             });
                         } else {
                             Swal.fire({
                                 title: "Gagal",
-                                text: "Data tidak berhasil diedit!",
+                                html: "<span>Data tidak berhasil diubah! <br>" + result
+                                    .message + " </span>",
                                 icon: "error",
                                 confirmButtonText: "OK",
                                 showCancelButton: false,
@@ -310,7 +314,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText + ". " + errorThrown,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
                             showCancelButton: false,
@@ -337,8 +342,12 @@
     function clearFormBerita() {
         $("#ModalFormBeritaLabel").html(" ");
         $("#submitFormBerita").html(" ");
-        $('#showPreviewGambar').attr('src','')
-                $("#previewGambar").addClass("d-none");
+        $("#inputId").val(" ");
+        $("#inputNama").val(" ");
+        $('#inputDeskripsi').summernote('code', " ");
+        $("#inputTerbit").val(" ");
+        $('#showPreviewGambar').attr('src', ' ')
+        $("#previewGambar").addClass("d-none");
 
     }
 
@@ -362,8 +371,9 @@
                             'content') // Include the CSRF token
                     },
                     data: {
-                id
-            },
+                        id
+                    },
+                    dataType: 'json',
                     success: function(data) {
                         if (data.result == "success") {
                             Swal.fire({
@@ -373,14 +383,15 @@
                                 confirmButtonText: "OK",
                                 showCancelButton: false,
                                 allowOutsideClick: false,
-                                confirmButtonColor: "#fa0000",
+                                confirmButtonColor: "#42f20d",
                             }).then((result) => {
                                 window.location.replace('{{ route('admin.berita') }}');
                             });
                         } else {
                             Swal.fire({
                                 title: "Gagal",
-                                text: "Data tidak berhasil dihapus!",
+                                html: "<span>Data tidak berhasil dihapus! <br>" + result
+                                    .message + " </span>",
                                 icon: "error",
                                 confirmButtonText: "OK",
                                 showCancelButton: false,
@@ -395,7 +406,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText + ". " + errorThrown,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
                             showCancelButton: false,
@@ -518,33 +530,87 @@
     }
 
     function TambahModul() {
-        Swal.fire({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success"
-        });
-        var nama = $('#inputNama').val();
-
-        // Mendapatkan file yang diunggah (gambar)
-        var gambar = $('#inputGambar')[0].files[0];
-
-        // Mendapatkan konten HTML dari Summernote
-        var deskripsi = $('#inputDeskripsi').summernote('code');
-
-        // Mendapatkan nilai dari select Status Terbit
-        var terbit = $('#inputTerbit').val();
-
-        // Menampilkan data yang didapatkan di console (untuk keperluan debug)
-        // console.log('Nama:', nama);
-        // console.log('Gambar:', gambar);
-        // console.log('Deskripsi:', deskripsi);
-        // console.log('Status Terbit:', terbit);
-
-        var getIdForm = document.getElementById("#formModul")
-        var formData = new FormData(getIdForm);
+        var getForm = $("#formDataModul").get(0);
+        var formData = new FormData(getForm);
         console.log("----------------");
         formData.forEach(function(value, key) {
             console.log(key, value);
+        });
+        Swal.fire({
+            title: "Data akan di tambah!",
+            text: "Apakah anda sudah yakin dengan pengisian formnya?",
+            icon: "question",
+            confirmButtonText: "Yes",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "No",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.createmodul') }}",
+                    method: "POST",
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: formData,
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Data berhasil ditambah!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#42f20d",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.modul') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                html: "<span>Data tidak berhasil ditambah! <br>" + result
+                                    .message + " </span>",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.modul') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Data batal ditambah!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
+
         });
     }
 
@@ -559,20 +625,203 @@
             success: function(data) {
                 console.log(data);
                 $("#ModalFormModulLabel").html("Edit Modul");
+                $("#submitFormModul").html("Edit Data");
+                $("#inputId").val(data.id);
+                $("#inputNama").val(data.nama);
+
+                $('#inputDeskripsi').summernote({
+                    height: 300, // Set the height of the editor
+                    // Other Summernote configurations can be added here
+                });
+
+                // Set the content of the Summernote editor
+                $('#inputDeskripsi').summernote('code', data.deskripsi);
+
+                $("#inputTerbit").val(data.terbit);
+                $('#showPreviewGambar').attr('src', '/img/modul/' + data.gambar);
+                $("#previewGambar").removeClass("d-none");
+                $("#submitFormModul").attr('onclick', 'editModul()');
 
 
             }
         })
     }
 
+    function editModul() {
+        var getForm = $("#formDataModul").get(0);
+        var formData = new FormData(getForm);
+        // console.log("----------------");
+        // formData.forEach(function(value, key) {
+        //     console.log(key, value);
+        // });
+        Swal.fire({
+            title: "Data akan diubah!",
+            text: "Apakah anda sudah yakin untuk mengubah data ini?",
+            icon: "question",
+            confirmButtonText: "Yes",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "No",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.updatemodul') }}",
+                    method: "POST",
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: formData,
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Data berhasil diedit!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#42f20d",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.modul') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                html: "<span>Data tidak berhasil diubah! <br>" + result
+                                    .message + " </span>",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.modul') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Data batal diedit!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
+
+        });
+    }
+
     function clearFormModul() {
         $("#ModalFormModulLabel").html(" ");
         $("#submitFormModul").html(" ");
+        $("#inputId").val(" ");
+        $("#inputNama").val(" ");
+        $('#inputDeskripsi').summernote('code', " ");
+        $("#inputTerbit").val(" ");
+        $('#showPreviewGambar').attr('src', ' ')
+        $("#previewGambar").addClass("d-none");
 
     }
 
     function deleteModul(id) {
+        Swal.fire({
+            title: "Data akan dihapus!",
+            text: "Apakah anda sudah yakin untuk menghapus data ini?",
+            icon: "question",
+            confirmButtonText: "Yes",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "No",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.deletemodul') }}",
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: {
+                        id
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Data berhasil dihapus!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#42f20d",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.modul') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                html: "<span>Data tidak berhasil dihapus! <br>" + result
+                                    .message + " </span>",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace('{{ route('admin.modul') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Data batal dihapus!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
 
+        });
     }
     //#endregion Bagian Modul
 

@@ -36,9 +36,12 @@ class AuthController extends Controller
 // dd($this->os);
         if($this->os == "Windows" || $this->os == "OS X" || $this->os == "Ubuntu"){
             if (Auth::attempt($credentialsInfo)) {
-                $request->session()->regenerate();
-                
-                return redirect()->intended('/admin-dashboard');
+                if(Auth::user()->deleted_by != null && Auth::user()->deleted_by != null){
+                    $request->session()->regenerate();
+                    return redirect()->intended('/admin-dashboard');
+                }else{
+                    return redirect()->route('admin.login')->with('errorLogin', 'Maaf, akun admin tidak ditemukan. Silahkan hubungi tim pihak puskesmas jika ini sebuah kesalahan.');
+                }
             }
         }else if($this->os != "Windows" || $this->os != "OS X" || $this->os != "Ubuntu"){
             return redirect()->route('admin.login')->with('errorLogin', 'Maaf, admin dashboard hanya bisa diakses jika anda menggunakan Windows, OS X (Macintosh atau Macbook), atau Ubuntu');

@@ -6,7 +6,7 @@
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="ModalFormBeritaLabel">Form Berita</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        onclick="clearViewBerita()"></button>
+                        onclick="clearFormBerita()"></button>
                 </div>
                 <div class="modal-body">
                     <div style="padding: 80px 100px">
@@ -41,7 +41,7 @@
                             <div class="d-flex justify-content-center">
                                 <button id="submitFormBerita" type="button" class="mx-3 btn btn-primary" onclick="">Tambah Data</button>
                                 <button type="button" class="mx-3 btn btn-secondary" data-bs-dismiss="modal"
-                                    onclick="clearViewBerita()">Close</button>
+                                    onclick="clearFormBerita()">Tutup</button>
                             </div>
                         </form>
                     </div>

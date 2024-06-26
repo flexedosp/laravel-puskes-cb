@@ -21,10 +21,9 @@
                 <h3 class="fw-bold text-center">Login Admin</h3>
                 <form action="{{ route('admin.check') }}" method="POST">
                     @csrf
-
                     <!-- Email -->
                     <div class="mb-3">
-                        <label for="emailAdmin" class="form-label">Email</label>
+                        <label for="emailAdmin" class="form-label">Username</label>
                         <input type="email" class="form-control" id="emailAdmin" name="emailAdmin"
                             placeholder="Masukkan email Anda" value="{{ old('emailAdmin') }}">
                     </div>

@@ -49,12 +49,14 @@ Route::middleware('isAdmin')->group(function () {
     Route::post('/create-berita', [Admin::class, 'createBerita'])->name('data.createberita');
     Route::post('/update-berita', [Admin::class, 'updateBerita'])->name('data.updateberita');
     Route::post('/delete-berita', [Admin::class, 'deleteBerita'])->name('data.deleteberita');
+    // Route::get('/delete-berita/{delete-berita:id}', [Admin::class, 'deleteBerita'])->name('data.deleteberita');
 
     Route::get('/data-modul', [Admin::class, 'getAllModul'])->name('data.modul');
     Route::get('/detail-modul', [Admin::class, 'viewModul'])->name('data.detailmodul');
     Route::post('/create-modul', [Admin::class, 'createModul'])->name('data.createmodul');
     Route::post('/update-modul', [Admin::class, 'updateModul'])->name('data.updatemodul');
-    Route::post('/delete-modul', [Admin::class, 'deleteModul'])->name('data.deleteberita');
+    Route::post('/delete-modul', [Admin::class, 'deleteModul'])->name('data.deletemodul');
+
 
     Route::get('/data-memberadmin', [Admin::class, 'getAllMemberAdmin'])->name('data.memberadmin');
     Route::get('/detail-memberadmin', [Admin::class, 'viewMemberAdmin'])->name('data.detailmemberadmin');
