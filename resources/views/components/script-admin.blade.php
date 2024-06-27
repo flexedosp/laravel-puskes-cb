@@ -234,18 +234,18 @@
                 console.log(data);
                 $("#ModalFormBeritaLabel").html("Edit Berita");
                 $("#submitFormBerita").html("Edit Data");
-                $("#inputId").val(data.id);
-                $("#inputNama").val(data.nama);
+                $("#inputBeritaId").val(data.id);
+                $("#inputBeritaNama").val(data.nama);
 
-                $('#inputDeskripsi').summernote({
+                $('#inputBeritaDeskripsi').summernote({
                     height: 300, // Set the height of the editor
                     // Other Summernote configurations can be added here
                 });
 
                 // Set the content of the Summernote editor
-                $('#inputDeskripsi').summernote('code', data.deskripsi);
+                $('#inputBeritaDeskripsi').summernote('code', data.deskripsi);
 
-                $("#inputTerbit").val(data.terbit);
+                $("#inputBeritaTerbit").val(data.terbit);
                 $('#showPreviewGambar').attr('src', '/img/berita/' + data.gambar);
                 $("#previewGambar").removeClass("d-none");
                 $("#submitFormBerita").attr('onclick', 'editBerita()');
@@ -343,10 +343,10 @@
     function clearFormBerita() {
         $("#ModalFormBeritaLabel").html(" ");
         $("#submitFormBerita").html(" ");
-        $("#inputId").val(" ");
-        $("#inputNama").val(" ");
-        $('#inputDeskripsi').summernote('code', " ");
-        $("#inputTerbit").val(" ");
+        $("#inputBeritaId").val(" ");
+        $("#inputBeritaNama").val(" ");
+        $('#inputBeritaDeskripsi').summernote('code', " ");
+        $("#inputBeritaTerbit").val(" ");
         $('#showPreviewGambar').attr('src', ' ')
         $("#previewGambar").addClass("d-none");
 
@@ -627,18 +627,18 @@
                 console.log(data);
                 $("#ModalFormModulLabel").html("Edit Modul");
                 $("#submitFormModul").html("Edit Data");
-                $("#inputId").val(data.id);
-                $("#inputNama").val(data.nama);
+                $("#inputModulId").val(data.id);
+                $("#inputModulNama").val(data.nama);
 
-                $('#inputDeskripsi').summernote({
+                $('#inputModulDeskripsi').summernote({
                     height: 300, // Set the height of the editor
                     // Other Summernote configurations can be added here
                 });
 
                 // Set the content of the Summernote editor
-                $('#inputDeskripsi').summernote('code', data.deskripsi);
+                $('#inputModulDeskripsi').summernote('code', data.deskripsi);
 
-                $("#inputTerbit").val(data.terbit);
+                $("#inputModulTerbit").val(data.terbit);
                 $('#showPreviewGambar').attr('src', '/img/modul/' + data.gambar);
                 $("#previewGambar").removeClass("d-none");
                 $("#submitFormModul").attr('onclick', 'editModul()');
@@ -736,10 +736,10 @@
     function clearFormModul() {
         $("#ModalFormModulLabel").html(" ");
         $("#submitFormModul").html(" ");
-        $("#inputId").val(" ");
-        $("#inputNama").val(" ");
-        $('#inputDeskripsi').summernote('code', " ");
-        $("#inputTerbit").val(" ");
+        $("#inputModulId").val(" ");
+        $("#inputModulNama").val(" ");
+        $('#inputModulDeskripsi').summernote('code', " ");
+        $("#inputModulTerbit").val(" ");
         $('#showPreviewGambar').attr('src', ' ')
         $("#previewGambar").addClass("d-none");
 
@@ -915,31 +915,10 @@
     }
 
     function TambahMemberAdmin() {
-        Swal.fire({
-            title: "Good job!",
-            text: "You clicked the button!",
-            icon: "success"
-        });
-        var nama = $('#inputNama').val();
-
-        // Mendapatkan file yang diunggah (gambar)
-        var gambar = $('#inputGambar')[0].files[0];
-
-        // Mendapatkan konten HTML dari Summernote
-        var deskripsi = $('#inputDeskripsi').summernote('code');
-
-        // Mendapatkan nilai dari select Status Terbit
-        var terbit = $('#inputTerbit').val();
-
-        // Menampilkan data yang didapatkan di console (untuk keperluan debug)
-        // console.log('Nama:', nama);
-        // console.log('Gambar:', gambar);
-        // console.log('Deskripsi:', deskripsi);
-        // console.log('Status Terbit:', terbit);
 
         var getIdForm = document.getElementById("#formMemberAdmin")
         var formData = new FormData(getIdForm);
-        console.log("----------------");
+        // console.log("----------------");
         // formData.forEach(function(value, key) {
         //     console.log(key, value);
         // });

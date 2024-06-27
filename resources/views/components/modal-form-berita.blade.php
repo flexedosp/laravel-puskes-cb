@@ -12,27 +12,27 @@
                     <div style="padding: 80px 100px">
                         <form id="formDataBerita">
                           @csrf
-                          <input type="text" id="inputId" name="inputId" value="" hidden>
+                          <input type="text" id="inputBeritaId" name="inputBeritaId" value="" hidden>
 
                             <div class="mb-3">
-                                <label for="inputNama" class="form-label">Nama :</label>
-                                <input type="text" class="form-control" id="inputNama" name="inputNama">
+                                <label for="inputBeritaNama" class="form-label">Nama :</label>
+                                <input type="text" class="form-control" id="inputBeritaNama" name="inputBeritaNama">
                             </div>
                             <div class="mb-3">
-                                <label for="inputGambar" class="form-label">Gambar Header :</label>
-                                <input type="file" class="form-control" id="inputGambar" name="inputGambar">
+                                <label for="inputBeritaGambar" class="form-label">Gambar Header :</label>
+                                <input type="file" class="form-control" id="inputBeritaGambar" name="inputBeritaGambar">
                             <div id="previewGambar" class="d-none mt-2">
                                 <img id="showPreviewGambar" src="" alt="Preview Gambar" style="width: 300px;height:100%;">
                             </div>
                             </div>
                             <div class="mb-3">
-                                <label for="inputDeskripsi">Deskripsi</label>
-                                <textarea class="summernote" id="inputDeskripsi" name="inputDeskripsi"></textarea>
+                                <label for="inputBeritaDeskripsi">Deskripsi</label>
+                                <textarea class="summernote" id="inputBeritaDeskripsi" name="inputBeritaDeskripsi"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="inputTerbit">Status Terbit</label>
+                                <label for="inputBeritaTerbit">Status Terbit</label>
 
-                              <select id="inputTerbit" name="inputTerbit" class="form-select" aria-label="Pilih Status Terbit">
+                              <select id="inputBeritaTerbit" name="inputBeritaTerbit" class="form-select" aria-label="Pilih Status Terbit">
                                 <option selected>Pilih Status</option>
                                 <option value="1">Draft</option>
                                 <option value="2">Publik</option>

@@ -59,7 +59,7 @@ class Admin extends Controller
 
     public function createBerita(Request $request)
     {
-        $description = $request->inputDeskripsi;
+        $description = $request->inputBeritaDeskripsi;
 
         $dom = new DOMDocument();
         $dom->loadHTML($description, 9);
@@ -80,21 +80,21 @@ class Admin extends Controller
 
         // Handle file upload
         if ($request->hasFile('inputGambar')) {
-            $imageName = time() . '.' . $request->inputGambar->extension();
-            $request->inputGambar->move(public_path('img/berita'), $imageName);
+            $imageName = time() . '.' . $request->inputBeritaGambar->extension();
+            $request->inputBeritaGambar->move(public_path('img/berita'), $imageName);
         } else {
             $imageName = "default_content.png";
         }
 
-        $judul_lowercase = strtolower($request->inputNama);
+        $judul_lowercase = strtolower($request->inputBeritaNama);
         $slug = str_replace(' ', '-', $judul_lowercase);
 
         $checkProses = Berita::create([
-            'nama' => $request->inputNama,
+            'nama' => $request->inputBeritaNama,
             'deskripsi' => $description,
             'gambar' => $imageName,
             'slug' => $slug,
-            'terbit' => $request->inputTerbit,
+            'terbit' => $request->inputBeritaTerbit,
             'created_by' => Auth::user()->name,
             'created_at' => Carbon::now()
         ]);
@@ -108,9 +108,9 @@ class Admin extends Controller
 
     public function updateBerita(Request $request)
     {
-        $post = Berita::find($request->inputId);
+        $post = Berita::find($request->inputBeritaId);
         // dd($post);
-        $description = $request->inputDeskripsi;
+        $description = $request->inputBeritaDeskripsi;
 
         $dom = new DOMDocument();
         $dom->loadHTML($description, 9);
@@ -143,8 +143,8 @@ class Admin extends Controller
                         File::delete($imagePath);
                     }
                 }
-                $imageName = time() . '.' . $request->inputGambar->extension();
-                $request->inputGambar->move(public_path('img/berita'), $imageName);
+                $imageName = time() . '.' . $request->inputBeritaGambar->extension();
+                $request->inputBeritaGambar->move(public_path('img/berita'), $imageName);
             } else {
                 $imageName = $post->gambar;
             }
@@ -153,17 +153,17 @@ class Admin extends Controller
         }
 
         $slug = $post->nama;
-        if ($post->nama != $request->inputNama) {
-            $judul_lowercase = strtolower($request->inputNama);
+        if ($post->nama != $request->inputBeritaNama) {
+            $judul_lowercase = strtolower($request->inputBeritaNama);
             $slug = str_replace(' ', '-', $judul_lowercase);
         }
 
         $checkProses = $post->update([
-            'nama' => $request->inputNama,
+            'nama' => $request->inputBeritaNama,
             'deskripsi' => $description,
             'gambar' => $imageName,
             'slug' => $slug,
-            'terbit' => $request->inputTerbit,
+            'terbit' => $request->inputBeritaTerbit,
             'updated_by' => Auth::user()->name,
             'updated_at' => Carbon::now()
         ]);
@@ -247,7 +247,7 @@ class Admin extends Controller
 
     public function createModul(Request $request)
     {
-        $description = $request->inputDeskripsi;
+        $description = $request->inputModulDeskripsi;
 
         $dom = new DOMDocument();
         $dom->loadHTML($description, 9);
@@ -268,21 +268,21 @@ class Admin extends Controller
 
         // Handle file upload
         if ($request->hasFile('inputGambar')) {
-            $imageName = time() . '.' . $request->inputGambar->extension();
-            $request->inputGambar->move(public_path('img/modul'), $imageName);
+            $imageName = time() . '.' . $request->inputModulGambar->extension();
+            $request->inputModulGambar->move(public_path('img/modul'), $imageName);
         } else {
             $imageName = "default_content.png";
         }
 
-        $judul_lowercase = strtolower($request->inputNama);
+        $judul_lowercase = strtolower($request->inputModulNama);
         $slug = str_replace(' ', '-', $judul_lowercase);
 
         $checkProses = Modul::create([
-            'nama' => $request->inputNama,
+            'nama' => $request->inputModulNama,
             'deskripsi' => $description,
             'gambar' => $imageName,
             'slug' => $slug,
-            'terbit' => $request->inputTerbit,
+            'terbit' => $request->inputModulTerbit,
             'created_by' => Auth::user()->name,
             'created_at' => Carbon::now()
         ]);
@@ -296,9 +296,9 @@ class Admin extends Controller
 
     public function updateModul(Request $request)
     {
-        $post = Modul::find($request->inputId);
+        $post = Modul::find($request->inputModulId);
         // dd($post);
-        $description = $request->inputDeskripsi;
+        $description = $request->inputModulDeskripsi;
 
         $dom = new DOMDocument();
         $dom->loadHTML($description, 9);
@@ -331,8 +331,8 @@ class Admin extends Controller
                         File::delete($imagePath);
                     }
                 }
-                $imageName = time() . '.' . $request->inputGambar->extension();
-                $request->inputGambar->move(public_path('img/modul'), $imageName);
+                $imageName = time() . '.' . $request->inputModulGambar->extension();
+                $request->inputModulGambar->move(public_path('img/modul'), $imageName);
             } else {
                 $imageName = $post->gambar;
             }
@@ -341,17 +341,17 @@ class Admin extends Controller
         }
 
         $slug = $post->nama;
-        if ($post->nama != $request->inputNama) {
-            $judul_lowercase = strtolower($request->inputNama);
+        if ($post->nama != $request->inputModulNama) {
+            $judul_lowercase = strtolower($request->inputModulNama);
             $slug = str_replace(' ', '-', $judul_lowercase);
         }
 
         $checkProses = $post->update([
-            'nama' => $request->inputNama,
+            'nama' => $request->inputModulNama,
             'deskripsi' => $description,
             'gambar' => $imageName,
             'slug' => $slug,
-            'terbit' => $request->inputTerbit,
+            'terbit' => $request->inputModulTerbit,
             'updated_by' => Auth::user()->name,
             'updated_at' => Carbon::now()
         ]);

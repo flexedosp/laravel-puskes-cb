@@ -11,27 +11,27 @@
                 <div class="modal-body">
                     <form id="formDataModul">
                       @csrf
-                      <input type="text" id="inputId" name="inputId" value="" hidden>
+                      <input type="text" id="inputModulId" name="inputModulId" value="" hidden>
 
                       <div class="mb-3">
-                          <label for="inputNama" class="form-label">Nama :</label>
-                          <input type="text" class="form-control" id="inputNama" name="inputNama">
+                          <label for="inputModulNama" class="form-label">Nama :</label>
+                          <input type="text" class="form-control" id="inputModulNama" name="inputModulNama">
                       </div>
                       <div class="mb-3">
-                          <label for="inputGambar" class="form-label">Gambar Header :</label>
-                          <input type="file" class="form-control" id="inputGambar" name="inputGambar">
+                          <label for="inputModulGambar" class="form-label">Gambar Header :</label>
+                          <input type="file" class="form-control" id="inputModulGambar" name="inputModulGambar">
                       <div id="previewGambar" class="d-none mt-2">
                           <img id="showPreviewGambar" src="" alt="Preview Gambar" style="width: 300px;height:100%;">
                       </div>
                       </div>
                       <div class="mb-3">
-                          <label for="inputDeskripsi">Deskripsi</label>
-                          <textarea class="summernote" id="inputDeskripsi" name="inputDeskripsi"></textarea>
+                          <label for="inputModulDeskripsi">Deskripsi</label>
+                          <textarea class="summernote" id="inputModulDeskripsi" name="inputModulDeskripsi"></textarea>
                       </div>
                       <div class="mb-3">
-                          <label for="inputTerbit">Status Terbit</label>
+                          <label for="inputModulTerbit">Status Terbit</label>
 
-                        <select id="inputTerbit" name="inputTerbit" class="form-select" aria-label="Pilih Status Terbit">
+                        <select id="inputModulTerbit" name="inputModulTerbit" class="form-select" aria-label="Pilih Status Terbit">
                           <option selected>Pilih Status</option>
                           <option value="1">Draft</option>
                           <option value="2">Publik</option>
