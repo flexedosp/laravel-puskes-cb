@@ -79,7 +79,7 @@ class Admin extends Controller
         $description = $dom->saveHTML();
 
         // Handle file upload
-        if ($request->hasFile('inputGambar')) {
+        if ($request->hasFile('inputBeritaGambar')) {
             $imageName = time() . '.' . $request->inputBeritaGambar->extension();
             $request->inputBeritaGambar->move(public_path('img/berita'), $imageName);
         } else {
@@ -135,7 +135,7 @@ class Admin extends Controller
         // Handle file upload
 
         try {
-            if ($request->hasFile('inputGambar') && $request->file('inputGambar')->isValid()) {
+            if ($request->hasFile('inputBeritaGambar') && $request->file('inputBeritaGambar')->isValid()) {
                 $imagePath = public_path('img/berita/' . $post->gambar);
                 if (!is_null($post->gambar)) {
                     $imagePath = public_path('img/berita/' . $post->gambar);
@@ -267,7 +267,7 @@ class Admin extends Controller
         $description = $dom->saveHTML();
 
         // Handle file upload
-        if ($request->hasFile('inputGambar')) {
+        if ($request->hasFile('inputModulGambar')) {
             $imageName = time() . '.' . $request->inputModulGambar->extension();
             $request->inputModulGambar->move(public_path('img/modul'), $imageName);
         } else {
@@ -323,7 +323,7 @@ class Admin extends Controller
         // Handle file upload
 
         try {
-            if ($request->hasFile('inputGambar') && $request->file('inputGambar')->isValid()) {
+            if ($request->hasFile('inputModulGambar') && $request->file('inputModulGambar')->isValid()) {
                 $imagePath = public_path('img/modul/' . $post->gambar);
                 if (!is_null($post->gambar)) {
                     $imagePath = public_path('img/modul/' . $post->gambar);
