@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -406,16 +407,16 @@ class Admin extends Controller
     {
         $data['titlePage'] = 'Admin Member | Puskesmas Curugbitung';
         $data['titleNav'] = 'dashboard';
-        return view('admin.dashboard', $data);
+        return view('admin.member-admin', $data);
     }
 
-    public function getAllAdminMember(Request $request)
+    public function getAllAdminMember()
     {
         $dataAdmin = User::all()->filter(function ($item) {
-            return $item->deleted_by == null && $item->deleted_at == null;
+            return $item->deleted_at == null;
         })->toArray();
-        foreach ($dataAdmin as $index => &$berita) {
-            $berita['count'] = $index + 1; // $index + 1 untuk memulai dari 1, bukan 0
+        foreach ($dataAdmin as $index => &$admin) {
+            $admin['count'] = $index + 1; // $index + 1 untuk memulai dari 1, bukan 0
         }
         return DataTables::of($dataAdmin)->make(true);
     }
@@ -427,14 +428,75 @@ class Admin extends Controller
 
     public function createAdminMember(Request $request)
     {
+        $makeAdmin = new User;
+
+        $makeAdmin->name = $request->inputMemberAdminName;
+        $makeAdmin->username = $request->inputMemberAdminUsername;
+        $makeAdmin->status = $request->inputMemberAdminStatus;
+        $makeAdmin->password = Hash::make('password123');
+
+        $checkProcess = $makeAdmin->save();
+        if($checkProcess) {
+            return response()->json(['result' => 'success'], 200);
+        } else {
+            return response()->json(['result' => 'failure'], 500);
+        }
+
     }
 
 
-    public function updateAdminMember(Request $request)
+    public function resetAdminMember(Request $request)
     {
+        $getAdmin= User::find($request->id);
+        
+        $getAdmin->password = Hash::make('password123');
+        $getAdmin->updated_at = Carbon::now();
+        $checkProcess = $getAdmin->save();
+
+        if($checkProcess) {
+            return response()->json(['result' => 'success'], 200);
+        } else {
+            return response()->json(['result' => 'failure'], 500);
+        }
+
+    }
+
+    public function updateStatusAdminMember(Request $request)
+    {
+        $getAdmin= User::find($request->id);
+        
+        $getAdmin->status = $request->statusAdmin;
+        $checkProcess = $getAdmin->save();
+
+        if($checkProcess) {
+            return response()->json(['result' => 'success'], 200);
+        } else {
+            return response()->json(['result' => 'failure'], 500);
+        }
     }
 
     public function deleteAdminMember(Request $request)
     {
+        $getAdmin= User::find($request->id);
+        $checkProcess = $getAdmin->delete();
+        if($checkProcess) {
+            return response()->json(['result' => 'success'], 200);
+        } else {
+            return response()->json(['result' => 'failure'], 500);
+        }
+    }
+
+
+    // Profile Admin
+    public function profileAdmin()
+    {
+        $id = Auth::user()->id;
+        $dataAdmin = User::find($id);
+        return view('admin.profile-admin', compact($dataAdmin));
+    }
+
+    public function editAdmin(Request $request)
+    {
+
     }
 }

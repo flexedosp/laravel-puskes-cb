@@ -20,33 +20,33 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'Super Admin',
-                'email' => 'superadmin@puskescg.com',
+                'username' => 'superadmin@pcb.com',
                 'password' => Hash::make('password123'),
-                'gambar' => 'john_doe_image.jpg',
+                'gambar' => 'default_user.jpg',
                 'status' => 1,
                 'deleted_at' => null,
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'updated_at' => null,
             ],
             [
                 'name' => 'Admin 1',
-                'email' => 'admin.satu@puskescg.com',
+                'username' => 'admin.satu@pcb.com',
                 'password' => Hash::make('password123'),
-                'gambar' => 'jane_smith_image.jpg',
+                'gambar' => 'default_user.jpg',
                 'status' => 2,
                 'deleted_at' => null,
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'updated_at' => null,
             ],
             [
                 'name' => 'Admin 2',
-                'email' => 'admin.dua@puskescg.com',
+                'username' => 'admin.dua@pcb.com',
                 'password' => Hash::make('password123'),
-                'gambar' => 'joni_smith_image.jpg',
+                'gambar' => 'default_user.jpg',
                 'status' => 2,
                 'deleted_at' => null,
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'updated_at' => null,
             ]
         ]);
     }

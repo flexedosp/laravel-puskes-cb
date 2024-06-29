@@ -21,35 +21,33 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $request->validate([
-            'emailAdmin' => ['required', 'email'],
-            'passwordAdmin' =>['required']
+            'usernameAdmin' => ['required', 'email'],
+            'passwordAdmin' => ['required']
         ]);
-        
+
         $credentialsInfo = [
-            'email' => $request->emailAdmin,
+            'username' => $request->usernameAdmin,
             'password' => $request->passwordAdmin
         ];
 
         // Cek OS
         $agent = new Agent();
         $this->os = $agent->platform();
-// dd($this->os);
-        if($this->os == "Windows" || $this->os == "OS X" || $this->os == "Ubuntu"){
+        // dd($this->os);
+        if ($this->os == "Windows" || $this->os == "OS X" || $this->os == "Ubuntu") {
             if (Auth::attempt($credentialsInfo)) {
-                if(Auth::user()->deleted_by != null && Auth::user()->deleted_by != null){
+                if (Auth::user()->deleted_by != null && Auth::user()->deleted_by != null) {
                     $request->session()->regenerate();
                     return redirect()->intended('/admin-dashboard');
-                }else{
+                } else {
                     return redirect()->route('admin.login')->with('errorLogin', 'Maaf, akun admin tidak ditemukan. Silahkan hubungi tim pihak puskesmas jika ini sebuah kesalahan.');
                 }
             }
-        }else if($this->os != "Windows" || $this->os != "OS X" || $this->os != "Ubuntu"){
+        } else if ($this->os != "Windows" || $this->os != "OS X" || $this->os != "Ubuntu") {
             return redirect()->route('admin.login')->with('errorLogin', 'Maaf, admin dashboard hanya bisa diakses jika anda menggunakan Windows, OS X (Macintosh atau Macbook), atau Ubuntu');
-        }else{
-            return redirect()->route('admin.login')->with('errorLogin', 'Gagal Login!');
+        } else {
+            return redirect()->route('admin.login')->with('errorLogin', 'Maaf, ada kesalahan. Silahkan cek kembali username dan passwordnya');
         }
-        
-        
     }
 
     public function logout(Request $request)

@@ -3,6 +3,7 @@
         RunSummernote();
         TableDataBerita();
         TableDataModul();
+        TableDataMemberAdmin();
         checkGambar();
     });
 
@@ -831,12 +832,10 @@
         $('#TableMemberAdmin').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "",
+            ajax: "{{ route('data.memberadmin') }}",
             columns: [{
                     data: 'count',
                     name: 'no'
-                    // orderable: false,
-                    // searchable: false
                 }, // Kolom nomor urut
                 // Tambahkan kolom lainnya sesuai dengan model Anda
                 {
@@ -846,15 +845,20 @@
                     searchable: false,
                     render: function(data, type, row, meta) {
                         return `
-                        <button class="btn btn-primary view-btn"  data-bs-toggle="modal" data-bs-target="#ModalViewMemberAdmin" onclick="ViewMemberAdmin(${data})" >View</button>
-                        <button class="btn btn-warning edit-btn"  data-bs-toggle="modal" data-bs-target="#ModalFormMemberAdmin" onclick="ViewEditMemberAdmin(${data})">Edit</button>
-                        <button class="btn btn-danger delete-btn" onclick="deleteModul(${data})">Delete</button>
+                        <button class=" mx-1 btn btn-primary view-btn"  data-bs-toggle="modal" data-bs-target="#ModalViewMemberAdmin" onclick="ViewMemberAdmin(${data})" >View</button>
+                        <button class=" mx-1 btn btn-warning delete-btn" onclick="resetPassword(${data})">Reset Password</button>
+                        <button class=" mx-1 btn btn-secondary delete-btn" onclick="changeStatus(${data})">Ubah Status</button>
+                        <button class=" mx-1 btn btn-danger delete-btn" onclick="deleteModul(${data})">Delete</button>
                     `;
                     }
                 },
                 {
-                    data: 'nama',
-                    name: 'nama'
+                    data: 'username',
+                    name: 'username'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
                 }
 
             ],
@@ -884,16 +888,17 @@
             dataType: "json",
             success: function(data) {
                 console.log(data);
-                $("#judulMemberAdmin").html(data.nama);
-                $("#penulisMemberAdmin").html("Penulis : " + data.created_by);
+                $("#namaAdmin").html(data.nama);
+                $("#usernameAdmin").html(data.usernama);
+                $("#jenisKelaminAdmin").html("Jenis Kelamin" + data.jenis_kelamin);
+                $("#statusMemberAdmin").html("Status" + data.status);
 
                 let getDate = new Date(data.created_at);
                 let setFormatDate = getDate.getFullYear() + "-" + (getDate.getMonth() < 10 ? "0" + getDate
                     .getMonth() : getDate.getMonth()) + "-" + (getDate.getDate() < 10 ? "0" + getDate
                     .getDate() : getDate.getDate());
-                $("#tanggalMemberAdmin").html("Tanggal Pembuatan : " + setFormatDate);
-                $("#gambarMemberAdmin").attr("src", "/img/admin/" + data.gambar);
-                $("#deskripsiMemberAdmin").html(data.deskripsi);
+                $("#tanggalMemberAdmin").html("Tanggal Akun Dibuat : " + setFormatDate);
+                // $("#gambarMemberAdmin").attr("src", "/img/admin/" + data.gambar);
 
             }
         })
@@ -901,22 +906,22 @@
     }
 
     function clearViewMemberAdmin() {
-        $("#judulMemberAdmin").html(" ");
-        $("#penulisMemberAdmin").html(" ");
+        $("#namaAdmin").html(" ");
+        $("#usernameAdmin").html(" ");
+        $("#jenisKelaminAdmin").html(" ");
+        $("#statusMemberAdmin").attr("src", " ");
         $("#tanggalMemberAdmin").html(" ");
-        $("#gambarMemberAdmin").attr("src", " ");
-        $("#deskripsiMemberAdmin").html(" ");
     }
 
     function ViewTambahMemberAdmin() {
-        $("#ModalFormMemberAdminLabel").html("Tambah MemberAdmin");
+        // $("#ModalFormMemberAdminLabel").html("Tambah MemberAdmin");
         $("#submitFormMemberAdmin").html("Tambah Data");
         $("#submitFormMemberAdmin").attr('onclick', 'TambahMemberAdmin()');
     }
 
     function TambahMemberAdmin() {
 
-        var getIdForm = document.getElementById("#formMemberAdmin")
+        var getIdForm = document.getElementById("#formDataMemberAdmin")
         var formData = new FormData(getIdForm);
         // console.log("----------------");
         // formData.forEach(function(value, key) {

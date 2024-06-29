@@ -38,31 +38,42 @@ Route::get('/admin-logout', [AuthController::class, 'logout'])->name('admin.logo
 
 // BEGIN Admin Route
 Route::middleware('isAdmin')->group(function () {
+    // BEGIN Halaman Admin
     Route::get('/admin-dashboard', [Admin::class, 'index'])->name('admin.home');
     Route::get('/admin-berita', [Admin::class, 'berita'])->name('admin.berita');
     Route::get('/admin-modul', [Admin::class, 'modul'])->name('admin.modul');
     Route::get('/admin-member', [Admin::class, 'adminMember'])->name('admin.memberadmin');
+    // END Halaman Admin
 
-
+    // BEGIN Olah Data Berita
     Route::get('/data-berita', [Admin::class, 'getAllBerita'])->name('data.berita');
     Route::get('/detail-berita', [Admin::class, 'viewBerita'])->name('data.detailberita');
     Route::post('/create-berita', [Admin::class, 'createBerita'])->name('data.createberita');
     Route::post('/update-berita', [Admin::class, 'updateBerita'])->name('data.updateberita');
     Route::post('/delete-berita', [Admin::class, 'deleteBerita'])->name('data.deleteberita');
-    // Route::get('/delete-berita/{delete-berita:id}', [Admin::class, 'deleteBerita'])->name('data.deleteberita');
+    // END Olah Data Berita
 
+    // BEGIN Olah Data Modul
     Route::get('/data-modul', [Admin::class, 'getAllModul'])->name('data.modul');
     Route::get('/detail-modul', [Admin::class, 'viewModul'])->name('data.detailmodul');
     Route::post('/create-modul', [Admin::class, 'createModul'])->name('data.createmodul');
     Route::post('/update-modul', [Admin::class, 'updateModul'])->name('data.updatemodul');
     Route::post('/delete-modul', [Admin::class, 'deleteModul'])->name('data.deletemodul');
+    // END Olah Data Modul
 
-
-    Route::get('/data-memberadmin', [Admin::class, 'getAllMemberAdmin'])->name('data.memberadmin');
+    // BEGIN Olah Data Member Admin
+    Route::get('/data-memberadmin', [Admin::class, 'getAllAdminMember'])->name('data.memberadmin');
     Route::get('/detail-memberadmin', [Admin::class, 'viewMemberAdmin'])->name('data.detailmemberadmin');
     Route::post('/create-memberadmin', [Admin::class, 'createMemberAdmin'])->name('data.creatememberadmin');
-    Route::post('/update-memberadmin', [Admin::class, 'updateMemberAdmin'])->name('data.updatememberadmin');
+    Route::post('/reset-memberadmin', [Admin::class, 'resetMemberAdmin'])->name('data.resetmemberadmin');
+    Route::post('/update-memberadmin', [Admin::class, 'updateStatusMemberAdmin'])->name('data.updatestatusmemberadmin');
     Route::post('/delete-memberadmin', [Admin::class, 'deleteMemberAdmin'])->name('data.deletememberadmin');
+    // END Olah Data Member Admin
 
+    // BEGIN Olah Data Profile Admin
+Route::get('/profile-admin', [Admin::class, 'profileAdmin'])->name('profile.admin');
+Route::get('/profile-admin/edit', [Admin::class, 'editAdmin'])->name('edit.admin');
+Route::get('/profile-admin/delete', [Admin::class, 'deleteAdmin'])->name('delete.admin');
+    // END Olah Data Profile Admin
 });
 // END Admin Route

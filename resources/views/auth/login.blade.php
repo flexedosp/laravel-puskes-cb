@@ -23,9 +23,9 @@
                     @csrf
                     <!-- Email -->
                     <div class="mb-3">
-                        <label for="emailAdmin" class="form-label">Username</label>
-                        <input type="email" class="form-control" id="emailAdmin" name="emailAdmin"
-                            placeholder="Masukkan email Anda" value="{{ old('emailAdmin') }}">
+                        <label for="usernameAdmin" class="form-label">Username</label>
+                        <input type="email" class="form-control" id="usernameAdmin" name="usernameAdmin"
+                            placeholder="Masukkan email Anda" value="{{ old('usernameAdmin') }}">
                     </div>
 
                     <div class="mb-3">
