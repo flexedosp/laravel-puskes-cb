@@ -47,4 +47,4 @@
     </div>
   </nav>
 
-<button type="button" id="feedback" class="btn btn-dark pb-4">Kritik & Saran</button>
+<a id="feedback" class="btn btn-dark pb-4 text-decoration-none" href="<?= route('guest.formkuesioner') ?>">Kritik & Saran</a>

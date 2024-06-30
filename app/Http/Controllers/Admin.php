@@ -9,11 +9,12 @@ use App\Models\Modul;
 use App\Models\Berita;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\PertanyaanPasien;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class Admin extends Controller
 {
@@ -445,39 +446,37 @@ class Admin extends Controller
         $makeAdmin->password = Hash::make('password123');
 
         $checkProcess = $makeAdmin->save();
-        if($checkProcess) {
+        if ($checkProcess) {
             return response()->json(['result' => 'success'], 200);
         } else {
             return response()->json(['result' => 'failure'], 500);
         }
-
     }
 
 
     public function resetAdminMember(Request $request)
     {
-        $getAdmin= User::find($request->id);
-        
+        $getAdmin = User::find($request->id);
+
         $getAdmin->password = Hash::make('password123');
         $getAdmin->updated_at = Carbon::now();
         $checkProcess = $getAdmin->save();
 
-        if($checkProcess) {
+        if ($checkProcess) {
             return response()->json(['result' => 'success'], 200);
         } else {
             return response()->json(['result' => 'failure'], 500);
         }
-
     }
 
     public function updateStatusAdminMember(Request $request)
     {
-        $getAdmin= User::find($request->id);
-        
+        $getAdmin = User::find($request->id);
+
         $getAdmin->status = $request->status;
         $checkProcess = $getAdmin->save();
 
-        if($checkProcess) {
+        if ($checkProcess) {
             return response()->json(['result' => 'success'], 200);
         } else {
             return response()->json(['result' => 'failure'], 500);
@@ -486,9 +485,15 @@ class Admin extends Controller
 
     public function deleteAdminMember(Request $request)
     {
-        $getAdmin= User::find($request->id);
+        $getAdmin = User::find($request->id);
+        if ($getAdmin->gambar != "default_content.png") {
+            $imagePath = public_path('img/modul/' . $getAdmin->gambar);
+            if (File::exists($imagePath)) {
+                File::delete($imagePath);
+            }
+        }
         $checkProcess = $getAdmin->delete();
-        if($checkProcess) {
+        if ($checkProcess) {
             return response()->json(['result' => 'success'], 200);
         } else {
             return response()->json(['result' => 'failure'], 500);
@@ -500,26 +505,97 @@ class Admin extends Controller
     public function profileAdmin()
     {
         $id = Auth::user()->id;
+        $data['titlePage'] = 'Profile Admin';
+        $data['dataAdmin'] = User::find($id);
+        return view('admin.profile-admin', $data);
+    }
+
+    public function getProfileAdmin()
+    {
+        $id = Auth::user()->id;
         $dataAdmin = User::find($id);
-        return view('admin.profile-admin', compact($dataAdmin));
+        return response()->json($dataAdmin);
     }
 
     public function editAdmin(Request $request)
     {
+        $getAdmin = User::find($request->idAdmin);
 
+        $hash = $request->editPasswordAdmin;
+        if ($hash) {
+            $setPassword = Hash::make($hash);
+            $getAdmin->password = $setPassword;
+        } else {
+            $getAdmin->password = $getAdmin->password;
+        }
+
+        try {
+            if ($request->hasFile('editGambarAdmin') && $request->file('editGambarAdmin')->isValid()) {
+                $imagePath = public_path('img/profile/' . $getAdmin->gambar);
+                if (!is_null($getAdmin->gambar)) {
+                    if ($getAdmin->gambar != "default_user.jpg") {
+                        if (File::exists($imagePath)) {
+                            File::delete($imagePath);
+                        }
+                    }
+                }
+                $imageName = time() . '.' . $request->editGambarAdmin->extension();
+                $request->editGambarAdmin->move(public_path('img/profile'), $imageName);
+            } else {
+                $imageName = $getAdmin->gambar;
+            }
+        } catch (\Exception $e) {
+            $imageName = $getAdmin->gambar;
+        }
+
+        if ($request->editUsernameAdmin) {
+            $setUsername = $request->editUsernameAdmin . "@pcb.com";
+        } else {
+            $setUsername = $getAdmin->username;
+        }
+
+        $getAdmin->name = $request->editNamaAdmin;
+        $getAdmin->username = $setUsername;
+        $getAdmin->jenis_kelamin = $request->inputJenisKelaminAdmin;
+        $getAdmin->gambar = $imageName;
+
+        $checkProcess = $getAdmin->save();
+        if ($checkProcess) {
+            return response()->json(['result' => 'success'], 200);
+        } else {
+            return response()->json(['result' => 'failure'], 500);
+        }
     }
 
     //Kuesioner
 
-    public function kuesioner(){
+    public function kuesioner()
+    {
+        $data = PertanyaanPasien::all();
 
+        foreach ($data as $index => &$dataCount) {
+            $dataCount['count'] = $index + 1; // $index + 1 untuk memulai dari 1, bukan 0
+        }
+        return view('admin.kuesioner-admin');
     }
 
-    public function viewKuesioner(){
-        
+    public function getDataKuesioner()
+    {
+        $data = PertanyaanPasien::all();
+        return response()->json($data);
     }
 
-    public function hapuskuesioner(){
+    public function viewKuesioner(Request $request)
+    {
+        $getData = PertanyaanPasien::find($request->id);
+        if ($getData->is_read == 0) {
+            $getData->is_read = 1;
+            $getData->save();
+        }
+        return view('admin.viewkuesioner-admin', $getData);
+    }
 
+    public function hapusKuesioner()
+    {
     }
 }

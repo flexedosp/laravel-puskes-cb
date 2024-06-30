@@ -24,15 +24,28 @@
 
 @section('container')
 
-<section class="vw-100 vh-auto">
-    <x-carousel :dataBerita="$dataBerita" />
+    <section class="vw-100 vh-auto">
+        <x-carousel :dataBerita="$dataBerita" />
     </section>
 
-    <section id="card-section" class="vw-100 mx-auto px-3">
-        <div id="cardContainer" class="my-5">
-            @foreach ($dataModul as $m )
-            <x-card :judul="$m->nama" :isi="substr($m->deskripsi, 0, 40)" :gambar="$m->gambar" :slug="$m->slug" :tgl="'Dibuat pada tanggal '. $m->created_at->toDateString()"/>
-            @endforeach
+    @if ($dataModul)
+        <p class="fw-bold fs-4 text-center mt-5">Modul Kesehatan Terkini!</p>
+        <section id="card-section" class="vw-100 mx-auto  px-3">
+            <div id="cardContainer" class=" mx-auto">
+                @foreach ($dataModul as $m)
+                    <x-card :judul="$m->nama" :isi="substr($m->deskripsi, 0, 40)" :gambar="$m->gambar" :slug="$m->slug" :tgl="'Dibuat tanggal ' . $m->created_at->toDateString()" />
+                @endforeach
+            </div>
+        </section>
+
+        <div class="d-flex justify-content-center">
+            <a href="{{ route('guest.modul') }}" class="btn btn-primary text-decoration-none mt-3 mb-5">Cek Selengkapnya</a>
         </div>
-    </section>
+    @else
+        <section class="vw-100 vh-auto mx-auto px-3">
+            <div class="d-flex justify-content-center">
+                <p class="fs-3 fw-bold text-center">Nantikan Modul Kesehatan dari <br> Puskesmas Curugbitung</p>
+            </div>
+        </section>
+    @endif
 @endsection

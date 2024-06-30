@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="/img/logo_puskes_cb.png" type="image/png">
-    <title>{{ $titlePage }} </title>
+    <title>Feedback Pasien | Puskesmas Curugbitung </title>
 
     {{-- CSS Library --}}
     {{-- AOS --}}
@@ -18,7 +18,7 @@
     <link href="/vendor/bootstrap5.3.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
 {{-- Custom CSS --}}
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/survey_styles.css">
 {{-- CSS Library END --}}
     
 </head>

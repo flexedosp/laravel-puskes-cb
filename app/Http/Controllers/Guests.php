@@ -54,7 +54,7 @@ class Guests extends Controller
         $data['titleNav'] = 'Beranda';
 
         $data['dataBerita'] = Berita::orderBy('id', 'asc')->take(3)->get();
-        $data['dataModul'] = Modul::orderBy('id', 'asc')->take(2)->get();
+        $data['dataModul'] = Modul::orderBy('id', 'desc')->take(2)->get();
 
         return view('guests.home', $data);
     }
@@ -252,4 +252,13 @@ class Guests extends Controller
     }
     // END Child Function
 
+    // BEGIN Kuesioner Pasien
+    public function kuesionerPasien(){
+        return view('guests.kuesioner');
+    }
+
+    public function sendKuesionerPasien(Request $request){
+
+    }
+    // END Kuesioner Pasien
 }

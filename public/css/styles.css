@@ -3,6 +3,11 @@ body {
     overflow-x: hidden; /* Mencegah scroll bar horizontal */
     box-sizing: border-box;
 }
+.img-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
 
 .z-index-1000{
     z-index: 1000;
@@ -79,10 +84,10 @@ body {
 
 /* BEGIN Card Section */
 #card-section {
-    height: 100vh;
+    height: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 #cardContainer {

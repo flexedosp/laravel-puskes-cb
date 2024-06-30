@@ -68,7 +68,7 @@
                 @if(Auth::user()->status == 1)
                 <li class="nav-item">
                     <a href="{{ route('admin.memberadmin') }}">
-                        <i class="fas fa-desktop"></i>
+                        <i class="fas fa-user"></i>
                         <p>Admin</p>
                     </a>
                 </li>

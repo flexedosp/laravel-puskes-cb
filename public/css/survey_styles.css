@@ -1,0 +1,47 @@
+html,
+body {
+    overflow-x: hidden; /* Mencegah scroll bar horizontal */
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle, transparent 25%, #ffffff 26%),
+        linear-gradient(
+            0deg,
+            transparent 44%,
+            #cbe4d4 45%,
+            #cbe4d4 55%,
+            transparent 56%
+        ),
+        linear-gradient(
+            90deg,
+            transparent 44%,
+            #cbe4d4 45%,
+            #cbe4d4 55%,
+            transparent 56%
+        );
+    background-size: 3em 3em;
+    background-color: #ffffff;
+    opacity: 1;
+}
+
+.img-survey {
+    width: auto;
+    height: 100px;
+    margin: 20px;
+}
+
+#divSurveyAdmin {
+    width: 50vw;
+    height: auto;
+    padding: 40px;
+}
+
+@media screen and (max-width:1024px) {
+    .img-survey {
+        height: 40px;
+    }
+    #divSurveyAdmin {
+        width: 100vw;
+    }
+}

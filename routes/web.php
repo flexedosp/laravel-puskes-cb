@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Route;
 // BEGIN Main Route | Guest 
 Route::get('/', [Guests::class, 'index'])->name('guest.home');
 
+// BEGIN Kuesioner Pasien
+Route::get('/kuesioner-pasien', [Guests::class, 'kuesionerPasien'])->name('guest.formkuesioner');
+Route::post('/kuesioner-pasien/send', [Guests::class, 'sendKuesionerPasien'])->name('guest.kirimkuesioner');
+// END Kuesioner Pasien
+
 // BEGIN Tentang Kami
 Route::get('/tentangkami', [Guests::class, 'tentangKami'])->name('guest.tentangkami');
 Route::get('/tentangkami#KepalaPuskesmas', [Guests::class, 'tentangKami'])->name('guest.tentangkami.kepalapuskes');
@@ -22,7 +27,6 @@ Route::get('/layanan', [Guests::class, 'layanan'])->name('guest.layanan');
 Route::match(['get', 'post'], '/berita', [Guests::class, 'berita'])->name('guest.berita');
 Route::match(['get', 'post'], '/modul', [Guests::class, 'modul'])->name('guest.modul');
 Route::get('/kontak', [Guests::class, 'kontak'])->name('guest.kontak');
-Route::get('/feedbackpasien', [Guests::class, 'feedback'])->name('guest.feedback');
 // END Main Route | Guest 
 
 // BEGIN Get Data Route | Guest 
@@ -43,6 +47,8 @@ Route::middleware('isAdmin')->group(function () {
     Route::get('/admin-berita', [Admin::class, 'berita'])->name('admin.berita');
     Route::get('/admin-modul', [Admin::class, 'modul'])->name('admin.modul');
     Route::get('/admin-member', [Admin::class, 'adminMember'])->name('admin.memberadmin');
+    Route::get('/profile-admin', [Admin::class, 'profileAdmin'])->name('profile.admin');
+    Route::get('/admin-list-kuesioner', [Admin::class, 'kuesioner'])->name('kuesioner.admin');
     // END Halaman Admin
 
     // BEGIN Olah Data Berita
@@ -71,9 +77,9 @@ Route::middleware('isAdmin')->group(function () {
     // END Olah Data Member Admin
 
     // BEGIN Olah Data Profile Admin
-    Route::get('/profile-admin', [Admin::class, 'profileAdmin'])->name('profile.admin');
-    Route::post('/profile-admin/edit', [Admin::class, 'editAdmin'])->name('edit.admin');
-    Route::post('/profile-admin/delete', [Admin::class, 'deleteAdmin'])->name('delete.admin');
+    Route::get('/profile-admin/get-data', [Admin::class, 'getProfileAdmin'])->name('detailprofile.admin');
+    Route::post('/profile-admin/edit', [Admin::class, 'editAdmin'])->name('editprofile.admin');
     // END Olah Data Profile Admin
+
 });
 // END Admin Route

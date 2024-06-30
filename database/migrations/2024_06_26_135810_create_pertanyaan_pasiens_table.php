@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('no_telp')->unique();
             $table->string('jenis_kelamin');
             $table->mediumText('isi_pertanyaan');
-            $table->dateTime('created_by');
+            $table->dateTime('created_at');
+            $table->integer('is_read');
             // $table->timestamps();
         });
     }

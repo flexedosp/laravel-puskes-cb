@@ -25,15 +25,17 @@
             @endforeach
             
         </div>
-        <button class="carousel-control-prev bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            {{-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> --}}
-            <i class="fa-solid fa-chevron-left text-primary fs-1"></i>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            {{-- <span class="carousel-control-next-icon" aria-hidden="true"></span> --}}
-            <i class="fa-solid fa-chevron-right text-primary fs-1"></i>
-            <span class="visually-hidden">Next</span>
-        </button>
+        @if($dataBerita)
+            <button class="carousel-control-prev bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                {{-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> --}}
+                <i class="fa-solid fa-chevron-left text-primary fs-1"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                {{-- <span class="carousel-control-next-icon" aria-hidden="true"></span> --}}
+                <i class="fa-solid fa-chevron-right text-primary fs-1"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
+        @endif
     </div>    
 </div>

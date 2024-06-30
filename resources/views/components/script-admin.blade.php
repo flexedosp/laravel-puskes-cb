@@ -5,6 +5,7 @@
         TableDataModul();
         TableDataMemberAdmin();
         checkGambar();
+        checkGambarAdmin();
     });
 
     function RunSummernote() {
@@ -149,10 +150,10 @@
             title: "Data akan di tambah!",
             text: "Apakah anda sudah yakin dengan pengisian formnya?",
             icon: "question",
-            confirmButtonText: "Yes",
+            confirmButtonText: "Ya",
             confirmButtonColor: "#3085d6",
             showDenyButton: true,
-            denyButtonText: "No",
+            denyButtonText: "Tidak",
             allowOutsideClick: false,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -198,7 +199,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -267,10 +268,10 @@
             title: "Data akan diubah!",
             text: "Apakah anda sudah yakin untuk mengubah data ini?",
             icon: "question",
-            confirmButtonText: "Yes",
+            confirmButtonText: "Ya",
             confirmButtonColor: "#3085d6",
             showDenyButton: true,
-            denyButtonText: "No",
+            denyButtonText: "Tidak",
             allowOutsideClick: false,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -316,7 +317,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -358,10 +359,10 @@
             title: "Data akan dihapus!",
             text: "Apakah anda sudah yakin untuk menghapus data ini?",
             icon: "question",
-            confirmButtonText: "Yes",
+            confirmButtonText: "Ya",
             confirmButtonColor: "#3085d6",
             showDenyButton: true,
-            denyButtonText: "No",
+            denyButtonText: "Tidak",
             allowOutsideClick: false,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -408,7 +409,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -542,10 +543,10 @@
             title: "Data akan di tambah!",
             text: "Apakah anda sudah yakin dengan pengisian formnya?",
             icon: "question",
-            confirmButtonText: "Yes",
+            confirmButtonText: "Ya",
             confirmButtonColor: "#3085d6",
             showDenyButton: true,
-            denyButtonText: "No",
+            denyButtonText: "Tidak",
             allowOutsideClick: false,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -591,7 +592,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -660,10 +661,10 @@
             title: "Data akan diubah!",
             text: "Apakah anda sudah yakin untuk mengubah data ini?",
             icon: "question",
-            confirmButtonText: "Yes",
+            confirmButtonText: "Ya",
             confirmButtonColor: "#3085d6",
             showDenyButton: true,
-            denyButtonText: "No",
+            denyButtonText: "Tidak",
             allowOutsideClick: false,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -709,7 +710,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -751,10 +752,10 @@
             title: "Data akan dihapus!",
             text: "Apakah anda sudah yakin untuk menghapus data ini?",
             icon: "question",
-            confirmButtonText: "Yes",
+            confirmButtonText: "Ya",
             confirmButtonColor: "#3085d6",
             showDenyButton: true,
-            denyButtonText: "No",
+            denyButtonText: "Tidak",
             allowOutsideClick: false,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -801,7 +802,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -933,10 +934,10 @@
             title: "Data akan di tambah!",
             text: "Apakah anda sudah yakin dengan pengisian formnya?",
             icon: "question",
-            confirmButtonText: "Yes",
+            confirmButtonText: "Ya",
             confirmButtonColor: "#3085d6",
             showDenyButton: true,
-            denyButtonText: "No",
+            denyButtonText: "Tidak",
             allowOutsideClick: false,
         }).then((result) => {
             if (result.isConfirmed) {
@@ -984,7 +985,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -1066,7 +1067,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -1114,7 +1115,7 @@
             showCancelButton: true,
             inputValidator: (value) => {
                 return new Promise((resolve) => {
-                    
+
 
                     if (value == "superadmin") {
                         cekStatus = 1;
@@ -1134,14 +1135,15 @@
                                 resolve();
                             } else {
                                 resolve(
-                                    "Status yang anda pilih sama dengan sebelumnya!");
+                                    "Status yang anda pilih sama dengan sebelumnya!"
+                                );
                             }
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             Swal.fire({
                                 title: "Error",
                                 width: 800,
-                                text: "Keterangan : " + textStatus + ". " +
+                                text: "Keterangan : <br>" + textStatus + ". " +
                                     jqXHR
                                     .responseText +
                                     ". " + errorThrown,
@@ -1162,10 +1164,10 @@
                 title: "Perubahan Statsu Admin!",
                 text: "Status Admin akan berubah. Anda sudah yakin?",
                 icon: "warning",
-                confirmButtonText: "Yes",
+                confirmButtonText: "Ya",
                 confirmButtonColor: "#3085d6",
                 showDenyButton: true,
-                denyButtonText: "No",
+                denyButtonText: "Tidak",
                 allowOutsideClick: false,
             }).then((result) => {
                 if (result.isConfirmed) {
@@ -1216,7 +1218,7 @@
                             Swal.fire({
                                 title: "Error",
                                 width: 800,
-                                text: "Keterangan : " + textStatus + ". " + jqXHR
+                                text: "Keterangan : <br>" + textStatus + ". " + jqXHR
                                     .responseText +
                                     ". " + errorThrown,
                                 icon: "error",
@@ -1301,7 +1303,7 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : " + textStatus + ". " + jqXHR
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
                                 .responseText +
                                 ". " + errorThrown,
                             icon: "error",
@@ -1327,4 +1329,132 @@
         });
     }
     //#endregion Bagian Admin (For Super Admin)
+
+    //#region Profile Admin
+    function showEditProfile() {
+        $.ajax({
+            url: "{{ route('detailprofile.admin') }}",
+            dataType: "json",
+            method: "GET",
+            success: function(data) {
+                $("#idAdmin").val(data.id);
+                $("#editNamaAdmin").val(data.name);
+                $("#inputJenisKelaminAdmin").val(data.jenis_kelamin);
+                let getUsername = data.username.split("@");
+                $("#editUsernameAdmin").val(getUsername[0]);
+                $("#showGambarAdmin").attr("src", "/img/profile/" + data.gambar);
+            }
+        })
+    }
+
+    function clearEditProfile() {
+        $("#editNamaAdmin").val(" ");
+        $("#editUsernameAdmin").val(" ");
+        $("#editPasswordAdmin").val(" ");
+        $("#inputJenisKelaminAdmin").val(" ");
+        $("#showGambarAdmin").attr("src", " ");
+    }
+
+    function checkGambarAdmin() {
+        $('#editGambarAdmin').on('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showGambarAdmin').attr('src', e.target.result).show();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    function ubahProfileAdmin() {
+        let getFormData = $("#FormEditProfileAdmin").get(0);
+        const formData = new FormData(getFormData);
+          console.log("----------------");
+        formData.forEach(function(value, key) {
+            console.log(key, value);
+        });
+          console.log("----------------");
+
+        Swal.fire({
+            title: "Perubahan Profil Admin!",
+            text: "Profil admin akan diubah. Anda sudah yakin?",
+            icon: "question",
+            confirmButtonText: "Ya",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "Tidak",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('editprofile.admin') }}",
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: formData,
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Profil berhasil diubah",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#42f20d",
+                            }).then((result) => {
+                                window.location.replace(
+                                    '{{ route('profile.admin') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                html: "<span>Tidak berhasil ubah profil admin <br>" +
+                                    result
+                                    .message + " </span>",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace(
+                                    '{{ route('profile.admin') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Batal Melakukan Perubahan Profil!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
+        });
+    }
+    //#endregion Profile Admin
 </script>

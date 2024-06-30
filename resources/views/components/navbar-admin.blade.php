@@ -470,7 +470,7 @@
             <li class="nav-item topbar-user dropdown hidden-caret">
                 <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#" aria-expanded="false">
                     <div class="avatar-sm">
-                        {{-- <img src="assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle" /> --}}
+                        <img src="/img/profile/{{ Auth::user()->gambar }}" alt="Gambar Profil" class="avatar-img rounded-circle" />
                     </div>
                     <span class="profile-username">
                         <span class="op-7">Hi,</span>
@@ -479,20 +479,20 @@
                 </a>
                 <ul class="dropdown-menu dropdown-user animated fadeIn">
                     <div class="dropdown-user-scroll scrollbar-outer">
-                        {{-- <li>
+                        <li>
                             <div class="user-box">
                                 <div class="avatar-lg">
-                                    <img src="assets/img/profile.jpg" alt="image profile" class="avatar-img rounded" />
+                                    <img src="/img/profile/{{ Auth::user()->gambar }}" alt="image profile" class="avatar-img rounded" />
                                 </div>
                                 <div class="u-text">
-                                    <h4>Hizrian</h4>
+                                    <h4>{{ Auth::user()->name }}</h4>
                                     <p class="text-muted">
-                                        hello@example.com
+                                        {{ Auth::user()->username }}
                                     </p>
-                                    <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                                    <a href="{{ route('profile.admin') }}" class="btn btn-xs btn-secondary btn-sm">Lihat Profil</a>
                                 </div>
                             </div>
-                        </li> --}}
+                        </li>
                         <li>
                             {{-- <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">My Profile</a>
