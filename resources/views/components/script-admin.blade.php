@@ -831,7 +831,7 @@
     function TableDataMemberAdmin() {
         $('#TableMemberAdmin').DataTable({
             processing: true,
-            serverSide: true,
+            serverSide: false,
             ajax: "{{ route('data.memberadmin') }}",
             columns: [{
                     data: 'count',
@@ -848,7 +848,7 @@
                         <button class=" mx-1 btn btn-primary view-btn"  data-bs-toggle="modal" data-bs-target="#ModalViewMemberAdmin" onclick="ViewMemberAdmin(${data})" >View</button>
                         <button class=" mx-1 btn btn-warning delete-btn" onclick="resetPassword(${data})">Reset Password</button>
                         <button class=" mx-1 btn btn-secondary delete-btn" onclick="changeStatus(${data})">Ubah Status</button>
-                        <button class=" mx-1 btn btn-danger delete-btn" onclick="deleteModul(${data})">Delete</button>
+                        <button class=" mx-1 btn btn-danger delete-btn" onclick="deleteMember(${data})">Delete</button>
                     `;
                     }
                 },
@@ -880,7 +880,7 @@
     function ViewMemberAdmin(id) {
 
         $.ajax({
-            url: "",
+            url: "{{ route('data.detailmemberadmin') }}",
             method: "GET",
             data: {
                 id
@@ -888,10 +888,12 @@
             dataType: "json",
             success: function(data) {
                 console.log(data);
-                $("#namaAdmin").html(data.nama);
-                $("#usernameAdmin").html(data.usernama);
-                $("#jenisKelaminAdmin").html("Jenis Kelamin" + data.jenis_kelamin);
-                $("#statusMemberAdmin").html("Status" + data.status);
+                $("#namaAdmin").html("Nama : " + data.name);
+                $("#usernameAdmin").html("Username : " + data.username);
+                $("#jenisKelaminAdmin").html("Jenis Kelamin : " + ((data.jenis_kelamin == "1") ? "Pria" :
+                    "Wanita"));
+                $("#statusMemberAdmin").html("Status : " + ((data.status == "1") ? "Super Admin" :
+                    "Admin"));
 
                 let getDate = new Date(data.created_at);
                 let setFormatDate = getDate.getFullYear() + "-" + (getDate.getMonth() < 10 ? "0" + getDate
@@ -914,46 +916,415 @@
     }
 
     function ViewTambahMemberAdmin() {
-        // $("#ModalFormMemberAdminLabel").html("Tambah MemberAdmin");
+        $("#ModalFormMemberAdminLabel").html("Tambah Member Admin");
         $("#submitFormMemberAdmin").html("Tambah Data");
         $("#submitFormMemberAdmin").attr('onclick', 'TambahMemberAdmin()');
     }
 
     function TambahMemberAdmin() {
 
-        var getIdForm = document.getElementById("#formDataMemberAdmin")
+        var getIdForm = $("#formDataMemberAdmin").get(0);
         var formData = new FormData(getIdForm);
         // console.log("----------------");
         // formData.forEach(function(value, key) {
         //     console.log(key, value);
         // });
+        Swal.fire({
+            title: "Data akan di tambah!",
+            text: "Apakah anda sudah yakin dengan pengisian formnya?",
+            icon: "question",
+            confirmButtonText: "Yes",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "No",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.creatememberadmin') }}",
+                    method: "POST",
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: formData,
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Data berhasil ditambah!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#42f20d",
+                            }).then((result) => {
+                                window.location.replace(
+                                    '{{ route('admin.memberadmin') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                html: "<span>Data tidak berhasil ditambah! <br>" + result
+                                    .message + " </span>",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace(
+                                    '{{ route('admin.memberadmin') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Data batal ditambah!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
+
+        });
     }
 
-    function ViewEditMemberAdmin(id) {
-        $.ajax({
-            url: "",
-            method: "GET",
-            data: {
-                id
-            },
-            dataType: "json",
-            success: function(data) {
-                console.log(data);
-                $("#ModalFormMemberAdminLabel").html("Edit Member Admin");
-
-
+    function resetPassword(id) {
+        Swal.fire({
+            title: "Password Akan Direset!",
+            text: "Pastikan ini permintaan dari yang bersangkutan. Jika tidak, lakukan persetujuan dulu!",
+            icon: "warning",
+            confirmButtonText: "Sudah Disetujui",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "Belum Disetujui",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.resetmemberadmin') }}",
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: {
+                        id
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Password berhasil direset",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#42f20d",
+                            }).then((result) => {
+                                window.location.replace(
+                                    '{{ route('admin.memberadmin') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                html: "<span>Tidak berhasil reset password <br>" + result
+                                    .message + " </span>",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace(
+                                    '{{ route('admin.memberadmin') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR.responseText +
+                                ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Lakukan persetujuan dengan yang bersangkutan!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
             }
-        })
+
+        });
     }
 
     function clearFormMemberAdmin() {
         $("#ModalFormMemberAdminLabel").html(" ");
-        $("#submitFormMemberAdmin").html(" ");
+        $("#submitFormMemberAdmin").html("Tambah Data");
+        $("#submitFormMemberAdmin").attr('onclick', 'TambahMemberAdmin()');
+    }
 
+    async function changeStatus(id) {
+        let cekStatus = 0;
+        const {
+            value: status
+        } = await Swal.fire({
+            title: "Ubah Status Admin",
+            input: "select",
+            inputOptions: {
+                superadmin: "Super Admin",
+                admin: "Admin"
+            },
+            inputPlaceholder: "Pilih status",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Ubah",
+            showCancelButton: true,
+            inputValidator: (value) => {
+                return new Promise((resolve) => {
+                    
+
+                    if (value == "superadmin") {
+                        cekStatus = 1;
+                    } else if (value == "admin") {
+                        cekStatus = 2;
+                    }
+
+                    $.ajax({
+                        url: "{{ route('data.detailmemberadmin') }}",
+                        method: "GET",
+                        dataType: "json",
+                        data: {
+                            id
+                        },
+                        success: function(data) {
+                            if (cekStatus != data.status) {
+                                resolve();
+                            } else {
+                                resolve(
+                                    "Status yang anda pilih sama dengan sebelumnya!");
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            Swal.fire({
+                                title: "Error",
+                                width: 800,
+                                text: "Keterangan : " + textStatus + ". " +
+                                    jqXHR
+                                    .responseText +
+                                    ". " + errorThrown,
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            });
+                        }
+                    })
+
+                });
+            }
+        });
+        if (status) {
+            Swal.fire({
+                title: "Perubahan Statsu Admin!",
+                text: "Status Admin akan berubah. Anda sudah yakin?",
+                icon: "warning",
+                confirmButtonText: "Yes",
+                confirmButtonColor: "#3085d6",
+                showDenyButton: true,
+                denyButtonText: "No",
+                allowOutsideClick: false,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ route('data.updatestatusmemberadmin') }}",
+                        method: "POST",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                'content') // Include the CSRF token
+                        },
+                        data: {
+                            id: id,
+                            status: cekStatus
+                        },
+                        dataType: 'json',
+                        success: function(data) {
+                            if (data.result == "success") {
+                                Swal.fire({
+                                    title: "Sukses",
+                                    text: "Status berhasil diubah",
+                                    icon: "success",
+                                    confirmButtonText: "OK",
+                                    showCancelButton: false,
+                                    allowOutsideClick: false,
+                                    confirmButtonColor: "#42f20d",
+                                }).then((result) => {
+                                    window.location.replace(
+                                        '{{ route('admin.memberadmin') }}');
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Gagal",
+                                    html: "<span>Tidak berhasil ubah status admin <br>" +
+                                        result
+                                        .message + " </span>",
+                                    icon: "error",
+                                    confirmButtonText: "OK",
+                                    showCancelButton: false,
+                                    allowOutsideClick: false,
+                                    confirmButtonColor: "#fa0000",
+                                }).then((result) => {
+                                    window.location.replace(
+                                        '{{ route('admin.memberadmin') }}');
+                                });
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            Swal.fire({
+                                title: "Error",
+                                width: 800,
+                                text: "Keterangan : " + textStatus + ". " + jqXHR
+                                    .responseText +
+                                    ". " + errorThrown,
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            });
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire({
+                        title: "Batal",
+                        text: "Lakukan persetujuan dengan yang bersangkutan!",
+                        icon: "error",
+                        confirmButtonText: "OK",
+                        showCancelButton: false,
+                        allowOutsideClick: false,
+                        confirmButtonColor: "#fa0000",
+                    });
+                }
+
+            });
+        }
     }
 
     function deleteMember(id) {
+        Swal.fire({
+            title: "Akun Akan Dihapus!",
+            text: "Anda sudah yakin untuk menghapus akun admin ini?",
+            icon: "question",
+            confirmButtonText: "Hapus",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "Batal",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('data.deletememberadmin') }}",
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // Include the CSRF token
+                    },
+                    data: {
+                        id
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Akun berhasil dihapus!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#42f20d",
+                            }).then((result) => {
+                                window.location.replace(
+                                    '{{ route('admin.memberadmin') }}');
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                html: "<span>Akun tidak berhasil dihapus! <br>" +
+                                    result
+                                    .message + " </span>",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace(
+                                    '{{ route('admin.memberadmin') }}');
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text: "Keterangan : " + textStatus + ". " + jqXHR
+                                .responseText +
+                                ". " + errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Akun batal dihapus",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
+            }
 
+        });
     }
     //#endregion Bagian Admin (For Super Admin)
 </script>

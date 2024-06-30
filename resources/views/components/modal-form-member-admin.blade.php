@@ -21,10 +21,10 @@
                                     name="inputMemberAdminNama">
                             </div>
                             <div class=" mb-3">
-                                <label for="inputMemberAdminUserName" class="form-label">Username :</label>
+                                <label for="inputMemberAdminUsername" class="form-label">Username :</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="inputMemberAdminUserName"
-                                        name="inputMemberAdminUserName" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" id="inputMemberAdminUsername"
+                                        name="inputMemberAdminUsername" aria-describedby="basic-addon2">
                                     <span class="input-group-text" id="basic-addon2">@pcb.com</span>
                                 </div>
                             </div>

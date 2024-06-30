@@ -413,7 +413,7 @@ class Admin extends Controller
     public function getAllAdminMember()
     {
         $dataAdmin = User::all()->filter(function ($item) {
-            return $item->deleted_at == null;
+            return $item->deleted_at == null && $item->id != Auth::user()->id;
         })->toArray();
         foreach ($dataAdmin as $index => &$admin) {
             $admin['count'] = $index + 1; // $index + 1 untuk memulai dari 1, bukan 0
@@ -421,8 +421,15 @@ class Admin extends Controller
         return DataTables::of($dataAdmin)->make(true);
     }
 
-    public function viewAdminMember(Request $request)
+    public function viewMemberAdmin(Request $request)
     {
+        $dataAdmin = User::find($request->id);
+
+        if (!$dataAdmin) {
+            return response()->json(['message' => 'Modul not found'], 404);
+        }
+
+        return response()->json($dataAdmin);
     }
 
 
@@ -430,9 +437,11 @@ class Admin extends Controller
     {
         $makeAdmin = new User;
 
-        $makeAdmin->name = $request->inputMemberAdminName;
-        $makeAdmin->username = $request->inputMemberAdminUsername;
+        $makeAdmin->name = $request->inputMemberAdminNama;
+        $makeAdmin->username = strtolower($request->inputMemberAdminUsername) . "@pcb.com";
+        $makeAdmin->jenis_kelamin = $request->inputMemberAdminJenisKelamin;
         $makeAdmin->status = $request->inputMemberAdminStatus;
+        $makeAdmin->gambar = "default_user.jpg";
         $makeAdmin->password = Hash::make('password123');
 
         $checkProcess = $makeAdmin->save();
@@ -465,7 +474,7 @@ class Admin extends Controller
     {
         $getAdmin= User::find($request->id);
         
-        $getAdmin->status = $request->statusAdmin;
+        $getAdmin->status = $request->status;
         $checkProcess = $getAdmin->save();
 
         if($checkProcess) {
@@ -497,6 +506,20 @@ class Admin extends Controller
 
     public function editAdmin(Request $request)
     {
+
+    }
+
+    //Kuesioner
+
+    public function kuesioner(){
+
+    }
+
+    public function viewKuesioner(){
+        
+    }
+
+    public function hapuskuesioner(){
 
     }
 }

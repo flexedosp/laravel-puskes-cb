@@ -33,7 +33,7 @@
             <div class="container">
                 <div class="page-inner">
                     <div class="ms-auto">
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalFormMemberAdmin" onclick="ViewMember()">Tambah Member Admin</button>
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalFormMemberAdmin" onclick="ViewTambahMemberAdmin()">Tambah Member Admin</button>
                     </div>
                     <div class="my-4">
                         <table id="TableMemberAdmin" class="table table-striped shadow-sm">

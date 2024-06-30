@@ -64,16 +64,16 @@ Route::middleware('isAdmin')->group(function () {
     // BEGIN Olah Data Member Admin
     Route::get('/data-memberadmin', [Admin::class, 'getAllAdminMember'])->name('data.memberadmin');
     Route::get('/detail-memberadmin', [Admin::class, 'viewMemberAdmin'])->name('data.detailmemberadmin');
-    Route::post('/create-memberadmin', [Admin::class, 'createMemberAdmin'])->name('data.creatememberadmin');
-    Route::post('/reset-memberadmin', [Admin::class, 'resetMemberAdmin'])->name('data.resetmemberadmin');
-    Route::post('/update-memberadmin', [Admin::class, 'updateStatusMemberAdmin'])->name('data.updatestatusmemberadmin');
-    Route::post('/delete-memberadmin', [Admin::class, 'deleteMemberAdmin'])->name('data.deletememberadmin');
+    Route::post('/create-memberadmin', [Admin::class, 'createAdminMember'])->name('data.creatememberadmin');
+    Route::post('/reset-memberadmin', [Admin::class, 'resetAdminMember'])->name('data.resetmemberadmin');
+    Route::post('/update-memberadmin', [Admin::class, 'updateStatusAdminMember'])->name('data.updatestatusmemberadmin');
+    Route::post('/delete-memberadmin', [Admin::class, 'deleteAdminMember'])->name('data.deletememberadmin');
     // END Olah Data Member Admin
 
     // BEGIN Olah Data Profile Admin
-Route::get('/profile-admin', [Admin::class, 'profileAdmin'])->name('profile.admin');
-Route::get('/profile-admin/edit', [Admin::class, 'editAdmin'])->name('edit.admin');
-Route::get('/profile-admin/delete', [Admin::class, 'deleteAdmin'])->name('delete.admin');
+    Route::get('/profile-admin', [Admin::class, 'profileAdmin'])->name('profile.admin');
+    Route::post('/profile-admin/edit', [Admin::class, 'editAdmin'])->name('edit.admin');
+    Route::post('/profile-admin/delete', [Admin::class, 'deleteAdmin'])->name('delete.admin');
     // END Olah Data Profile Admin
 });
 // END Admin Route
