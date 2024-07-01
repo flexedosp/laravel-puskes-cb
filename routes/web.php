@@ -51,7 +51,12 @@ Route::middleware('isAdmin')->group(function () {
     Route::get('/admin-modul', [Admin::class, 'modul'])->name('admin.modul');
     Route::get('/admin-member', [Admin::class, 'adminMember'])->name('admin.memberadmin');
     Route::get('/profile-admin', [Admin::class, 'profileAdmin'])->name('profile.admin');
-    Route::get('/admin-list-kuesioner', [Admin::class, 'kuesioner'])->name('kuesioner.admin');
+    Route::get('/admin-list-feedback', [Admin::class, 'feedbackPasien'])->name('feedback.admin');
+    Route::get('/admin-list-feedback/get', [Admin::class, 'getAllFeedbackPasien'])->name('getfeedback.admin');
+    Route::get('/admin-list-feedback/{feedbackPasien:id}', [Admin::class, 'viewFeedbackPasien'])->name('viewfeedback.admin');
+    Route::get('/admin-list-pertanyaan', [Admin::class, 'pertanyaanPasien'])->name('pertanyaan.admin');
+    Route::get('/admin-list-pertanyaan/get', [Admin::class, 'getAllPertanyaanPasien'])->name('getpertanyaan.admin');
+    Route::get('/admin-list-pertanyaan/{pertanyaanPasien:id}', [Admin::class, 'viewPertanyaanPasien'])->name('viewpertanyaan.admin');
     // END Halaman Admin
 
     // BEGIN Olah Data Berita

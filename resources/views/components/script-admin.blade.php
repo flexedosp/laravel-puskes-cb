@@ -3,6 +3,8 @@
         RunSummernote();
         TableDataBerita();
         TableDataModul();
+        DataTableFeedbackPasien();
+        DataTablePertanyaanPasien();
         TableDataMemberAdmin();
         checkGambar();
         checkGambarAdmin();
@@ -1371,11 +1373,11 @@
     function ubahProfileAdmin() {
         let getFormData = $("#FormEditProfileAdmin").get(0);
         const formData = new FormData(getFormData);
-          console.log("----------------");
-        formData.forEach(function(value, key) {
-            console.log(key, value);
-        });
-          console.log("----------------");
+        //   console.log("----------------");
+        // formData.forEach(function(value, key) {
+        //     console.log(key, value);
+        // });
+        //   console.log("----------------");
 
         Swal.fire({
             title: "Perubahan Profil Admin!",
@@ -1457,4 +1459,107 @@
         });
     }
     //#endregion Profile Admin
+
+    //#region Pertanyaan Pasien
+    function DataTablePertanyaanPasien(){
+        $('#TableDataPertanyaan').DataTable({
+            processing: true,
+            serverSide: false,
+            ajax: "{{ route('getpertanyaan.admin') }}",
+            columns: [{
+                    data: 'count',
+                    name: 'no'
+                }, // Kolom nomor urut
+                // Tambahkan kolom lainnya sesuai dengan model Anda
+                {
+                    data: 'id',
+                    name: 'actions',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <a href="/admin-list-pertanyaan/${data}" class="btn btn-primary">View Detail</a>
+                    `;
+                    }
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'created_at',
+                    name: 'created_at',
+                    render: function(data, type, row, meta){
+                        return `${new Date(data).toLocaleDateString()}`;
+                    }
+                }
+
+            ],
+            order: [
+                [1, 'asc']
+            ], // Order default berdasarkan kolom pertama setelah nomor urut
+            columnDefs: [{
+                targets: 0,
+                render: function(data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1; // Kalkulasi nomor urut
+                }
+            }],
+            fixedColumns: {
+                leftColumns: 1
+            }
+        });
+    }
+    //#endregion Pertanyaan Pasien
+
+    //#region Feedback Pasien
+    function DataTableFeedbackPasien(){
+        $('#TableDataFeedback').DataTable({
+            processing: true,
+            serverSide: false,
+            ajax: "{{ route('getfeedback.admin') }}",
+            columns: [{
+                    data: 'count',
+                    name: 'no'
+                }, // Kolom nomor urut
+                // Tambahkan kolom lainnya sesuai dengan model Anda
+                {
+                    data: 'id',
+                    name: 'actions',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row, meta) {
+                        return `
+                        <a href="/admin-list-feedback/${data}" class="btn btn-primary">View Detail</a>
+                    `;
+                    }
+                },
+                {
+                    data: 'nama',
+                    name: 'nama'
+                },
+                {
+                    data: 'created_at',
+                    name: 'created_at',
+                    render: function(data, type, row, meta){
+                        return `${new Date(data).toLocaleDateString()}`;
+                    }
+                }
+
+            ],
+            order: [
+                [1, 'asc']
+            ], // Order default berdasarkan kolom pertama setelah nomor urut
+            columnDefs: [{
+                targets: 0,
+                render: function(data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1; // Kalkulasi nomor urut
+                }
+            }],
+            fixedColumns: {
+                leftColumns: 1
+            }
+        });
+    }
+    //#endregion Feedback Pasien
+
 </script>

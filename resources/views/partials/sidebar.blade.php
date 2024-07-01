@@ -28,7 +28,7 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-item active">
+                <li class="nav-item {{( $titleNav == 'dashboard') ? 'active' : ' ' }}">
                     <a href="{{ route('admin.home') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
@@ -40,7 +40,7 @@
                     </span>
                     <h4 class="text-section">Menu</h4>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{( $titleNav == 'berita' || $titleNav == 'modul') ? 'active' : ' ' }}">
                     <a data-bs-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
                         <p>Konten</p>
@@ -48,14 +48,14 @@
                     </a>
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
-                            <li>
+                            <li class="{{( $titleNav == 'berita') ? 'active' : ' ' }}">
                                 <a href="{{ route('admin.berita') }}">
                                     <span class="sub-item"
                                         >Berita</span
                                     >
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{( $titleNav == 'modul') ? 'active' : ' ' }}">
                                 <a href="{{ route('admin.modul') }}">
                                     <span class="sub-item"
                                         >Modul</span
@@ -66,23 +66,29 @@
                     </div>
                 </li>
                 @if(Auth::user()->status == 1)
-                <li class="nav-item">
+                <li class="nav-item {{( $titleNav == 'admins') ? 'active' : ' ' }}">
                     <a href="{{ route('admin.memberadmin') }}">
                         <i class="fas fa-user"></i>
                         <p>Admin</p>
                     </a>
                 </li>
                 @endif
-                <li class="nav-item">
-                    <a href="#">
+                <li class="nav-item {{( $titleNav == 'feedback') ? 'active' : ' ' }}">
+                    <a href="{{ route('feedback.admin') }}">
                         <i class="fas fa-clipboard-list"></i>
                         <p>Feedback Pasien</p>
+                        @if ($countUnreadFeedback != null || $countUnreadFeedback != 0)
+                        <span class="badge badge-danger">{{ $countUnreadFeedback }}</span>
+                        @endif
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#">
-                        <i class="fas fa-clipboard-list"></i>
+                <li class="nav-item {{( $titleNav == 'pertanyaan') ? 'active' : ' ' }}">
+                    <a href="{{ route('pertanyaan.admin') }}">
+                        <i class="fas fa-tasks"></i>
                         <p>Pertanyaan Pasien</p>
+                        @if ($countUnreadPertanyaan != null || $countUnreadPertanyaan != 0)
+                        <span class="badge badge-danger">{{ $countUnreadPertanyaan }}</span>
+                        @endif
                     </a>
                 </li>
                 <li class="nav-item">

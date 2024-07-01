@@ -32,7 +32,18 @@
 
             <div class="container">
                 <div class="page-inner">
-                    
+                    <div class="my-4">
+                        <table id="TableDataFeedback" class="table table-striped shadow-sm">
+                            <thead>
+                                <tr>
+                                    <td>No</td>
+                                    <td>Cek Detail </td>
+                                    <td>Nama</td>
+                                    <td>Tanggal Dibuat</td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
             <x-footer-admin />

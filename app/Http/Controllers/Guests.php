@@ -291,6 +291,7 @@ class Guests extends Controller
         $newFeedback->email = $request->inputEmail;
         $newFeedback->no_telp = $request->inputNoTelp;
         $newFeedback->is_anonim = $request->inputAnonim;
+        $newFeedback->is_read = 0;
         $newFeedback->created_at = Carbon::now();
         $newFeedback->updated_at = Carbon::now();
 

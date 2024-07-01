@@ -32,17 +32,19 @@
 
             <div class="container">
                 <div class="page-inner">
-                    <div class="my-4">
-                        <table id="TableKuesioner" class="table table-striped shadow-sm">
-                            <thead>
-                                <tr>
-                                    <td>No</td>
-                                    <td>Aksi</td>
-                                    <td>Nama</td>
-                                    <td>Tanggal Dibuat</td>
-                                </tr>
-                            </thead>
-                        </table>
+                    <div class="container py-5"> 
+                        <p class="fw-bold">Nama Responden/Pasien : {{ $dataPertanyaan->nama }}</p>
+                        <p class="fw-bold">Usia : {{ $dataPertanyaan->usia }}</p>
+                        <p class="fw-bold">Jenis Kelamin : {{ $dataPertanyaan->jenis_kelamin }}</p>
+                        <p class="fw-bold">Email : {{ $dataPertanyaan->email }}</p>
+                        <p class="fw-bold">No. Telp./HP : {{ $dataPertanyaan->no_telp }}</p>
+                        <hr>
+                        <p class="fw-bold fs-3">Isi Pertanyaan : </p>
+                        <div class="bg-white rounded p-4 shadow-sm">
+                            <p class="fw-bold">{{ $dataPertanyaan->isi_pertanyaan }}</p>
+                        </div>
+                        <hr>
+                        <p class="fw-bold">Diisi pada tanggal : {{ $dataPertanyaan->created_at->toDateString() }}</p>
                     </div>
                 </div>
             </div>

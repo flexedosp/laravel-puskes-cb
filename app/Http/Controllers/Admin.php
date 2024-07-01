@@ -9,6 +9,7 @@ use App\Models\Modul;
 use App\Models\Berita;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\FeedbackPasien;
 use App\Models\PertanyaanPasien;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\JsonResponse;
@@ -18,9 +19,21 @@ use Illuminate\Support\Facades\Hash;
 
 class Admin extends Controller
 {
+    protected $countUnreadPertanyaan;
+    protected $countUnreadFeedback;
+    public function __construct()
+    {
+       $this->countUnreadPertanyaan = PertanyaanPasien::where('is_read', 0)->count();
+        $this->countUnreadFeedback = FeedbackPasien::where('is_read', 0)->count();
+        // $data['countUnreadPertanyaan'] = PertanyaanPasien::where('is_read', 0)->count();
+        // $data['countUnreadFeedback'] = FeedbackPasien::where('is_read', 0)->count();
+    }
+
     // Main Section Admin
     public function index()
     {
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+        $data['countUnreadFeedback'] = $this->countUnreadFeedback;
         $data['titlePage'] = 'Admin Dashboard | Puskesmas Curugbitung';
         $data['titleNav'] = 'dashboard';
         return view('admin.dashboard', $data);
@@ -29,8 +42,11 @@ class Admin extends Controller
 
     public function berita()
     {
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+        $data['countUnreadFeedback'] = $this->countUnreadFeedback;
         $data['titlePage'] = 'Admin Berita | Puskesmas Curugbitung';
         $data['titleNav'] = 'berita';
+
         return view('admin.berita-admin', $data);
     }
 
@@ -218,6 +234,8 @@ class Admin extends Controller
 
     public function modul()
     {
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+        $data['countUnreadFeedback'] = $this->countUnreadFeedback;
         $data['titlePage'] = 'Admin Modul | Puskesmas Curugbitung';
         $data['titleNav'] = 'modul';
         return view('admin.modul-admin', $data);
@@ -406,8 +424,10 @@ class Admin extends Controller
 
     public function adminMember()
     {
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+        $data['countUnreadFeedback'] = $this->countUnreadFeedback;
         $data['titlePage'] = 'Admin Member | Puskesmas Curugbitung';
-        $data['titleNav'] = 'dashboard';
+        $data['titleNav'] = 'admins';
         return view('admin.member-admin', $data);
     }
 
@@ -504,6 +524,8 @@ class Admin extends Controller
     // Profile Admin
     public function profileAdmin()
     {
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+        $data['countUnreadFeedback'] = $this->countUnreadFeedback;
         $id = Auth::user()->id;
         $data['titlePage'] = 'Profile Admin';
         $data['dataAdmin'] = User::find($id);
@@ -569,33 +591,70 @@ class Admin extends Controller
 
     //Kuesioner
 
-    public function kuesioner()
+    public function feedbackPasien()
     {
-        $data = PertanyaanPasien::all();
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+        $data['countUnreadFeedback'] = $this->countUnreadFeedback;
+        $data['titlePage'] = 'List Feedback Pasien | Puskesmas Curugbitung';
+        $data['titleNav'] = 'feedback';
+        return view('admin.feedback-admin', $data);
+    }
 
-        foreach ($data as $index => &$dataCount) {
-            $dataCount['count'] = $index + 1; // $index + 1 untuk memulai dari 1, bukan 0
+    public function getAllFeedbackPasien()
+    {
+        $data = FeedbackPasien::all()->toArray();
+        foreach ($data as $index => &$d) {
+            $d['count'] = $index + 1; // $index + 1 untuk memulai dari 1, bukan 0
         }
-        return view('admin.kuesioner-admin');
+        return DataTables::of($data)->make(true);
     }
 
-    public function getDataKuesioner()
+    public function viewFeedbackPasien(FeedbackPasien $feedbackPasien)
     {
-        $data = PertanyaanPasien::all();
-        return response()->json($data);
-    }
-
-    public function viewKuesioner(Request $request)
-    {
-        $getData = PertanyaanPasien::find($request->id);
-        if ($getData->is_read == 0) {
-            $getData->is_read = 1;
-            $getData->save();
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+        $data['countUnreadFeedback'] = $this->countUnreadFeedback;
+        $data['dataFeedback'] = FeedbackPasien::find($feedbackPasien->id);
+        if ($data['dataFeedback']->is_read == 0) {
+           $data['dataFeedback']->is_read = 1;
+           $data['dataFeedback']->save();
         }
-        return view('admin.viewkuesioner-admin', $getData);
+        $data['titlePage'] = 'Data Feedback Pasien | Puskesmas Curugbitung';
+        $data['titleNav'] = 'feedback';
+
+        return view('admin.viewfeedback-admin', $data);
     }
 
-    public function hapusKuesioner()
+    public function pertanyaanPasien()
     {
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+    $data['countUnreadFeedback'] = $this->countUnreadFeedback;
+        $data['titlePage'] = 'List Feedback Pasien | Puskesmas Curugbitung';
+        $data['titleNav'] = 'pertanyaan';
+
+        return view('admin.pertanyaan-admin', $data);
+    }
+
+    public function getAllPertanyaanPasien()
+    {
+        $data = PertanyaanPasien::all()->toArray();
+        foreach ($data as $index => &$d) {
+            $d['count'] = $index + 1; // $index + 1 untuk memulai dari 1, bukan 0
+        }
+        return DataTables::of($data)->make(true);
+    }
+
+    public function viewPertanyaanPasien(PertanyaanPasien $pertanyaanPasien)
+    {
+        $data['countUnreadPertanyaan'] = $this->countUnreadPertanyaan;
+        $data['countUnreadFeedback'] = $this->countUnreadFeedback;
+        $data['dataPertanyaan'] = PertanyaanPasien::find($pertanyaanPasien->id);
+        if ($data['dataPertanyaan']->is_read == 0) {
+            $data['dataPertanyaan']->is_read = 1;
+            $data['dataPertanyaan']->save();
+        }
+        $data['titlePage'] = 'Data Pertanyaan Pasien | Puskesmas Curugbitung';
+        $data['titleNav'] = 'pertanyaan';
+
+        return view('admin.viewpertanyaan-admin', $data);
     }
 }

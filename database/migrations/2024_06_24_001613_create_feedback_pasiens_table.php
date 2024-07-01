@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('no_telp');
             $table->integer('is_anonim')->nullable();
+            $table->integer('is_read');
             $table->timestamps();
             // $table->datetime('created_at');
         });
