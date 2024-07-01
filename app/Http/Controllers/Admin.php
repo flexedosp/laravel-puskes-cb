@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Modul;
 use App\Models\Berita;
+use App\Models\Visitor;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\FeedbackPasien;
@@ -36,6 +37,22 @@ class Admin extends Controller
         $data['countUnreadFeedback'] = $this->countUnreadFeedback;
         $data['titlePage'] = 'Admin Dashboard | Puskesmas Curugbitung';
         $data['titleNav'] = 'dashboard';
+
+        // Mendapatkan data dari database (misalnya, tabel 'visitors')
+        $data['visitor'] = Visitor::select('access_date')->get();
+
+        // Mengelompokkan data berdasarkan access_date dan menghitung jumlahnya
+        $data['visitorGroup']= $data['visitor']->groupBy('access_date')->map(function ($items) {
+            return [
+                'access_date' => $items[0]->access_date,
+                'jumlah' => count($items),
+            ];
+        })->values()->all();
+
+        $data['countBerita'] =Berita::where('deleted_at', null)->count();
+        $data['countModul'] =Modul::where('deleted_at', null)->count();
+        $data['countVisitor'] =Visitor::count();
+
         return view('admin.dashboard', $data);
     }
 

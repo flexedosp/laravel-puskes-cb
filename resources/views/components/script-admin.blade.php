@@ -1,5 +1,9 @@
 <script>
     $(document).ready(function() {
+        // Update the clock immediately and then every second
+        updateClock();
+        setInterval(updateClock, 1000);
+
         RunSummernote();
         TableDataBerita();
         TableDataModul();
@@ -9,6 +13,42 @@
         checkGambar();
         checkGambarAdmin();
     });
+
+    // Function to update the clock
+    function updateClock() {
+        // Create a new Date object with the current time
+        const now = new Date();
+
+        // Convert to Indonesia time (WIB - UTC+7)
+        const indonesiaTime = new Date(now.toLocaleString('en-US', {
+            timeZone: 'Asia/Jakarta'
+        }));
+
+        // Get day names in Indonesian
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+
+        // Get month names in Indonesian
+        const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September',
+            'Oktober', 'November', 'Desember'
+        ];
+
+        // Get day, date, month, and year
+        const day = days[indonesiaTime.getDay()];
+        const date = indonesiaTime.getDate().toString();
+        const month = months[indonesiaTime.getMonth()];
+        const year = indonesiaTime.getFullYear();
+
+        // Get hours, minutes, and seconds
+        const hours = indonesiaTime.getHours().toString().padStart(2, '0');
+        const minutes = indonesiaTime.getMinutes().toString().padStart(2, '0');
+        const seconds = indonesiaTime.getSeconds().toString().padStart(2, '0');
+
+        // Format the time as "Hari, Tanggal | jam:menit:detik"
+        const formattedTime = `${day}, ${date} ${month} ${year} | Pukul ${hours}:${minutes}:${seconds} WIB`;
+
+        // Display the formatted time
+        $('#liveClock').html(formattedTime);
+    }
 
     function RunSummernote() {
         $(".summernote").summernote({
@@ -201,7 +241,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -319,7 +360,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -411,7 +453,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -594,7 +637,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -712,7 +756,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -804,7 +849,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -987,7 +1033,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -1069,7 +1116,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -1145,7 +1193,8 @@
                             Swal.fire({
                                 title: "Error",
                                 width: 800,
-                                text: "Keterangan : <br>" + textStatus + ". " +
+                                text: "Keterangan : <br>" + textStatus +
+                                    ". " +
                                     jqXHR
                                     .responseText +
                                     ". " + errorThrown,
@@ -1435,7 +1484,8 @@
                         Swal.fire({
                             title: "Error",
                             width: 800,
-                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR.responseText +
+                            text: "Keterangan : <br>" + textStatus + ". " + jqXHR
+                                .responseText +
                                 ". " + errorThrown,
                             icon: "error",
                             confirmButtonText: "OK",
@@ -1461,7 +1511,7 @@
     //#endregion Profile Admin
 
     //#region Pertanyaan Pasien
-    function DataTablePertanyaanPasien(){
+    function DataTablePertanyaanPasien() {
         $('#TableDataPertanyaan').DataTable({
             processing: true,
             serverSide: false,
@@ -1489,7 +1539,7 @@
                 {
                     data: 'created_at',
                     name: 'created_at',
-                    render: function(data, type, row, meta){
+                    render: function(data, type, row, meta) {
                         return `${new Date(data).toLocaleDateString()}`;
                     }
                 }
@@ -1512,7 +1562,7 @@
     //#endregion Pertanyaan Pasien
 
     //#region Feedback Pasien
-    function DataTableFeedbackPasien(){
+    function DataTableFeedbackPasien() {
         $('#TableDataFeedback').DataTable({
             processing: true,
             serverSide: false,
@@ -1540,7 +1590,7 @@
                 {
                     data: 'created_at',
                     name: 'created_at',
-                    render: function(data, type, row, meta){
+                    render: function(data, type, row, meta) {
                         return `${new Date(data).toLocaleDateString()}`;
                     }
                 }
@@ -1561,5 +1611,4 @@
         });
     }
     //#endregion Feedback Pasien
-
 </script>

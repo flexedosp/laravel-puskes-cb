@@ -1,10 +1,10 @@
 <!-- Navbar Header -->
 <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
     <div class="container-fluid">
-        {{-- <nav
+        <nav
         class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
     >
-        <div class="input-group">
+        {{-- <div class="input-group">
             <div class="input-group-prepend">
                 <button
                     type="submit"
@@ -20,8 +20,10 @@
                 placeholder="Search ..."
                 class="form-control"
             />
-        </div>
-    </nav> --}}
+        </div> --}}
+        <div id="liveClock">Memuat.... </div>
+
+    </nav>
 
         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
             {{-- <li
