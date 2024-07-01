@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="my-3">
-                        <h3 class="text-center mb-4">Grafik Batang Pengunjung Website</h3>
+                        <h3 class="text-center mb-4 mt-5">Grafik Batang Pengunjung Website</h3>
 
                         <div class="row mb-3">
                             <div class="col-md-4">
@@ -95,7 +95,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row bg-white mx-3 shadow-sm">
                             <div class="col">
                                 <canvas id="visitorChart" style="width: 300px; height:80%"></canvas>
                             </div>
