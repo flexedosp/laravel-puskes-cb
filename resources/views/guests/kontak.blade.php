@@ -16,7 +16,8 @@
 
             <div id="formKontak" class="m-3">
                 <h3 class="fw-bold text-center">Silahkan isi form di bawah ini</h3>
-                <form class="px-4 py-3">
+                <form id="formPertanyaanPasien" class="px-4 py-3">
+                    @csrf
                     <!-- Nama -->
                     <div class="mb-3">
                         <label for="inputNama" class="form-label">Nama</label>
@@ -33,7 +34,7 @@
                     <!-- Nomor Telepon -->
                     <div class="mb-3">
                         <label for="inputNoTelp" class="form-label">Nomor Telepon</label>
-                        <input type="number" class="form-control" id="inputNoTelp" name="inputNoTelp"
+                        <input type="text" class="form-control" id="inputNoTelp" name="inputNoTelp"
                             placeholder="Masukkan email Anda" required>
                     </div>
 
@@ -61,7 +62,7 @@
 
                     <!-- Tombol Submit -->
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary w-75">Kirim</button>
+                        <button type="button" class="btn btn-primary w-75" onclick="sendPertanyaan()">Kirim</button>
                     </div>
                 </form>
             </div>

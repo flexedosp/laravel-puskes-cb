@@ -9,6 +9,8 @@ body {
     height: 100%;
 }
 
+
+
 .z-index-1000{
     z-index: 1000;
 }
@@ -223,6 +225,10 @@ body {
 
 /* BEGIN Tentang Kami */
 
+#GambarStrukturOrganisasi{
+    width: 30cm; 
+    height:100%;
+}
 .divTk {
     width: 68%;
 }
@@ -520,6 +526,10 @@ body {
     /* END Footer */
 
     /* BEGIN Tentang Kami */
+    #GambarStrukturOrganisasi{
+        width: 10cm; 
+        height:100%;
+    }
     .divTk {
         width: auto;
     }

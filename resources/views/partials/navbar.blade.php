@@ -31,6 +31,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.kepalapuskes') ?>">Tentang Kepala Puskesmas</a></li>
+                <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.strukturorganisasi') ?>">Struktur Organisasi</a></li>
                 <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.sejarah') ?>">Sejarah Puskesmas</a></li>
                 <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.visidanmisi') ?>">Visi Dan Misi</a></li>
                 <li><a class="dropdown-item nav-effect scroll-link" data-offset="100" href="<?= route('guest.tentangkami.nilaidanslogan') ?>">Tata Nilai Organisasi & Slogan</a></li>
@@ -47,4 +48,4 @@
     </div>
   </nav>
 
-<a id="feedback" class="btn btn-dark pb-4 text-decoration-none" href="<?= route('guest.formkuesioner') ?>">Kritik & Saran</a>
+<a id="feedback" class="btn btn-dark pb-4 text-decoration-none" href="<?= route('guest.formfeedback') ?>" target="_blank">Kritik & Saran</a>

@@ -17,8 +17,11 @@
     {{-- Bootstrap 5 --}}
     <link href="/vendor/bootstrap5.3.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
+    {{-- SweetAlert2 --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.min.css">
+
 {{-- Custom CSS --}}
-<link rel="stylesheet" href="/css/survey_styles.css">
+<link rel="stylesheet" href="/css/feedback_styles.css">
 {{-- CSS Library END --}}
     
 </head>
@@ -40,8 +43,11 @@
     {{-- JQuery --}}
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+    {{-- SweetAlert2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.0/dist/sweetalert2.all.min.js"></script>
+
     {{-- Custom --}}
-    <script src="/js/scripts.js"></script>
+    <script src="/js/feedback_scripts.js"></script>
 
     {{-- Javascript Library END --}}
 </body>

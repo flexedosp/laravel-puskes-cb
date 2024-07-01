@@ -10,4 +10,5 @@ class FeedbackPasien extends Model
     use HasFactory;
 
     protected $table= "feedback_pasien";
+    protected $guarded =['id'];
 }

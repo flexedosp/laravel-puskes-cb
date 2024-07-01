@@ -25,23 +25,25 @@ body {
     opacity: 1;
 }
 
-.img-survey {
+.img-feedback {
     width: auto;
     height: 100px;
     margin: 20px;
 }
 
-#divSurveyAdmin {
+#divFeedbackAdmin {
     width: 50vw;
     height: auto;
     padding: 40px;
 }
 
 @media screen and (max-width:1024px) {
-    .img-survey {
-        height: 40px;
+    .img-feedback {
+        height: 50px;
+    margin: 10px;
+
     }
-    #divSurveyAdmin {
+    #divFeedbackAdmin {
         width: 100vw;
     }
 }

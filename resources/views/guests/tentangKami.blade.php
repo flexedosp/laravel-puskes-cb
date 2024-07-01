@@ -24,6 +24,15 @@
             </div>
         </div>
         <hr>
+        <div id="StrukturOrganisasi" class="container divTk py-3">
+            <h3 class="fw-bold">Struktur Organisasi</h3>
+<div class="d-flex justify-content-center">
+    <a href="/img/tentang_kami/struktur_organisasi.png" class="my-4" data-toggle="lightbox">
+        <img id="GambarStrukturOrganisasi" class="rounded shadow-sm" src="/img/tentang_kami/struktur_organisasi.png" alt="Struktur Organisasi">
+    </a>
+</div>
+        </div>
+        <hr>
         <div id="SejarahPuskesmas" class="container divTk py-3">
             <h3 class="fw-bold">Sejarah Puskesmas Curugbitung</h3>
             <p class="fs-5">

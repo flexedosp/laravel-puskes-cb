@@ -23,8 +23,9 @@ return new class extends Migration
             $table->string('jenis_kelamin');
             $table->string('email');
             $table->string('no_telp');
-            $table->integer('is_anonim');
+            $table->integer('is_anonim')->nullable();
             $table->timestamps();
+            // $table->datetime('created_at');
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('feedback_pasiens');
+        Schema::dropIfExists('feedback_pasien');
     }
 };

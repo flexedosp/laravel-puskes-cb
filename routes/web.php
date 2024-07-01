@@ -8,14 +8,15 @@ use Illuminate\Support\Facades\Route;
 // BEGIN Main Route | Guest 
 Route::get('/', [Guests::class, 'index'])->name('guest.home');
 
-// BEGIN Kuesioner Pasien
-Route::get('/kuesioner-pasien', [Guests::class, 'kuesionerPasien'])->name('guest.formkuesioner');
-Route::post('/kuesioner-pasien/send', [Guests::class, 'sendKuesionerPasien'])->name('guest.kirimkuesioner');
-// END Kuesioner Pasien
+// BEGIN Feedback Pasien
+Route::get('/feedback-pasien', [Guests::class, 'feedbackPasien'])->name('guest.formfeedback');
+Route::post('/feedback-pasien/send', [Guests::class, 'sendFeedbackPasien'])->name('guest.kirimfeedback');
+// END Feedback Pasien
 
 // BEGIN Tentang Kami
 Route::get('/tentangkami', [Guests::class, 'tentangKami'])->name('guest.tentangkami');
 Route::get('/tentangkami#KepalaPuskesmas', [Guests::class, 'tentangKami'])->name('guest.tentangkami.kepalapuskes');
+Route::get('/tentangkami#StrukturOrganisasi', [Guests::class, 'tentangKami'])->name('guest.tentangkami.strukturorganisasi');
 Route::get('/tentangkami#SejarahPuskesmas', [Guests::class, 'tentangKami'])->name('guest.tentangkami.sejarah');
 Route::get('/tentangkami#VisiDanMisi', [Guests::class, 'tentangKami'])->name('guest.tentangkami.visidanmisi');
 Route::get('/tentangkami#NilaiDanSlogan', [Guests::class, 'tentangKami'])->name('guest.tentangkami.nilaidanslogan');
@@ -26,7 +27,9 @@ Route::get('/tentangkami#TinjauFasilitas', [Guests::class, 'tentangKami'])->name
 Route::get('/layanan', [Guests::class, 'layanan'])->name('guest.layanan');
 Route::match(['get', 'post'], '/berita', [Guests::class, 'berita'])->name('guest.berita');
 Route::match(['get', 'post'], '/modul', [Guests::class, 'modul'])->name('guest.modul');
+
 Route::get('/kontak', [Guests::class, 'kontak'])->name('guest.kontak');
+Route::post('/send-pertanyaan', [Guests::class, 'sendPertanyaan'])->name('guest.kirimpertanyaan');
 // END Main Route | Guest 
 
 // BEGIN Get Data Route | Guest 

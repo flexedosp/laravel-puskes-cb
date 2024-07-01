@@ -92,53 +92,181 @@ function scrollHref(targetId, offset) {
     }
 }
 
-function cariDataBerita(){
-    // Menangani submit form pencarian
-    $('#searchForm').on('submit', function (event) {
-        event.preventDefault(); // Mencegah form dari submit secara normal
+function sendPertanyaan(){
+    checkForm();
+    if (checkForm()) {
+        let getFormData = $("#formPertanyaanPasien").get(0);
+        const formData = new FormData(getFormData);
+        console.log("----------------");
+        formData.forEach(function (value, key) {
+            console.log(key, value);
+        });
+        console.log("----------------");
 
-        // Ambil URL dari form action
-        var url = $(this).attr('action');
-        // Ambil query string dari form
-        var query = $(this).serialize();
-
-        // Kirimkan permintaan AJAX
-        $.ajax({
-            url: url,
-            type: 'GET',
-            data: query,
-            success: function (data) {
-                // Perbarui konten berita dan pagination
-                $('#beritaContainer').html(data.html);
-                $('#paginationLinks').html(data.pagination);
-            },
-            error: function (xhr) {
-                // Tangani kesalahan jika ada
-                console.log(xhr.responseText);
+        Swal.fire({
+            title: "Form Akan Disubmit!",
+            text: "Anda sudah yakin dengan pengisian formnya?",
+            icon: "question",
+            confirmButtonText: "Ya",
+            confirmButtonColor: "#3085d6",
+            showDenyButton: true,
+            denyButtonText: "Tidak",
+            allowOutsideClick: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "/send-pertanyaan",
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"
+                        ), // Include the CSRF token
+                    },
+                    data: formData,
+                    processData: false, // Required for FormData
+                    contentType: false, // Required for FormData
+                    success: function (data) {
+                        if (data.result == "success") {
+                            Swal.fire({
+                                title: "Sukses",
+                                text: "Form Berhasil Disubmit!",
+                                icon: "success",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#42f20d",
+                            }).then((result) => {
+                                window.location.replace("/");
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Gagal",
+                                html:
+                                    "<span>Form Tidak Berhasil Disubmit! <br>" +
+                                    result.message +
+                                    " </span>",
+                                icon: "error",
+                                confirmButtonText: "OK",
+                                showCancelButton: false,
+                                allowOutsideClick: false,
+                                confirmButtonColor: "#fa0000",
+                            }).then((result) => {
+                                window.location.replace("/");
+                            });
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            title: "Error",
+                            width: 800,
+                            text:
+                                "Keterangan : <br>" +
+                                textStatus +
+                                ". " +
+                                jqXHR.responseText +
+                                ". " +
+                                errorThrown,
+                            icon: "error",
+                            confirmButtonText: "OK",
+                            showCancelButton: false,
+                            allowOutsideClick: false,
+                            confirmButtonColor: "#fa0000",
+                        });
+                    },
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "Batal",
+                    text: "Silahkan cek kembali form!",
+                    icon: "error",
+                    confirmButtonText: "OK",
+                    showCancelButton: false,
+                    allowOutsideClick: false,
+                    confirmButtonColor: "#fa0000",
+                });
             }
         });
-    });
-
-    // Menangani klik pada link pagination
-    $(document).on('click', '.pagination a', function (event) {
-        event.preventDefault();
-        
-        // Ambil URL dari link pagination yang diklik
-        var url = $(this).attr('href');
-        
-        // Kirimkan permintaan AJAX
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: function (data) {
-                // Perbarui konten berita dan pagination
-                $('#beritaContainer').html(data.html);
-                $('#paginationLinks').html(data.pagination);
-            },
-            error: function (xhr) {
-                // Tangani kesalahan jika ada
-                console.log(xhr.responseText);
-            }
+    }else{
+        Swal.fire({
+            title: "Terdeteksi Form Kosong",
+            text: "Silahkan cek kembali form feedback.",
+            icon: "error",
+            confirmButtonText: "OK",
+            showCancelButton: false,
+            allowOutsideClick: false,
+            confirmButtonColor: "#fa0000",
         });
-    });
+    }   
 }
+
+function checkForm() {
+    // Variabel untuk menandai apakah semua input terisi
+    let allFilled = true;
+
+    // Iterasi melalui semua input, textarea, dan select di dalam form
+    $("#formPertanyaanPasien")
+        .find("input, textarea, select")
+        .each(function () {
+            if ($.trim($(this).val()) === "") {
+                allFilled = false; // Set flag ke false
+            }
+        });
+
+    // Jika ada input yang kosong, hentikan proses pengiriman form
+    if (!allFilled) {
+        return false;
+    }
+    return true;
+}
+
+
+// function cariDataBerita(){
+//     // Menangani submit form pencarian
+//     $('#searchForm').on('submit', function (event) {
+//         event.preventDefault(); // Mencegah form dari submit secara normal
+
+//         // Ambil URL dari form action
+//         var url = $(this).attr('action');
+//         // Ambil query string dari form
+//         var query = $(this).serialize();
+
+//         // Kirimkan permintaan AJAX
+//         $.ajax({
+//             url: url,
+//             type: 'GET',
+//             data: query,
+//             success: function (data) {
+//                 // Perbarui konten berita dan pagination
+//                 $('#beritaContainer').html(data.html);
+//                 $('#paginationLinks').html(data.pagination);
+//             },
+//             error: function (xhr) {
+//                 // Tangani kesalahan jika ada
+//                 console.log(xhr.responseText);
+//             }
+//         });
+//     });
+
+//     // Menangani klik pada link pagination
+//     $(document).on('click', '.pagination a', function (event) {
+//         event.preventDefault();
+        
+//         // Ambil URL dari link pagination yang diklik
+//         var url = $(this).attr('href');
+        
+//         // Kirimkan permintaan AJAX
+//         $.ajax({
+//             url: url,
+//             type: 'GET',
+//             success: function (data) {
+//                 // Perbarui konten berita dan pagination
+//                 $('#beritaContainer').html(data.html);
+//                 $('#paginationLinks').html(data.pagination);
+//             },
+//             error: function (xhr) {
+//                 // Tangani kesalahan jika ada
+//                 console.log(xhr.responseText);
+//             }
+//         });
+//     });
+// }

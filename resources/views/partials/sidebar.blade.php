@@ -76,7 +76,13 @@
                 <li class="nav-item">
                     <a href="#">
                         <i class="fas fa-clipboard-list"></i>
-                        <p>Kuesioner</p>
+                        <p>Feedback Pasien</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>Pertanyaan Pasien</p>
                     </a>
                 </li>
                 <li class="nav-item">

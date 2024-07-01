@@ -8,6 +8,8 @@ use App\Models\Berita;
 use App\Models\Visitor;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
+use App\Models\FeedbackPasien;
+use App\Models\PertanyaanPasien;
 use Illuminate\Routing\Controller;
 
 class Guests extends Controller
@@ -30,8 +32,8 @@ class Guests extends Controller
         // Mendapatkan Tanggal Akses
         $this->accessDate = Carbon::now()->toDateString();
         $existingVisitor = Visitor::where('ip_address', $this->ipAddress)
-                                  ->whereDate('access_date', $this->accessDate)
-                                  ->first();
+            ->whereDate('access_date', $this->accessDate)
+            ->first();
 
         // Hanya tambahkan entri baru jika tidak ada entri yang sama sebelumnya
         if (!$existingVisitor) {
@@ -44,7 +46,6 @@ class Guests extends Controller
 
             Visitor::create($dataVisitor);
         }
-        
     }
     // BEGIN Parent Function
     public function index()
@@ -77,7 +78,7 @@ class Guests extends Controller
     {
         $data['titlePage'] = 'Modul | Puskesmas Curugbitung';
         $data['titleNav'] = 'Modul';
-        
+
         // Jika user melakukan refresh, hapus session search_query
         if (!$request->input('page')) {
             $request->session()->forget('search_query');
@@ -225,12 +226,6 @@ class Guests extends Controller
         $data['titleNav'] = 'Kontak';
         return view('guests.kontak', $data);
     }
-
-    public function feedback()
-    {
-        $data['titlePage'] = 'Feedback Pasien | Puskesmas Curugbitung';
-        return view('guests.feedback');
-    }
     // END Parent Function
 
 
@@ -250,15 +245,65 @@ class Guests extends Controller
         $data['dataModul'] = $modul;
         return view('guests.detailModul', $data);
     }
+
+    public function sendPertanyaan(Request $request){
+        $newQuestion = new PertanyaanPasien;
+        $newQuestion->name = $request->inputNama;
+        $newQuestion->email = $request->inputEmail;
+        $newQuestion->no_telp = $request->inputNoTelp;
+        $newQuestion->jenis_kelamin = $request->inputJenisKelamin;
+        $newQuestion->isi_pertanyaan = $request->inputPertanyaan;
+        $newQuestion->created_at = Carbon::now();
+        $newQuestion->updated_at = Carbon::now();
+        $newQuestion->is_read = 0;
+
+        $checkProcess =$newQuestion->save();
+        if ($checkProcess) {
+            return response()->json(['result' => 'success'], 200);
+        } else {
+            return response()->json(['result' => 'failure'], 500);
+        }
+
+        
+    }
     // END Child Function
 
-    // BEGIN Kuesioner Pasien
-    public function kuesionerPasien(){
-        return view('guests.kuesioner');
+    // BEGIN Feedback Pasien
+    public function feedbackPasien()
+    {
+        return view('guests.kritik-saran');
     }
 
-    public function sendKuesionerPasien(Request $request){
+    public function sendFeedbackPasien(Request $request)
+    {
+        // Buat Variabel Untuk Menampung Data Baru
+        $newFeedback = new FeedbackPasien;
 
+        // Masukkan Data Baru
+        $newFeedback->nama_fasilitas = $request->inputFasilitas;
+        $newFeedback->nilai_pelayanan = $request->inputNilaiFasilitas;
+        $newFeedback->nilai_kebersihan = $request->inputNilaiKebersihan;
+        $newFeedback->nilai_petugas = $request->inputNilaiPetugas;
+        $newFeedback->isi_feedback = $request->inputKritikSaran;
+        $newFeedback->nama = $request->inputNama;
+        $newFeedback->usia = $request->inputUsia;
+        $newFeedback->jenis_kelamin = $request->inputJenisKelamin;
+        $newFeedback->email = $request->inputEmail;
+        $newFeedback->no_telp = $request->inputNoTelp;
+        $newFeedback->is_anonim = $request->inputAnonim;
+        $newFeedback->created_at = Carbon::now();
+        $newFeedback->updated_at = Carbon::now();
+
+
+        // Simpan Data Baru
+        $checkProcess = $newFeedback->save();
+
+        // Cek Apakah Data Sudah Tersimpan atau Belum
+        if ($checkProcess) {
+            return response()->json(['result' => 'success'], 200);
+        } else {
+            return response()->json(['result' => 'failure'], 500);
+        }
     }
-    // END Kuesioner Pasien
+    // END Feedback Pasien
 }
