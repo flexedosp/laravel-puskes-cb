@@ -25,7 +25,7 @@
             @endforeach
             
         </div>
-        @if($dataBerita)
+        @if(count($dataBerita) >= 1)
             <button class="carousel-control-prev bg-white" style="top: 38%; height:100px; width:50px" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                 {{-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> --}}
                 <i class="fa-solid fa-chevron-left text-primary fs-1"></i>

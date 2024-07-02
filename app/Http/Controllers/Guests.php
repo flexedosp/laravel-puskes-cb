@@ -54,9 +54,10 @@ class Guests extends Controller
         $data['titlePage'] = 'Puskesmas Curugbitung | Website Official';
         $data['titleNav'] = 'Beranda';
 
-        $data['dataBerita'] = Berita::orderBy('id', 'asc')->take(3)->get();
+        $data['dataBerita'] = Berita::orderBy('id', 'desc')->take(3)->get();
         $data['dataModul'] = Modul::orderBy('id', 'desc')->take(2)->get();
 
+        // dd(count($data['dataBerita']));
         return view('guests.home', $data);
     }
 
