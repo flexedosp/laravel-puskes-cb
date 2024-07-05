@@ -14,10 +14,10 @@
             </div>
             @foreach ($dataBerita as $d )
             <div class="carousel-item vh-100 ">
-                <img src="/img/{{ $d->gambar }}" class="d-block w-100 h-100 img-carousel" alt="Gambar Carousel" style="object-fit: cover;">
+                <img src="/img/berita/{{ $d->gambar }}" class="d-block w-100 h-100 img-carousel" alt="Gambar Carousel" style="object-fit: cover;">
                 <div class="position-absolute top-50 start-50 translate-middle text-white">
                     <p class="text-center fs-3 fw-bold text-wrap">{{ $d->nama }}</p>
-                    <p class="text-center fw-semibold">{{ substr($d->deskripsi, 0, 40) }}...</p>
+                    {{-- <p class="text-center fw-semibold">{{ substr($d->deskripsi, 0, 40) }}...</p> --}}
                 <a class="d-flex justify-content-center a-text-undecorat-white fs-6" href="/berita/{{ $d->slug }}">Baca Selengkapnya</a>
                 </div>
             </div>

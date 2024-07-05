@@ -1,7 +1,7 @@
 <div>
     <!-- The best way to take care of the future is to take care of the present moment. - Thich Nhat Hanh -->
     <div data-aos="flip-right" class="card m-3" style="width: 18rem; min-height:100%;">
-        <img src="/img/{{ $gambar }}" class="card-img-top" alt="Gambar Berita">
+        <img src="/img/berita/{{ $gambar }}" class="card-img-top" alt="Gambar Berita">
         <div class="card-body">
             <p class="card-title fs-6 fw-bold mb-4 lh-sm">{{ $judul }}</p>
           {{-- <p class="card-text bg-body-tertiary rounded p-2">{{ (strlen($judul) > 48) ? substr($deskripsi, 0, 20) : substr($deskripsi, 0, 40) }}...</p> --}}

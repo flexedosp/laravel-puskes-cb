@@ -1,7 +1,7 @@
 <div>
     <div data-aos="flip-right" class="card m-3" style="width: 18rem; min-height:100%;">
         <div class="card-img-top">
-            <img src="/img/{{ $gambar }}" class="img-fluid" alt="Gambar Berita" style="width: 100%; height: 180px; object-fit: cover;">
+            <img src="/img/modul/{{ $gambar }}" class="img-fluid" alt="Gambar Berita" style="width: 100%; height: 180px; object-fit: cover;">
         </div>
         <div class="card-body">
             <p class="card-title fs-6 fw-bold mb-4 lh-sm">{{ $judul }}</p>
