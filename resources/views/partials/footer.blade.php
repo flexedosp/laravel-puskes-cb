@@ -44,7 +44,10 @@
     </div>
 
     <hr />
-    <div id="madeByWho" class="fw-normal text-center">
+    {{-- <div id="madeByWho" class="fw-normal text-center">
         2024 - Made by itsalghifari.com
+    </div> --}}
+    <div id="madeByWho" class="fw-normal text-center">
+        2024 - Made by students of Budi Luhur University
     </div>
 </footer>

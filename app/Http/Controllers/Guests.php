@@ -109,18 +109,18 @@ class Guests extends Controller
                 try {
                     // Periksa apakah input hanya berupa tahun (YYYY)
                     if (preg_match('/^\d{4}$/', $searchQuery)) {
-                        $q->orWhereYear('createdAt', $searchQuery);
+                        $q->orWhereYear('created_at', $searchQuery);
                     }
                     // Periksa apakah input berupa bulan dan tahun (YYYY-MM)
                     elseif (preg_match('/^\d{4}-\d{2}$/', $searchQuery)) {
                         [$year, $month] = explode('-', $searchQuery);
-                        $q->orWhereYear('createdAt', $year)
-                            ->whereMonth('createdAt', $month);
+                        $q->orWhereYear('created_at', $year)
+                            ->whereMonth('created_at', $month);
                     }
                     // Periksa apakah input berupa tanggal lengkap (YYYY-MM-DD)
                     elseif (Carbon::createFromFormat('Y-m-d', $searchQuery) !== false) {
                         $tanggal = Carbon::createFromFormat('Y-m-d', $searchQuery);
-                        $q->orWhereDate('createdAt', $tanggal);
+                        $q->orWhereDate('created_at', $tanggal);
                     }
                 } catch (\Exception $e) {
                     // Jika parsing gagal, biarkan saja
@@ -171,18 +171,18 @@ class Guests extends Controller
                 try {
                     // Periksa apakah input hanya berupa tahun (YYYY)
                     if (preg_match('/^\d{4}$/', $searchQuery)) {
-                        $q->orWhereYear('createdAt', $searchQuery);
+                        $q->orWhereYear('created_at', $searchQuery);
                     }
                     // Periksa apakah input berupa bulan dan tahun (YYYY-MM)
                     elseif (preg_match('/^\d{4}-\d{2}$/', $searchQuery)) {
                         [$year, $month] = explode('-', $searchQuery);
-                        $q->orWhereYear('createdAt', $year)
-                            ->whereMonth('createdAt', $month);
+                        $q->orWhereYear('created_at', $year)
+                            ->whereMonth('created_at', $month);
                     }
                     // Periksa apakah input berupa tanggal lengkap (YYYY-MM-DD)
                     elseif (Carbon::createFromFormat('Y-m-d', $searchQuery) !== false) {
                         $tanggal = Carbon::createFromFormat('Y-m-d', $searchQuery);
-                        $q->orWhereDate('createdAt', $tanggal);
+                        $q->orWhereDate('created_at', $tanggal);
                     }
                 } catch (\Exception $e) {
                     // Jika parsing gagal, biarkan saja
